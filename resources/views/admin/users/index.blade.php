@@ -11,6 +11,7 @@
     <table style="width:100%" class="w3-table w3-striped">
     <tr>
         <th>ID</th>
+        <th>Photo</th>
         <th>Name</th> 
         <th>Email</th>
         <th>Role</th>
@@ -21,6 +22,7 @@
         @foreach($users as $user)
         <tr>
             <td>{{$user->id}}</td>
+            <td> <img height="50" src="{{$user->photo ? $user->photo->file : ''}}" alt=""></td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->role->name}}</td>
