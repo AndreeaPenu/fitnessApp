@@ -22,7 +22,7 @@
         @foreach($users as $user)
         <tr>
             <td>{{$user->id}}</td>
-            <td> <img height="50" src="{{$user->photo ? $user->photo->file : ''}}" alt=""></td>
+            <td> <img height="50" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt=""></td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->role->name}}</td>
