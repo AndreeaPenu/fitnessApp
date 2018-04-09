@@ -6,6 +6,10 @@
     </head>
     <body>
 
+    @if(Session::has('deleted_user'))
+        <p>{{session('deleted_user')}}</p>
+    @endif
+
     <h1>Users</h1>
 
     <table style="width:100%" class="w3-table w3-striped">
