@@ -23,6 +23,7 @@ Route::get('/admin', function(){
     return view('admin.index');
 });
 
+Route::get('/admin/plans/{id}/add','PlansController@addPlan');
 
 Route::group(['middleware' => 'admin'], function(){
    

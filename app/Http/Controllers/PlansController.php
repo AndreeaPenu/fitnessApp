@@ -3,82 +3,77 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Plan;
+use Illuminate\Support\Facades\Session;
+use Auth;
 
 class PlansController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('admin.plans.index');
+        $plans = Plan::all();
+        return view('admin.plans.index', compact('plans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.plans.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+       // Plan::create($input);
+        $user=Auth::user();
+        $user->plans()->create($input);
+       
+        return redirect('/admin/plans');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function addPlan($id){
+        $plan = Plan::findOrFail($id);
+        $user_id = Auth::user()->id;
+        $newPlan = new Plan;
+        $newPlan->title = $plan->title;
+        $newPlan->description = $plan->description;
+        $newPlan->user_id = $user_id;
+        //$plan = Plan::create($newPlan);
+        $newPlan->save();
+
+    }
+
     public function edit($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+
+        return view('admin.plans.edit', compact('plan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+        $input = $request->all();
+
+
+        $plan->update($input);
+        return redirect('/admin/plans');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+        $plan->delete();
+
+        Session::flash('deleted_plan', 'The workout plan has been deleted');
+
+        return redirect('/admin/plans');
     }
 }
