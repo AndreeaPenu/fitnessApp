@@ -44,16 +44,14 @@
             <th>Title</th>
             <th>Description</th>
             <th>Made by</th>
-            <th>Add workouts</th>
         </tr>
         @if($userPlans)
             @foreach($userPlans as $userPlan)
                     <tr>
                         <td>{{$userPlan->id}}</td>
-                        <td>{{$userPlan->title}}</td>
+                        <td> <a href="{{ url('/admin/plans/' . $userPlan->id . '') }}" class="btn btn-xs btn-info pull-right">{{$userPlan->title}}</a></td>
                         <td>{{$userPlan->description}}</td>
                         <td>{{$plan->user->name}}</td>
-                        <td><a href="{{ url('/admin/workouts/create') }}" class="btn btn-xs btn-info pull-right">+</a></td>
                     </tr>
             @endforeach
         @endif

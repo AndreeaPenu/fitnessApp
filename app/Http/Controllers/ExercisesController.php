@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\User;
-use App\Workout;
 use App\Exercise;
 
-class WorkoutsController extends Controller
+class ExercisesController extends Controller
 {
     public function index()
     {
@@ -17,20 +14,17 @@ class WorkoutsController extends Controller
 
     public function create()
     {
-        $exercises = Exercise::all();
-        return view('admin.workouts.create', compact('exercises'));
+        return view('admin.exercises.create');
     }
 
     public function store(Request $request)
     {
-        $workout = new Workout;
-      
-        $workout->name = $request->name;
-      
-        $workout->save();
-        $workout->exercises()->sync($request->exercises, false);
+        $input = $request->all();
 
-        return redirect('/admin/workouts');
+        Exercise::create($input);
+       
+        return redirect('/admin/exercises');
+        
     }
 
     public function show($id)
