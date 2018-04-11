@@ -12,6 +12,8 @@
 
     <h1>Workout plans</h1>
 
+    <h2>All workout plans</h2>
+
     <table style="width:100%" class="w3-table w3-striped">
     <tr>
         <th>ID</th>
@@ -31,6 +33,30 @@
         </tr>
         @endforeach
     @endif
+    </table>
+
+    <h2>My workout plans</h2>
+    <a href="{{ url('/admin/plans/create') }}" class="btn btn-xs btn-info pull-right">Create new plan</a>
+
+    <table style="width:100%" class="w3-table w3-striped">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Made by</th>
+            <th>Add workouts</th>
+        </tr>
+        @if($userPlans)
+            @foreach($userPlans as $userPlan)
+                    <tr>
+                        <td>{{$userPlan->id}}</td>
+                        <td>{{$userPlan->title}}</td>
+                        <td>{{$userPlan->description}}</td>
+                        <td>{{$plan->user->name}}</td>
+                        <td><a href="{{ url('/admin/workouts/create') }}" class="btn btn-xs btn-info pull-right">+</a></td>
+                    </tr>
+            @endforeach
+        @endif
     </table>
 
     </body>

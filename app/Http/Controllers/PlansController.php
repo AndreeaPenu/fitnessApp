@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Plan;
+use App\Workout;
 use Illuminate\Support\Facades\Session;
 use Auth;
+use DB;
+use App\User;
 
 class PlansController extends Controller
 {
@@ -13,28 +16,36 @@ class PlansController extends Controller
     public function index()
     {
         $plans = Plan::all();
-        return view('admin.plans.index', compact('plans'));
+        $userPlans = DB::table('plans')->where('user_id', auth()->id())->get();
+        
+        return view('admin.plans.index', compact('plans', 'userPlans'));
     }
 
     public function create()
     {
-        return view('admin.plans.create');
+        $workouts = Workout::all();
+
+        return view('admin.plans.create', compact('workouts'));
     }
 
     public function store(Request $request)
     {
-        $input = $request->all();
+        $plan = new Plan;
+        $plan->user_id = Auth::user()->id;
+        $plan->title = $request->title;
+        $plan->description = $request->description;
+        $plan->save();
+        $plan->workouts()->sync($request->workouts, false);
 
-       // Plan::create($input);
-        $user=Auth::user();
-        $user->plans()->create($input);
-       
         return redirect('/admin/plans');
     }
 
     public function show($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+        $workouts = $plan->workouts()->where('plan_id', $id)->get();
+
+        return view('admin.plans.show', compact('plan', 'workouts'));
     }
 
     public function addPlan($id){
@@ -44,9 +55,9 @@ class PlansController extends Controller
         $newPlan->title = $plan->title;
         $newPlan->description = $plan->description;
         $newPlan->user_id = $user_id;
-        //$plan = Plan::create($newPlan);
         $newPlan->save();
 
+        return redirect('/admin/plans');
     }
 
     public function edit($id)
@@ -60,9 +71,8 @@ class PlansController extends Controller
     {
         $plan = Plan::findOrFail($id);
         $input = $request->all();
-
-
         $plan->update($input);
+
         return redirect('/admin/plans');
 
     }

@@ -18,6 +18,17 @@
                 {!! Form::label('description', 'Description:') !!}
                 {!! Form::text('description', null, ['class'=>'form-control']) !!}
             </div>
+            
+            <div class="form-group">
+                {!! Form::label('workouts', 'Workouts:') !!}
+               
+                <select class="form-control" name="workouts[]" multiple>
+                @foreach($workouts as $workout)
+                    <option value="{{ $workout->id }}">{{ $workout->name }}</option>
+                @endforeach
+                </select>
+            </div> 
+            
 
             <div class="form-group">
                 {!! Form::submit('Create Workout Plan', ['class'=>'btn btn-primary']) !!}
