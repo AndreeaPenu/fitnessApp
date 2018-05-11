@@ -37,6 +37,7 @@
 
     <h2>My workout plans</h2>
     <a href="{{ url('/admin/plans/create') }}" class="btn btn-xs btn-info pull-right">Create new plan</a>
+    <a href="{{ url('/admin/exercises/create') }}" class="btn btn-xs btn-info pull-right">Add new exercise</a>
 
     <table style="width:100%" class="w3-table w3-striped">
         <tr>

@@ -13,8 +13,8 @@ class WorkoutsController extends Controller
     public function index()
     {
         $workouts = Workout::all();
-        
-        return view('admin.workouts.index', compact('workouts'));
+        $exercises = Exercise::all();
+        return view('admin.workouts.index', compact('workouts','exercises'));
     }
 
     public function create()
@@ -37,14 +37,24 @@ class WorkoutsController extends Controller
 
     public function show($id)
     {
-        //
+        $workout = Workout::findOrFail($id);
+        $exercises = $workout->exercises()->where('workout_id', $id)->get();
+
+        return view('admin.workouts.show', compact('workout', 'exercises'));
     }
 
     public function edit($id)
     {
         $workout = Workout::findOrFail($id);
 
-        return view('admin.workouts.edit', compact('workout'));
+        $exercises = Exercise::all();
+        $exercises2 = array();
+        foreach ($exercises as $exercise) {
+            $exercises2[$exercise->id] = $exercise->name;
+        }
+
+        return view('admin.workouts.edit', compact('workout','exercises2'));
+        
     }
 
     public function update(Request $request, $id)

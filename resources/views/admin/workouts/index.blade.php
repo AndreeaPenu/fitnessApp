@@ -19,7 +19,7 @@
             @foreach($workouts as $workout)
             <tr>
                 <td>{{$workout->id}}</td>
-                <td>{{$workout->name}}</td>
+                <td><a href="{{ url('/admin/workouts/' . $workout->id . '') }}" class="btn btn-xs btn-info pull-right">{{$workout->name}}</a></td>              
             </tr>
             @endforeach
         @endif

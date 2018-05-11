@@ -16,7 +16,7 @@
 
         @if($workouts)
         @foreach($workouts as $workout)
-           <p>{{$workout->id}}. {{$workout->name}}</p> 
+           <p>{{$workout->id}}. <a href="{{ url('/admin/workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">{{$workout->name}}</a></p> 
         @endforeach
     @endif
     </body>
