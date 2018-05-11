@@ -20,7 +20,7 @@
 
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="/images/dumbel.svg" width="30" height="30" class="d-inline-block align-top" alt="dumbel">
+            <img src="/images/dumbel-white.svg" width="30" height="30" class="d-inline-block align-top" alt="dumbel">
             Dumbel
         </a>
         <ul class="nav justify-content-end">
@@ -30,6 +30,20 @@
         </ul>
     </nav>
 
+    <div class="hero">
+        <div class="container">
+            <h3>Three months</h3> <br>
+            <h3>from now</h3> <br>
+            <h3>you will</h3> <br>
+            <h3>thank yourself.</h3>
+        </div>
+
+    <button class="btn btn-lg btn-primary btn-right">Get started</button>
+    </div>
+
+    <div class="about_you">
+
+    </div>
 
 
 

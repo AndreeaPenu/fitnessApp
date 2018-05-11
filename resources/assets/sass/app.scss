@@ -8,8 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Navbar
 .navbar-laravel {
-  background-color: #fff;
+  background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
@@ -18,9 +19,82 @@
 }
 
 .nav-link, .navbar-brand {
-  color: white!important;
+  color: $white!important;
 }
 
+.nav-link {
+  text-transform: uppercase;
+}
+
+.navbar {
+  background-color: transparent!important;
+}
+
+// Hero
+
+.hero {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  background-image: url('/images/barbell.jpg');
+  background-repeat: no-repeat; 
+  background-size: auto;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  h3 {
+    text-transform: uppercase;
+    background-color: $white;
+    color: $black;
+    font-weight: 900;
+    display: inline-block;
+    padding: 20px;
+    font-size: 46px;
+  }
+  .container {
+    margin-top: 10rem;
+  }
+}
+
+// Buttons
+
+.btn-right {
+  float: right;
+  margin-top: 80px;
+  margin-right: 300px;
+}
+
+.btn {
+  text-transform: uppercase;
+  &:after {
+    content: '';
+    background-image: url(/images/right-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 125px 125px;
+    position: absolute;
+    background-color: #5BC0BE;
+    color: #FFFFFF;
+    width: 35px;
+    top: 653px;
+    right: 265px;
+    height: 44px;
+    position: absolute;
+    display: block;
+    padding-top: 8px;
+  }
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: $white;
+  border-radius: 0;
+  &:hover {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $white;
+  }
+}
 // Video
 
 .jumbo {
