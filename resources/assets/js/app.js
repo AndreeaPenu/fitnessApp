@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('./video');
+require('./navbar');
 
 window.Vue = require('vue');
 

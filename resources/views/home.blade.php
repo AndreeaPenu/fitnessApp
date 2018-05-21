@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
 <div class="container">
@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <h3>My workouts</h3>
+                    <a class="btn btn-primary" href="{{ url('/admin/workouts/create') }}">Add workout</a>
                 </div>
             </div>
         </div>

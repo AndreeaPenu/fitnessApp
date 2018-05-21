@@ -27,11 +27,11 @@
 }
 
 .navbar {
-  background-color: transparent!important;
+  //background-color: transparent!important;
+  background-color: $primary-color!important;
 }
 
 // Hero
-
 .hero {
   position: absolute;
   top: 0;
@@ -57,7 +57,6 @@
 }
 
 // Buttons
-
 .btn-right {
   float: right;
   margin-top: 80px;
@@ -70,18 +69,22 @@
     content: '';
     background-image: url(/images/right-arrow.svg);
     background-repeat: no-repeat;
-    background-size: 125px 125px;
+    background-position: center center;
+    background-size: 30px;
     position: absolute;
     background-color: #5BC0BE;
     color: #FFFFFF;
-    width: 35px;
+    width: 60px;
     top: 653px;
-    right: 265px;
-    height: 44px;
+    right: 249px;
+    height: 50px;
     position: absolute;
     display: block;
-    padding-top: 8px;
   }
+}
+
+.btn-lg {
+  padding: 0.7rem 2rem;
 }
 
 .btn-primary {
@@ -95,8 +98,8 @@
     color: $white;
   }
 }
-// Video
 
+// Video
 .jumbo {
   padding: 0px;
   margin-bottom: 0px;
@@ -143,4 +146,99 @@
 }
 .video-container video.fillWidth {
   width: 100%;
+}
+
+// Full screen navs
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: $white;
+  display: block;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: $primary-color;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+.overlay a {font-size: 20px}
+.overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+}
+}
+
+//left navbar
+
+.left-nav {
+  position: absolute;
+  background-color: #1C2541;
+  width: 300px;
+  height: 800px;
+}
+
+.nav-links a, .brand {
+  color: $white;
+  padding: 20px 40px;
+}
+
+.left-nav .navbar-brand {
+  padding: 1rem 2rem;
+  background-color: #4A368B;
+  width: 100%;
+}
+
+.nav-links a {
+  display: flex;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  font-weight: 900;
+  &:hover {
+    background-color: #0B132B;
+    text-decoration: none;
+  }
+}
+
+.gender {
+  margin-left: 250px;
+  margin-bottom: 1rem;
+}
+
+input[type="text"], input[type="email"], input[type="password"]
+{
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    outline: 0;
 }

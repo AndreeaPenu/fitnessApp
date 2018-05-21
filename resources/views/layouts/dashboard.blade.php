@@ -22,17 +22,20 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-light bg-light">
+
+        <div class="left-nav">
             <a class="navbar-brand" href="#">
                 <img src="/images/dumbel-white.svg" width="30" height="30" class="d-inline-block align-top" alt="dumbel">
                 Dumbel
             </a>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" onclick="openNav()" href="#">Menu</a>
-                </li>
-            </ul>
-        </nav>
+            <div class="nav-links">
+                <a href="">Feed</a>
+                <a href="">Profile</a>
+                <a href="">Workouts</a>
+                <a href="">Agenda</a>
+                <a href="">Settings</a>
+            </div>
+        </div>
         <main class="py-4">
             @yield('content')
         </main>
