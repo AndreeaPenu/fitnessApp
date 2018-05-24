@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Plan;
 use App\Workout;
+use App\Exercise;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use DB;
@@ -24,8 +26,17 @@ class PlansController extends Controller
     public function create()
     {
         $workouts = Workout::all();
+        $id = Input::get('workouts');
+      
+        return view('admin.plans.create', compact('workouts','id'));
+    }
 
-        return view('admin.plans.create', compact('workouts'));
+    public function getExercises($id) {
+        $workout = Workout::findOrFail($id);
+        $exercises = $workout->exercises()->where('workout_id', $id)->get();
+
+        return json_encode($exercises);
+
     }
 
     public function store(Request $request)

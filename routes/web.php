@@ -33,3 +33,5 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('admin/exercises','ExercisesController');
 
 });
+
+Route::get('admin/plans/create/{id}', 'PlansController@getExercises');
