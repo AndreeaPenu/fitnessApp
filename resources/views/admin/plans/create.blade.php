@@ -20,7 +20,8 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         </head>
     <body>
-    
+
+
         <div class="left-nav">
             <a class="navbar-brand" href="#">
                 <img src="/images/dumbel-white.svg" width="30" height="30" class="d-inline-block align-top" alt="dumbel">
@@ -51,19 +52,25 @@
                     {!! Form::text('description', null, ['class'=>'form-control']) !!}
                 </div>
                 
-                <div class="form-group">
+    <!--             <div class="form-group">
                     {!! Form::label('workouts', 'Workouts:') !!}
                 
                     <select class="form-control" name="workouts[]">
-                    @foreach($workouts as $workout)
-                        <option value="{{ $workout->id }}">{{ $workout->name }}  
+                    @foreach($workouts as $workout) -->
+                      <!--  <option value="{{ $workout->id }}">{{ $workout->name }} -->
                   <!--           @foreach($workout->exercises as $exercise)
                                 <p>{{$exercise->name}}</p>
                             @endforeach -->
-                          </option>               
+          <!--                </option>               
                     @endforeach
                     </select>
                 </div> 
+ -->
+                @foreach($workouts as $workout)
+                    <div>
+                        <a href="{{ url('admin/plans/create/'.$workout->id) }}">{{$workout->name}}</a>
+                    </div>
+                @endforeach
 
                 <div class="form-group">
                     {!! Form::label('exercises', 'Exercises:') !!}
@@ -73,6 +80,14 @@
                     </select>
                 </div> 
 
+
+                <?php
+                if(!empty($_POST['myCheckboxes'])) {
+                    foreach($_POST['myCheckboxes'] as $check) {
+                            echo $check;
+                    }
+                }
+                ?>
           
                 <div class="form-group">
                     {!! Form::submit('Create Workout Plan', ['class'=>'btn btn-primary']) !!}
@@ -92,7 +107,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-        <script type="text/javascript">
+<!--         <script type="text/javascript">
             $(document).ready(function() {
 
                 $('select[name="workouts[]"]').on('change', function(e){
@@ -115,6 +130,7 @@
                     });
 
                 });
-        </script>
+        </script> -->
     </body>
 </html>
+

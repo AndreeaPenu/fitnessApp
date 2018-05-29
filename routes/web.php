@@ -35,3 +35,5 @@ Route::group(['middleware' => 'admin'], function(){
 });
 
 Route::get('admin/plans/create/{id}', 'PlansController@getExercises');
+Route::post('admin/plans/create/{id}', 'PlansController@getExercises');
+Route::post('admin/plans/create', 'PlansController@create');
