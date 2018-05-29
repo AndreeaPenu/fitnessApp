@@ -35,17 +35,19 @@ class PlansController extends Controller
         $workout = Workout::findOrFail($id);
         $exercises = $workout->exercises()->where('workout_id', $id)->get();
 
-        $checked = $request->input('myCheckboxes'); //Input::get('myCheckboxes');
+   //     $checked = $request->input('myCheckboxes'); //Input::get('myCheckboxes');
 
-        //return json_encode($exercises);
-        return view('admin.plans.exercises', compact('exercises','checked'));
+        return json_encode($exercises);
+  //      return view('admin.plans.exercises', compact('exercises','checked'));
 
     }
 
-    public function addExercises($id) {
-        
-        
-        return redirect('/admin/plans/create');
+    public function myPlans($id) {
+        $plans = Plan::all();
+        $userPlans = DB::table('plans')->where('user_id', auth()->id())->get();
+
+       return view('admin.plans.myplans', compact('plans', 'userPlans'));
+      // return redirect('/admin/plans/myplans');
     }
 
     public function store(Request $request)
@@ -56,7 +58,6 @@ class PlansController extends Controller
         $plan->description = $request->description;
         $plan->save();
         $plan->workouts()->sync($request->workouts, false);
-       // $plan->workouts()->exercises()->sync($request->workouts,false);
         return redirect('/admin/plans');
     }
 
