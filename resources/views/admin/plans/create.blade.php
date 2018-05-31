@@ -4,8 +4,12 @@
 
 
         <div class="container">
-            
-            <h1>Create new Workout Plan</h1>
+            <div class="card">
+                <div class="card-header">
+                    Create new Workout Plan
+                </div>
+
+                <div class="card-body">
 
              {!! Form::open(['method'=>'POST','action'=>'PlansController@store']) !!}
             {{ csrf_field() }}
@@ -58,5 +62,9 @@
                 </div>
             @endif
         </div>
+                </div>
+            </div>
+       
+
     
         @endsection

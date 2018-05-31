@@ -11,6 +11,7 @@ use App\Http\Requests\UsersEditRequest;
 use Illuminate\Support\Facades\Session;
 
 use App\Http\Requests;
+use Auth;
 
 
 class AdminUsersController extends Controller
@@ -77,6 +78,12 @@ class AdminUsersController extends Controller
         return view('admin.users.show');
     }
 
+    public function profile($id)
+    {
+        $user = Auth::user();
+        
+        return view('admin.users.profile', compact('user'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

@@ -1,9 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('content')
-        <h1>Edit Workout</h1>
 
-        <div class="col-sm-9">
+<div class="container">
+<div class="card">
+        <div class="card-header">
+            <h1>Edit Workout</h1>
+        </div>
+        <div class="card-body">
+             <div class="col-sm-9">
 
             {!! Form::model($workout,['method'=>'PATCH','action'=> ['WorkoutsController@update', $workout->id]]) !!}
                 <div class="form-group">
@@ -38,6 +43,13 @@
                 </div>
             @endif
         </div>
+        </div>
+    </div>
+
+
+       
+</div>
+        
 
     
     @endsection

@@ -2,7 +2,8 @@
 
 @section('content')
 
-    @if(Session::has('deleted_user'))
+<div class="container">
+     @if(Session::has('deleted_user'))
         <p>{{session('deleted_user')}}</p>
     @endif
 
@@ -32,5 +33,7 @@
         @endforeach
     @endif
     </table>
+</div>
+   
     
     @endsection

@@ -3,8 +3,8 @@
 @section('content')
 
 
-
-      <form method="post" action="{{action('PlansController@create')}}"> <!-- {{action('PlansController@create')}} -->
+<div class="container">
+        <form method="post" action="{{action('PlansController@create')}}"> <!-- {{action('PlansController@create')}} -->
       {{ csrf_field() }}
       @foreach($exercises as $exercise)
         <div>
@@ -23,6 +23,10 @@
         <p>{{$check}}</p>
       @endforeach
     @endif
+
+</div>
+
+
 
 
 

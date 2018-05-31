@@ -1,9 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('content')
-        <h1>Edit user</h1>
 
-        <div class="col-sm-3">
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Edit user
+        </div>
+
+        <div class="card-body">
+                   <div class="col-sm-3">
             <img width="50" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt="User Picture">
         </div>
 
@@ -57,6 +63,13 @@
                 </div>
             @endif
         </div>
+        </div>
+    </div>
+    
+
+ 
+</div>
+       
 
     
     @endsection

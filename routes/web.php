@@ -41,3 +41,5 @@ Route::post('admin/plans/create', 'PlansController@create');
 Route::get('admin/plans/myplans/{id}', 'PlansController@myPlans');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('admin/users/profile/{id}','AdminUsersController@profile');

@@ -2,7 +2,8 @@
 
 @section('content')
 
-    <h1>Title: {{$workout->name}}</h1>
+<div class="container">
+        <h1>Title: {{$workout->name}}</h1>
 
     <p>Hieronder komen de exercises die bij dit Workout Plan horen</p>
     <hr>
@@ -13,5 +14,8 @@
            <p>{{$exercise->id}}. {{$exercise->name}}</p> 
         @endforeach
     @endif
+</div>
+
+
     
     @endsection

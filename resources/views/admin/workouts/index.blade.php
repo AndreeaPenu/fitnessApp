@@ -2,7 +2,9 @@
 
 @section('content')
 
-        <h1>Workouts</h1>
+
+<div class="container">
+            <h1>Workouts</h1>
 
         <h2>All workouts</h2>
 
@@ -20,5 +22,7 @@
             @endforeach
         @endif
         </table>
+</div>
+
     
         @endsection

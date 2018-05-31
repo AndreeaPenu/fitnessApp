@@ -17,6 +17,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->integer('role_id')->index()->default(1);
             $table->string('name');
+            $table->string('gender')->default('f');
+            $table->integer('age');
+            $table->integer('height');
+            $table->integer('weight');
             $table->string('email')->unique();
             $table->string('photo_id')->default(0);
             $table->string('password');

@@ -1,9 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('content')
-        <h1>Create user</h1>
 
-        {!! Form::open(['method'=>'POST','action'=>'AdminUsersController@store','files'=>true]) !!}
+<div class="container">
+
+<div class="card">
+    <div class="card-header">
+        <h1>Create user</h1>
+    </div>
+    <div class="card-body">
+         {!! Form::open(['method'=>'POST','action'=>'AdminUsersController@store','files'=>true]) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
                 {!! Form::text('name', null, ['class'=>'form-control']) !!}
@@ -43,6 +49,13 @@
                 </ul>
             </div>
         @endif
+    </div>
+</div>
+    
+
+       
+</div>
+        
 
 
     

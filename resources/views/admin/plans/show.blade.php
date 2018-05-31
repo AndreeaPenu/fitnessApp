@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<div class="container">
     <h1>Title: {{$plan->title}}</h1>
     <h2>Description: {{$plan->description}}</h2>
     <h3>Made by: {{$plan->user->name}}</h3>
@@ -15,5 +15,7 @@
            <p>{{$workout->id}}. <a href="{{ url('/admin/workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">{{$workout->name}}</a></p> 
         @endforeach
     @endif
+</div>
+    
     
     @endsection
