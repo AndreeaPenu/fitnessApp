@@ -29,9 +29,9 @@
                 Dumbel
             </a>
             <div class="nav-links">
-                <a href="">Feed</a>
+                <a href="{{ url('/home/') }}">Feed</a>
                 <a href="">Profile</a>
-                <a href="">Workouts</a>
+                <a href="{{ url('/admin/plans/') }}">W Plans</a>
                 <a href="">Agenda</a>
                 <a href="">Settings</a>
             </div>

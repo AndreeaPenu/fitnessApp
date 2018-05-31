@@ -20,6 +20,7 @@ class CreateExercisesTable extends Migration
             $table->integer('weight')->unsigned();
             $table->integer('reps')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

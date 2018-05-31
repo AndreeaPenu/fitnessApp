@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    </head>
-    <body>
+@extends('layouts.dashboard')
 
+@section('content')
 
     <h1>Title: {{$workout->name}}</h1>
 
@@ -18,5 +13,5 @@
            <p>{{$exercise->id}}. {{$exercise->name}}</p> 
         @endforeach
     @endif
-    </body>
-</html>
+    
+    @endsection

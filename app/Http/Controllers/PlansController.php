@@ -69,13 +69,14 @@ class PlansController extends Controller
         return view('admin.plans.show', compact('plan', 'workouts'));
     }
 
-    public function addPlan($id){
+    public function addPlan($id, Request $request){
         $plan = Plan::findOrFail($id);
         $user_id = Auth::user()->id;
         $newPlan = new Plan;
         $newPlan->title = $plan->title;
         $newPlan->description = $plan->description;
         $newPlan->user_id = $user_id;
+        $newPlan->workouts()->sync($request->workouts, false);
         $newPlan->save();
 
         return redirect('/admin/plans');

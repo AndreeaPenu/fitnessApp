@@ -65,7 +65,7 @@
 
 .btn {
   text-transform: uppercase;
-  &:after {
+/*   &:after {
     content: '';
     background-image: url(/images/right-arrow.svg);
     background-repeat: no-repeat;
@@ -80,7 +80,7 @@
     height: 50px;
     position: absolute;
     display: block;
-  }
+  } */
 }
 
 .btn-lg {
@@ -205,7 +205,7 @@
 .left-nav {
   position: absolute;
   background-color: #1C2541;
-  width: 300px;
+  //width: 300px;
   height: 800px;
 }
 
