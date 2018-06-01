@@ -97,11 +97,20 @@ class PlansController extends Controller
 
         //duplicate exercises
         foreach($workout->exercises()->get() as $e){
-            $exercise = Exercise::where('exercises.id', $e->id)->first();
+            $exercise = Exercise::with('sets')->where('exercises.id', $e->id)->first();
             $newExercise = $exercise->replicate();
             $newExercise->workout_id = $newWorkout->id;
             $newExercise->save();
         }
+
+        //duplicate sets
+        foreach($exercise->sets()->get() as $s){
+            $set = Set::where('sets.id', $s->id)->first();
+            $newSet = $set->replicate();
+            $newSet->exercise_id = $newExercise->id;
+            $newSet->save();
+        }
+        
     }
 
     public function addSet($id){
