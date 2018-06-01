@@ -14,20 +14,7 @@
                 {!! Form::text('name', null, ['class'=>'form-control']) !!}
             </div>
 
-            <div class="form-group">
-                {!! Form::label('sets', 'Sets:') !!}
-                {!! Form::text('sets', null, ['class'=>'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('reps', 'Reps:') !!}
-                {!! Form::text('reps', null, ['class'=>'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('weight', 'Weight:') !!}
-                {!! Form::text('weight', null, ['class'=>'form-control']) !!}
-            </div>
+            <!-- SETS -->
 
             <div class="form-group">
                 {!! Form::submit('Create Exercise', ['class'=>'btn btn-primary']) !!}

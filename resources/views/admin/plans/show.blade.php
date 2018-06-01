@@ -24,7 +24,7 @@
             <!-- show exercises here -->
             @if($exercises)
                 @foreach($exercises as $exercise)
-                    <p>{{$exercise->id}} . {{$exercise->name}} -> Sets: {{$exercise->sets}} x  Reps: {{$exercise->reps}} x Weight: {{$exercise->weight}} </p>
+                    <p>{{$exercise->id}} . {{$exercise->name}}</p>
                 @endforeach
             @endif
                        

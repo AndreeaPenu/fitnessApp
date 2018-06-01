@@ -16,22 +16,6 @@
                     {!! Form::text('name', null, ['class'=>'form-control']) !!}
                 </div>
 
-                <div class="form-group">
-                    {!! Form::label('sets', 'Sets:') !!}
-                    {!! Form::text('sets', null, ['class'=>'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('reps', 'Reps:') !!}
-                    {!! Form::text('reps', null, ['class'=>'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('weight', 'Weight:') !!}
-                    {!! Form::text('weight', null, ['class'=>'form-control']) !!}
-                </div>
-
-
                     <div class="form-group">
                         {!! Form::submit('Update exercise', ['class'=>'btn btn-primary']) !!}
                     </div>

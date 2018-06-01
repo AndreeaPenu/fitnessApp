@@ -11,18 +11,14 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Sets</th>
-            <th>Reps</th>
-            <td>Weight</td>
+ 
         </tr>
         @if($exercises)
             @foreach($exercises as $exercise)
             <tr>
                 <td>{{$exercise->id}}</td>
                 <td>{{$exercise->name}}</td>
-                <td>{{$exercise->sets}}</td>
-                <td>{{$exercise->reps}}</td>
-                <td>{{$exercise->weight}}</td>
+
             </tr>
             @endforeach
         @endif
