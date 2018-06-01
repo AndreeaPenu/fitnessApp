@@ -15,11 +15,12 @@ class CreateSetsTable extends Migration
     {
         Schema::create('sets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('reps')->unsigned();
-            $table->integer('weight')->unsigned();
+            $table->integer('reps')->nullable();
+            $table->integer('weight')->nullable();
             $table->integer('exercise_id')->unsigned();
             $table->foreign('exercise_id')->references('id')->on('exercises');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

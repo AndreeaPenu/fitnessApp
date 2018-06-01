@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exercise;
+use App\Set;
+
 
 class ExercisesController extends Controller
 {
@@ -16,15 +18,22 @@ class ExercisesController extends Controller
 
     public function create()
     {
-        return view('admin.exercises.create');
+        $sets = Set::all();
+        return view('admin.exercises.create', compact('sets'));
     }
 
     public function store(Request $request)
     {
-        $input = $request->all();
+        $exercise = new Exercise;
+        $exercise->name = $request->name;
+        $exercise->save();
+        $set = new Set;
+        $set->reps = $request->reps;
+        $set->weight = $request->weight;
+        $set->exercise_id = $exercise->id;
+        $set->save();
+        
 
-        Exercise::create($input);
-       
         return redirect('/admin/exercises');
         
     }

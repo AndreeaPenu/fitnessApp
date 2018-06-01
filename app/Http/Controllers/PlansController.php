@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 use DB;
 use App\User;
+use App\Set;
 
 class PlansController extends Controller
 {
@@ -70,7 +71,9 @@ class PlansController extends Controller
             $exercises = $workout->exercises()->where('workout_id', $workout->id)->get();
         }
 
-        return view('admin.plans.show', compact('plan', 'workouts','exercises'));
+        $sets = Set::all();
+
+        return view('admin.plans.show', compact('plan', 'workouts','exercises', 'sets'));
     }
 
     public function addPlan($id) {
