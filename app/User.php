@@ -6,9 +6,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
+
+    use SoftDeletes;
+    protected $table = 'users';
+    protected $dates = ['deleted_at'];
     use Notifiable;
 
     /**

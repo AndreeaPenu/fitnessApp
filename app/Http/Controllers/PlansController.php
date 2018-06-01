@@ -66,7 +66,11 @@ class PlansController extends Controller
         $plan = Plan::findOrFail($id);
         $workouts = $plan->workouts()->where('plan_id', $id)->get();
 
-        return view('admin.plans.show', compact('plan', 'workouts'));
+        foreach($workouts as $workout){
+            $exercises = $workout->exercises()->where('workout_id', $workout->id)->get();
+        }
+
+        return view('admin.plans.show', compact('plan', 'workouts','exercises'));
     }
 
     public function addPlan($id) {
