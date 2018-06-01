@@ -104,6 +104,14 @@ class PlansController extends Controller
         }
     }
 
+    public function addSet($id){
+        //id is van exercise
+        $set = new Set;
+        $set->exercise_id = $id;
+        $set->save();
+        return redirect()->back();
+    }
+
     public function edit($id)
     {
         $plan = Plan::findOrFail($id);

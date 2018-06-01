@@ -29,26 +29,29 @@
                
                 <!-- show sets here -->
 
-                    @foreach($sets as $set)
-                        @if($set->exercise_id == $exercise->id)
+                   
                         <table style="width:100%" class="w3-table w3-striped">
                             <tr>
                                 <th>#</th>
                                 <th>Previous</th>
                                 <th>Weight</th>
                                 <th>reps</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>No previous</td>
-                                <td>{{$set->weight}}</td>
-                                <td>{{$set->reps}}</td>
-                            </tr>
+                            </tr> 
+                            @foreach($sets as $set)
+                                @if($set->exercise_id == $exercise->id)
+                                <tr>
+                                    <td>1</td>
+                                    <td>No previous</td>
+                                    <td>{{$set->weight}}</td>
+                                    <td>{{$set->reps}}</td>
+                                </tr>  
+                                @endif
+                            @endforeach
                         </table>
 
-                         <a href="{{ url('/admin/workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Add Set</a>
-                        @endif
-                    @endforeach
+                     
+                      <a href="{{ url('/admin/plans/' . $exercise->id . '/addSet') }}" class="btn btn-xs btn-info pull-right">Add set</a>
+                       
                  @endforeach
           
             @endif

@@ -25,6 +25,8 @@ Route::get('/admin', function(){
 
 Route::get('/admin/plans/{id}/add','PlansController@addPlan');
 
+Route::get('/admin/plans/{id}/addSet','PlansController@addSet');
+
 Route::group(['middleware' => 'admin'], function(){
    
     Route::resource('admin/users','AdminUsersController');
