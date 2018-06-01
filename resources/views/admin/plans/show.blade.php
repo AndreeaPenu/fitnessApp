@@ -29,7 +29,11 @@
                
                 <!-- show sets here -->
 
-                   
+            @foreach($sets as $set)
+                @if($set->exercise_id == $exercise->id)
+   
+                    {!! Form::model($workout,['method'=>'PATCH','action'=> ['PlansController@updateSet', $workout->id]]) !!}
+                    {{ csrf_field() }}
                         <table style="width:100%" class="w3-table w3-striped">
                             <tr>
                                 <th>#</th>
@@ -37,13 +41,18 @@
                                 <th>Weight</th>
                                 <th>reps</th>
                             </tr> 
-                            @foreach($sets as $set)
-                                @if($set->exercise_id == $exercise->id)
+                           
                                 <tr>
                                     <td>1</td>
                                     <td>No previous</td>
-                                    <td>{{$set->weight}}</td>
-                                    <td>{{$set->reps}}</td>
+                                    <td> <div class="form-group">
+                                            {!! Form::label('weight', 'Weight:') !!}
+                                            {!! Form::text('weight',null, ['class'=>'form-control', 'placeholder'=>'']) !!}
+                                        </div></td>
+                                    <td><div class="form-group">
+                                            {!! Form::label('reps', 'Reps:') !!}
+                                            {!! Form::text('reps', null, ['class'=>'form-control', 'placeholder'=>'']) !!}
+                                        </div></td>
                                 </tr>  
                                 @endif
                             @endforeach
@@ -51,7 +60,12 @@
 
                      
                       <a href="{{ url('/admin/plans/' . $exercise->id . '/addSet') }}" class="btn btn-xs btn-info pull-right">Add set</a>
-                       
+                        <div class="form-group">
+                            {!! Form::submit('Save', ['class'=>'btn btn-primary']) !!}
+                        </div>
+                        {!! Form::close() !!}
+
+
                  @endforeach
           
             @endif

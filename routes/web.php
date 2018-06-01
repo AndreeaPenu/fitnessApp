@@ -26,6 +26,7 @@ Route::get('/admin', function(){
 Route::get('/admin/plans/{id}/add','PlansController@addPlan');
 
 Route::get('/admin/plans/{id}/addSet','PlansController@addSet');
+Route::patch('/admin/plans/{id}/updateSet','PlansController@updateSet');
 
 Route::group(['middleware' => 'admin'], function(){
    

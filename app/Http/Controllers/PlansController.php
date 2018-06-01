@@ -129,6 +129,15 @@ class PlansController extends Controller
 
     }
 
+    public function updateSet(Request $request, $id)
+    {
+        $workout = Workout::findOrFail($id);
+        $input = $request->all();
+        $workout->update($input);
+
+        return redirect('/admin/plans');
+    }
+
     public function destroy($id)
     {
         $plan = Plan::findOrFail($id);

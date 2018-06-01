@@ -12,6 +12,7 @@
             <div class="col-sm-9">
 
                 {!! Form::model($plan,['method'=>'PATCH','action'=> ['PlansController@update', $plan->id]]) !!}
+                {{ csrf_field() }}
                     <div class="form-group">
                         {!! Form::label('title', 'Title:') !!}
                         {!! Form::text('title', null, ['class'=>'form-control']) !!}
