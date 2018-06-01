@@ -2,7 +2,8 @@
 
 @section('content')
 
-        <h1>Exercises</h1>
+<div class="container">
+    <h1>Exercises</h1>
 
         <h2>All exercises</h2>
 
@@ -27,4 +28,6 @@
         @endif
         </table>
     
+</div>
+        
         @endsection

@@ -1,9 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('content')
-        <h1>Create new Exercise</h1>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Create new Exercise</h1>
 
-        {!! Form::open(['method'=>'POST','action'=>'ExercisesController@store']) !!}
+        </div>
+        <div class="card-body">
+             {!! Form::open(['method'=>'POST','action'=>'ExercisesController@store']) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
                 {!! Form::text('name', null, ['class'=>'form-control']) !!}
@@ -38,6 +43,12 @@
                 </ul>
             </div>
         @endif
+        </div>
+    </div>
+       
+</div>
+
+       
 
 
     

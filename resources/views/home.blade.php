@@ -6,8 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">FEED</div>
-
-                <div class="card-body">
+             
+                <div class="card-body">   
+                <p>
+                    What FRIENDS #Share
+                </p>
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}

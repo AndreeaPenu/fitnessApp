@@ -69,17 +69,32 @@ class PlansController extends Controller
         return view('admin.plans.show', compact('plan', 'workouts'));
     }
 
-    public function addPlan($id, Request $request){
+    public function addPlan($id) {
+        //duplicate plan
         $plan = Plan::findOrFail($id);
-        $user_id = Auth::user()->id;
-        $newPlan = new Plan;
-        $newPlan->title = $plan->title;
-        $newPlan->description = $plan->description;
-        $newPlan->user_id = $user_id;
-        $newPlan->workouts()->sync($request->workouts, false);
+        $newPlan = $plan->replicate();
         $newPlan->save();
 
-        return redirect('/admin/plans');
+        foreach($plan->workouts as $workout)
+        {
+            $newPlan->workouts()->attach($workout);
+        }
+        $newPlan->push();
+        //duplicate workouts
+        foreach($plan->workouts()->get() as $w){
+            $workout = Workout::with('exercises')->where('workouts.id', $w->id)->first();
+            $newWorkout = $workout->replicate();
+            $newWorkout->plan_id = $newPlan->id;
+            $newWorkout->save();
+        }
+
+        //duplicate exercises
+        foreach($workout->exercises()->get() as $e){
+            $exercise = Exercise::where('exercises.id', $e->id)->first();
+            $newExercise = $exercise->replicate();
+            $newExercise->workout_id = $newWorkout->id;
+            $newExercise->save();
+        }
     }
 
     public function edit($id)
