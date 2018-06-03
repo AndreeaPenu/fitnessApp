@@ -32,7 +32,7 @@
             @foreach($sets as $set)
                 @if($set->exercise_id == $exercise->id)
    
-                    {!! Form::model($workout,['method'=>'PATCH','action'=> ['PlansController@updateSet', $workout->id]]) !!}
+                    {!! Form::model($set,['method'=>'PATCH','action'=> ['PlansController@updateSet', $set->id]]) !!}
                     {{ csrf_field() }}
                         <table style="width:100%" class="w3-table w3-striped">
                             <tr>
@@ -54,9 +54,8 @@
                                             {!! Form::text('reps', null, ['class'=>'form-control', 'placeholder'=>'']) !!}
                                         </div></td>
                                 </tr>  
-                                @endif
-                            @endforeach
-                        </table>
+                              
+                      
 
                      
                       <a href="{{ url('/admin/plans/' . $exercise->id . '/addSet') }}" class="btn btn-xs btn-info pull-right">Add set</a>
@@ -65,7 +64,8 @@
                         </div>
                         {!! Form::close() !!}
 
-
+  @endif
+                            @endforeach
                  @endforeach
           
             @endif

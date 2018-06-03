@@ -59,11 +59,17 @@ class WorkoutsController extends Controller
 
     public function update(Request $request, $id)
     {
+        // update workout
         $workout = Workout::findOrFail($id);
         $input = $request->all();
         $workout->update($input);
+        $workout->save();
+
+        $workout->exercises()->sync($request->exercise);
 
         return redirect('/admin/workouts');
+
+
     }
 
     public function destroy($id)
