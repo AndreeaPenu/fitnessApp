@@ -34,26 +34,17 @@
    
                     {!! Form::model($set,['method'=>'PATCH','action'=> ['PlansController@updateSet', $set->id]]) !!}
                     {{ csrf_field() }}
-                        <table style="width:100%" class="w3-table w3-striped">
-                            <tr>
-                                <th>#</th>
-                                <th>Previous</th>
-                                <th>Weight</th>
-                                <th>reps</th>
-                            </tr> 
-                           
-                                <tr>
-                                    <td>1</td>
-                                    <td>No previous</td>
-                                    <td> <div class="form-group">
+                        
+                                   <div class="form-group">
                                             {!! Form::label('weight', 'Weight:') !!}
                                             {!! Form::text('weight',null, ['class'=>'form-control', 'placeholder'=>'']) !!}
-                                        </div></td>
-                                    <td><div class="form-group">
+                                        </div>
+                          <div class="form-group">
                                             {!! Form::label('reps', 'Reps:') !!}
                                             {!! Form::text('reps', null, ['class'=>'form-control', 'placeholder'=>'']) !!}
-                                        </div></td>
-                                </tr>  
+                                        </div>
+                            
+                            
                               
                       
 

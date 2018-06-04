@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use App\Workout;
 use App\Exercise;
+use App\Plan;
 
 class WorkoutsController extends Controller
 {
@@ -33,6 +34,45 @@ class WorkoutsController extends Controller
         $workout->exercises()->sync($request->exercises, false);
 
         return redirect('/admin/workouts');
+    }
+
+    public function storeExercises(Request $request, $id){
+
+        foreach ($request->input("exercises") as $exercises){
+            $workouts = Workout::all();
+            $workout = Workout::findOrFail($id);
+            $exercise = new Exercise;
+            $exercise->name = $exercises; //loopen door geselecteerde velden.
+            $exercise->save();
+           // $workout->exercises()->sync( $request->exercise,false ); //ipv workout_id
+            $workout->exercises()->save($exercise);
+    }
+        
+        return view('admin.workouts.addWorkout', compact('workout','workouts'));
+        
+    }
+
+    public function storeWorkouts(Request $request, $id) {
+        $workout = new Workout;
+      
+        $workout->name ='naam';
+      
+        $workout->save();
+        $workout->exercises()->sync($request->exercises, false);
+    }
+    
+    public function addWorkout($id) {
+        $workouts = Workout::all();
+        $plan = Plan::findOrFail($id);
+
+        return view('admin.workouts.addWorkout', compact('workouts','plan'));
+    }
+
+    public function addExercise($id) {
+        $workout = Workout::findOrFail($id);
+        $exercises = $workout->exercises()->where('workout_id', $id)->get();
+
+        return view('admin.workouts.addExercise', compact('exercises', 'workout'));
     }
 
     public function show($id)

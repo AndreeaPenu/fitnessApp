@@ -58,7 +58,7 @@ class PlansController extends Controller
         $plan->title = $request->title;
         $plan->description = $request->description;
         $plan->save();
-        $plan->workouts()->sync($request->workouts, false);
+      //  $plan->workouts()->sync($request->workouts, false);      
         return redirect('/admin/plans');
     }
 

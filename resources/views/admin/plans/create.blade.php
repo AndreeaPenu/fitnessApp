@@ -23,15 +23,15 @@
                     {!! Form::text('description', null, ['class'=>'form-control']) !!}
                 </div>
                 
-                <div class="form-group">
+               <!--  <div class="form-group">
                     {!! Form::label('workouts', 'Workouts:') !!}
                 
                     <select class="form-control" name="workouts[]">
                     @foreach($workouts as $workout)
                         <option value="{{ $workout->id }}">{{ $workout->name }}  
-                  <!--           @foreach($workout->exercises as $exercise)
+                             @foreach($workout->exercises as $exercise)
                                 <p>{{$exercise->name}}</p>
-                            @endforeach -->
+                            @endforeach
                           </option>               
                     @endforeach
 
@@ -42,11 +42,13 @@
                     {!! Form::label('exercises', 'Exercises:') !!}
                 
                     <select class="form-control" name="exercises[]" multiple>
-                        <option>--exercises--<option>
+                        <option>exercises<option>
                     </select>
                 </div> 
-
+ -->
           
+               
+                
                 <div class="form-group">
                     {!! Form::submit('Create Workout Plan', ['class'=>'btn btn-primary']) !!}
                 </div>

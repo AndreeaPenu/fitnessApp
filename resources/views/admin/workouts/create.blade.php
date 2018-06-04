@@ -9,6 +9,7 @@
         </div>
         <div class="card-body">
     {!! Form::open(['method'=>'POST','action'=>'WorkoutsController@store']) !!}
+    {{ csrf_field() }}
                 <div class="form-group">
                     {!! Form::label('name', 'Name:') !!}
                     {!! Form::text('name', null, ['class'=>'form-control']) !!}

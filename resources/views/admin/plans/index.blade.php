@@ -61,6 +61,7 @@
                                     <td>{{$userPlan->description}}</td>
                                     <td><a href="{{ url('/admin/plans/' . $userPlan->id . '') }}" class="btn btn-xs btn-primary pull-right">Details</a></td>
                                     <td><a href="{{ url('/admin/plans/' . $userPlan->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a></td>
+                                    <td> <a href="{{ url('/admin/workouts/' . $userPlan->id .'/addWorkout') }}" class="btn btn-xs btn-danger pull-right">Add exercises</a></td>
                                 </tr>
                         @endforeach
                     @endif

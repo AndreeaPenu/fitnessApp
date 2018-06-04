@@ -28,6 +28,11 @@ Route::get('/admin/plans/{id}/add','PlansController@addPlan');
 Route::get('/admin/plans/{id}/addSet','PlansController@addSet');
 Route::patch('/admin/plans/{id}/updateSet','PlansController@updateSet');
 
+Route::get('/admin/workouts/{id}/addWorkout','WorkoutsController@addWorkout');
+Route::get('/admin/workouts/{id}/addExercise','WorkoutsController@addExercise');
+
+Route::post('/admin/workouts/{id}/storeExercise','WorkoutsController@storeExercises');
+
 Route::group(['middleware' => 'admin'], function(){
    
     Route::resource('admin/users','AdminUsersController');
