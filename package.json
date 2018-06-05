@@ -20,7 +20,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "ajv": "^6.5.0",
         "bootstrap-sass": "^3.3.7",
-        "gulp": "^3.9.1"
+        "gulp": "^3.9.1",
+        "vue-event-calendar": "^1.5.2"
     }
 }
