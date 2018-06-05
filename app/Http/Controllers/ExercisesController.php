@@ -26,6 +26,7 @@ class ExercisesController extends Controller
     {
         $exercise = new Exercise;
         $exercise->name = $request->name;
+        $exercise->official = $request->official;
         $exercise->save();
         $set = new Set;
         $set->reps = $request->reps;

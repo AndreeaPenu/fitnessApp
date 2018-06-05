@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 use Auth;
 use App\User;
 use App\Workout;
 use App\Exercise;
-use App\Plan;
+use App\Set;
+use DB;
 
 class WorkoutsController extends Controller
 {
@@ -15,23 +18,45 @@ class WorkoutsController extends Controller
     {
         $workouts = Workout::all();
         $exercises = Exercise::all();
-        return view('admin.workouts.index', compact('workouts','exercises'));
+        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
+        return view('admin.workouts.index', compact('workouts','exercises','userWorkouts'));
     }
 
     public function create()
     {
-        $exercises = Exercise::all();
-        return view('admin.workouts.create', compact('exercises'));
+        $exercises = DB::table('exercises')->where('official','1')->get();
+        $id = Input::get('exercises');
+        return view('admin.workouts.create', compact('exercises', 'id'));
+    }
+
+
+    public function myWorkouts($id) {
+        $workouts = Workout::all();
+        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
+        return view('admin.workouts.myworkouts', compact('workouts', 'userWorkouts'));
     }
 
     public function store(Request $request)
     {
         $workout = new Workout;
-      
-        $workout->name = $request->name;
-      
+        $workout->user_id = Auth::user()->id;
+        $workout->title = $request->title;
+        $workout->description = $request->description;
         $workout->save();
-        $workout->exercises()->sync($request->exercises, false);
+      //  $workout->exercises()->sync($request->exercises, false);
+
+      foreach ($request->input("exercises") as $exercises){
+     
+            $exercise = new Exercise;
+            $exercise->name = $exercises; //loopen door geselecteerde velden.
+            $exercise->save();
+            
+            $workout->exercises()->save($exercise);
+            $set = new Set;
+            $set->exercise_id = $exercise->id;
+            $set->save();
+            $exercise->sets()->save($set);
+        }
 
         return redirect('/admin/workouts');
     }
@@ -51,7 +76,7 @@ class WorkoutsController extends Controller
         return view('admin.workouts.addWorkout', compact('workout','workouts'));
         
     }
-
+/* 
     public function storeWorkouts(Request $request, $id) {
         $workout = new Workout;
       
@@ -59,14 +84,14 @@ class WorkoutsController extends Controller
       
         $workout->save();
         $workout->exercises()->sync($request->exercises, false);
-    }
+    } */
     
-    public function addWorkout($id) {
+/*     public function addWorkout($id) {
         $workouts = Workout::all();
         $plan = Plan::findOrFail($id);
 
         return view('admin.workouts.addWorkout', compact('workouts','plan'));
-    }
+    } */
 
     public function addExercise($id) {
         $workout = Workout::findOrFail($id);
@@ -79,8 +104,47 @@ class WorkoutsController extends Controller
     {
         $workout = Workout::findOrFail($id);
         $exercises = $workout->exercises()->where('workout_id', $id)->get();
+        $sets = Set::all();
+        return view('admin.workouts.show', compact('workout','exercises','sets'));
+    }
 
-        return view('admin.workouts.show', compact('workout', 'exercises'));
+    public function addWorkout(Request $request, $id) {
+        //duplicate plan
+        $workout = Workout::findOrFail($id);
+        $newWorkout = $workout->replicate();
+        $newWorkout->save();
+
+        foreach($workout->exercises as $exercise)
+        {
+            $newWorkout->exercises()->attach($exercise);
+        }
+        $newWorkout->push();
+
+        //duplicate exercises
+        foreach($workout->exercises()->get() as $e){
+            $exercise = Exercise::with('sets')->where('exercises.id', $e->id)->first();
+            $newExercise = $exercise->replicate();
+            $newExercise->save();
+            $newExercise->workouts()->sync($request->workout);
+        }
+
+        //duplicate sets
+        foreach($exercise->sets()->get() as $s){
+            $set = Set::where('sets.id', $s->id)->first();
+            $newSet = $set->replicate();
+            $newSet->exercise_id = $newExercise->id;
+            $newSet->save();
+        }
+        return redirect()->back();
+        
+    }
+
+    public function addSet($id){
+        //id is van exercise
+        $set = new Set;
+        $set->exercise_id = $id;
+        $set->save();
+        return redirect()->back();
     }
 
     public function edit($id)
@@ -109,14 +173,21 @@ class WorkoutsController extends Controller
 
         return redirect('/admin/workouts');
 
-
     }
+
+    public function updateSet(Request $request, $id)
+    {
+        $set = Set::findOrFail($id);
+        $input = $request->all();
+        $set->update($input);
+        return redirect()->back();
+    } 
 
     public function destroy($id)
     {
         $workout = Workout::findOrFail($id);
         $workout->delete();
-
+        Session::flash('deleted_workout', 'The workout has been deleted');
         return redirect('/admin/workouts');
     }
 }

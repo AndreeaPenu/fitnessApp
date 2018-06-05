@@ -10,7 +10,7 @@ class Exercise extends Model
     use SoftDeletes;
     protected $table = 'exercises';
     protected $fillable = [
-        'name', 'set_id'
+        'name', 'official', 'set_id'
     ];
     protected $dates = ['deleted_at'];
 

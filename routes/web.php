@@ -23,10 +23,10 @@ Route::get('/admin', function(){
     return view('admin.index');
 });
 
-Route::get('/admin/plans/{id}/add','PlansController@addPlan');
+Route::get('/admin/workouts/{id}/add','WorkoutsController@addWorkout');
 
-Route::get('/admin/plans/{id}/addSet','PlansController@addSet');
-Route::patch('/admin/plans/{id}/updateSet','PlansController@updateSet');
+Route::get('/admin/workouts/{id}/addSet','WorkoutsController@addSet');
+Route::patch('/admin/workouts/{id}/updateSet','WorkoutsController@updateSet');
 
 Route::get('/admin/workouts/{id}/addWorkout','WorkoutsController@addWorkout');
 Route::get('/admin/workouts/{id}/addExercise','WorkoutsController@addExercise');
@@ -36,17 +36,16 @@ Route::post('/admin/workouts/{id}/storeExercise','WorkoutsController@storeExerci
 Route::group(['middleware' => 'admin'], function(){
    
     Route::resource('admin/users','AdminUsersController');
-    Route::resource('admin/plans','PlansController');
     Route::resource('admin/workouts','WorkoutsController');
     Route::resource('admin/exercises','ExercisesController');
 
 });
 
-Route::get('admin/plans/create/{id}', 'PlansController@getExercises');
-Route::post('admin/plans/create/{id}', 'PlansController@getExercises');
-Route::post('admin/plans/create', 'PlansController@create');
+Route::get('admin/workouts/create/{id}', 'WorkoutsController@getExercises');
+Route::post('admin/workouts/create/{id}', 'WorkoutsController@getExercises');
+Route::post('admin/workouts/create', 'WorkoutsController@create');
 
-Route::get('admin/plans/myplans/{id}', 'PlansController@myPlans');
+Route::get('admin/workouts/myworkouts/{id}', 'WorkoutsController@myWorkouts');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

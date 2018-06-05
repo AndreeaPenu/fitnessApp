@@ -12,8 +12,13 @@
 
             {!! Form::model($workout,['method'=>'PATCH','action'=> ['WorkoutsController@update', $workout->id]]) !!}
                 <div class="form-group">
-                    {!! Form::label('name', 'Name:') !!}
-                    {!! Form::text('name', null, ['class'=>'form-control']) !!}
+                    {!! Form::label('title', 'Title:') !!}
+                    {!! Form::text('title', null, ['class'=>'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('description', 'Description:') !!}
+                    {!! Form::text('description', null, ['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">

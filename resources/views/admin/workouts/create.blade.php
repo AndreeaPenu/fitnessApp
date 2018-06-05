@@ -11,21 +11,25 @@
     {!! Form::open(['method'=>'POST','action'=>'WorkoutsController@store']) !!}
     {{ csrf_field() }}
                 <div class="form-group">
-                    {!! Form::label('name', 'Name:') !!}
-                    {!! Form::text('name', null, ['class'=>'form-control']) !!}
+                    {!! Form::label('title', 'Title:') !!}
+                    {!! Form::text('title', null, ['class'=>'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('description', 'Description:') !!}
+                    {!! Form::text('description', null, ['class'=>'form-control']) !!}
                 </div>
 
                 <h2>Exercises</h2>
 
-                <div class="form-group">
-                    {!! Form::label('exercises', 'Exercises:') !!}
-                    <select class="form-control" name="exercises[]" multiple>
-                        @foreach($exercises as $exercise)
-                            <option value="{{ $exercise->id }}">{{ $exercise->name }}</option>
-                        @endforeach
-                    </select>
-                </div> 
-
+                @if($exercises)
+                    @foreach($exercises as $exercise)
+                        <div>
+                            <input type="checkbox" id="exerises" name="exercises[]" value="{{$exercise->name}}">
+                            <label for="exercises[]">{{$exercise->name}}</label>
+                        </div>
+                    @endforeach
+                @endif
 
                 <div class="form-group">
                     {!! Form::submit('Create Workout', ['class'=>'btn btn-primary']) !!}

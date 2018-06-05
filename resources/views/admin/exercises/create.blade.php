@@ -14,6 +14,11 @@
                 {!! Form::text('name', null, ['class'=>'form-control']) !!}
             </div>
 
+            <div class="form-group">
+                {!! Form::label('official', 'Official:') !!}
+                {!! Form::text('official', null, ['class'=>'form-control']) !!}
+            </div>
+
             <!-- SETS -->
 
             <div class="form-group">

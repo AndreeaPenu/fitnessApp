@@ -53,7 +53,7 @@ class User extends Authenticatable
         return false;
     }
 
-    public function plans(){
-        return $this->hasMany('App\Plan');
+    public function workouts(){
+        return $this->hasMany('App\Workout');
     }
 }

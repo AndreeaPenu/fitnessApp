@@ -13,11 +13,11 @@ class Workout extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name', 
+        'title', 'description', 'user_id',
     ];
 
-    public function plans() {
-        return $this->belongsToMany('App\Plan');
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 
     public function exercises() {

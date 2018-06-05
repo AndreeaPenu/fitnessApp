@@ -31,7 +31,7 @@
             <div class="nav-links">
                 <a href="{{ url('/home/') }}">Feed</a>
                 <a href="{{ url('/admin/users/profile/1') }}">Profile</a>
-                <a href="{{ url('/admin/plans/') }}">W Plans</a>
+                <a href="{{ url('/admin/workouts/') }}">Workouts</a>
                 <a href="">Agenda</a>
                 <a href="">Settings</a>
             </div>
