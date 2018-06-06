@@ -60,7 +60,7 @@
                                     <td>{{$userWorkout->title}}</td>
                                     <td>{{$userWorkout->description}}</td>
                                     <td><a href="{{ url('/admin/workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a></td>
-                                    <td><a href="{{ url('/admin/workouts/' . $userWorkout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a></td>
+                                  <!--  <td><a href="{{ url('/admin/workouts/' . $userWorkout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a></td> -->
                                   <!--  <td> <a href="{{ url('/admin/workouts/' . $userWorkout->id .'/addWorkout') }}" class="btn btn-xs btn-danger pull-right">Add exercises</a></td> -->
                                 </tr>
                         @endforeach

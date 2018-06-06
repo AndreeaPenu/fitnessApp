@@ -119,27 +119,30 @@ class WorkoutsController extends Controller
         $workout = Workout::findOrFail($id);
         $newWorkout = $workout->replicate();
         $newWorkout->save();
-
-        foreach($workout->exercises as $exercise)
+/* 
+         foreach($workout->exercises as $exercise)
         {
-            $newWorkout->exercises()->attach($exercise);
+            $newWorkout->exercises()->sync($exercise, false);
         }
-        $newWorkout->push();
+      //  $newWorkout->push(); */
 
         //duplicate exercises
         foreach($workout->exercises()->get() as $e){
             $exercise = Exercise::with('sets')->where('exercises.id', $e->id)->first();
             $newExercise = $exercise->replicate();
+           // $newExercise->workout_id = $newWorkout->id;
             $newExercise->save();
-            $newExercise->workouts()->sync($request->workout);
-        }
+            $newExercise->workouts()->sync($newWorkout);
+       
+ 
+            //duplicate sets
+            foreach($exercise->sets()->get() as $s){
+                $set = Set::where('sets.id', $s->id)->first();
+                $newSet = $set->replicate();
+                $newSet->exercise_id = $newExercise->id;
+                $newSet->save();
+            } 
 
-        //duplicate sets
-        foreach($exercise->sets()->get() as $s){
-            $set = Set::where('sets.id', $s->id)->first();
-            $newSet = $set->replicate();
-            $newSet->exercise_id = $newExercise->id;
-            $newSet->save();
         }
         return redirect()->back();
         
