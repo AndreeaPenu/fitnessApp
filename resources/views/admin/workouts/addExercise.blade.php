@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Workout category: {{$workout->name}}</h1>
+            <h1>Workout: {{$workout->title}}</h1>
         </div>
 
         <div class="card-body">

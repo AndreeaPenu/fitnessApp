@@ -5,9 +5,10 @@
 <div class="container">
     <h1>Title: {{$workout->title}}</h1>
     <h4>Description: {{$workout->description}}</h4>
-   <!--   <h6>Made by: {{$workout->user->name}}</h6>
-  <a href="{{ url('/admin/workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a> 
-    <hr>-->
+   <!--   <h6>Made by: {{$workout->user->name}}</h6>-->
+  <a href="{{ url('/admin/workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a>
+  <a href="{{ url('/admin/workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-primary pull-right">Add Exercises</a>  
+    <hr>
 
 
 </br>
@@ -19,6 +20,11 @@
         @foreach($exercises as $exercise)
         <div class="card-header">
             <h1>{{$exercise->name}} </h1> 
+            {!! Form::open(['method'=>'DELETE', 'action'=>['ExercisesController@destroy', $exercise->id]]) !!}
+                <div class="form-group">
+                    {!! Form::submit('X Delete', ['class'=>'btn btn-danger']) !!}
+                </div>
+            {!! Form::close() !!}
         </div>
 
         <div class="card-body">

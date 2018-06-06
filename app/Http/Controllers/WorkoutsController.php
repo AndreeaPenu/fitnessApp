@@ -64,16 +64,22 @@ class WorkoutsController extends Controller
     public function storeExercises(Request $request, $id){
 
         foreach ($request->input("exercises") as $exercises){
-            $workouts = Workout::all();
+            //$workouts = Workout::all();
             $workout = Workout::findOrFail($id);
+
+
             $exercise = new Exercise;
             $exercise->name = $exercises; //loopen door geselecteerde velden.
             $exercise->save();
            // $workout->exercises()->sync( $request->exercise,false ); //ipv workout_id
             $workout->exercises()->save($exercise);
+            $set = new Set;
+            $set->exercise_id = $exercise->id;
+            $set->save();
+            $exercise->sets()->save($set);
     }
         
-        return view('admin.workouts.addWorkout', compact('workout','workouts'));
+       return redirect()->back();
         
     }
 /* 
@@ -95,7 +101,7 @@ class WorkoutsController extends Controller
 
     public function addExercise($id) {
         $workout = Workout::findOrFail($id);
-        $exercises = $workout->exercises()->where('workout_id', $id)->get();
+        $exercises = Exercise::where('official', '1')->get();
 
         return view('admin.workouts.addExercise', compact('exercises', 'workout'));
     }
@@ -151,13 +157,16 @@ class WorkoutsController extends Controller
     {
         $workout = Workout::findOrFail($id);
 
-        $exercises = Exercise::all();
+/*         $exercises = Exercise::all();
         $exercises2 = array();
         foreach ($exercises as $exercise) {
-            $exercises2[$exercise->id] = $exercise->name;
-        }
+         //  if ($exercise->official == 1) {
+                 $exercises2[$exercise->id] = $exercise->name;
+         //   }
+           
+        } */
 
-        return view('admin.workouts.edit', compact('workout','exercises2'));
+        return view('admin.workouts.edit', compact('workout'));
         
     }
 
@@ -169,7 +178,7 @@ class WorkoutsController extends Controller
         $workout->update($input);
         $workout->save();
 
-        $workout->exercises()->sync($request->exercise);
+        //$workout->exercises()->sync($request->exercise);
 
         return redirect('/admin/workouts');
 

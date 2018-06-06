@@ -65,6 +65,6 @@ class ExercisesController extends Controller
         $exercise = Exercise::findOrFail($id);
         $exercise->delete();
 
-        return redirect('/admin/exercises');
+        return redirect()->back();
     }
 }

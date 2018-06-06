@@ -21,10 +21,6 @@
                     {!! Form::text('description', null, ['class'=>'form-control']) !!}
                 </div>
 
-                <div class="form-group">
-                    {{ Form::label('exercises', 'Exercises:') }}
-			        {{ Form::select('exercises[]', $exercises2, null, ['multiple' => 'multiple']) }}
-                </div>
 
                 <div class="form-group">
                     {!! Form::submit('Update Workout', ['class'=>'btn btn-primary']) !!}
