@@ -15,10 +15,10 @@
                 <p>Gender: {{ Auth::user()->gender }}</p>
                 <p>Age: {{ Auth::user()->age }}</p>
                 <p>Height: {{ Auth::user()->height }} cm</p>
-                <p>Weight: {{ Auth::user()->weight }} kg</p>
+                <p>Weight: {{ $weight->weight }} kg</p> 
 
                 <a href="{{ url('/admin/users/' . $user->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a>
-            
+                <a href="{{ url('/admin/users/' . $user->id . '/addWeight') }}" class="btn btn-xs btn-primary pull-right">Add weight entry</a>
                 <div id="app">
                     <line-chart></line-chart>
                 </div>

@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'gender', 'age', 'height', 'weight', 'email', 'password', 'role_id', 'photo_id',
+        'name', 'gender', 'age', 'height', 'weight_id', 'email', 'password', 'role_id', 'photo_id',
     ];
 
     /**
@@ -55,5 +55,9 @@ class User extends Authenticatable
 
     public function workouts(){
         return $this->hasMany('App\Workout');
+    }
+
+    public function weights(){
+        return $this->hasMany('App\Weight');
     }
 }

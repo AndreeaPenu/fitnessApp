@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Weight;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,12 +68,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $weight = new Weight;
+        $weight->weight = $data['weight'];
+        $weight->save();
+        
         return User::create([
             'name' => $data['name'],
             'gender' => $data['gender'],
             'age' => $data['age'],
             'height' => $data['height'],
-            'weight' => $data['weight'],
+            'weight_id' => $weight['id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

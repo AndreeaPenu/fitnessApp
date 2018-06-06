@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use App\Photo;
+use App\Weight;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
@@ -81,8 +82,19 @@ class AdminUsersController extends Controller
     public function profile($id)
     {
         $user = Auth::user();
+        $weight = Weight::findOrFail($user->weight_id);
         
-        return view('admin.users.profile', compact('user'));
+        
+        return view('admin.users.profile', compact('user','weight'));
+    }
+
+    public function addWeight($id) {
+        //id = user id
+        $weight = new Weight;
+       // $weight->user_id = $id;
+        $weight->weight = $request->weight;
+        
+        $weight->save();
     }
     /**
      * Show the form for editing the specified resource.
