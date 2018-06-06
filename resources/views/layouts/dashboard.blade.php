@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -32,7 +33,7 @@
                 <a href="{{ url('/home/') }}">Feed</a>
                 <a href="{{ url('/admin/users/profile/1') }}">Profile</a>
                 <a href="{{ url('/admin/workouts/') }}">Workouts</a>
-                <a href="">Agenda</a>
+                <a href="{{ url('/agenda/')}}">Agenda</a>
                 <a href="">Settings</a>
             </div>
         </div>
