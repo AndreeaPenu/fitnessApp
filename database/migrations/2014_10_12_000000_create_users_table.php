@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('gender')->default('f');
             $table->integer('age');
             $table->integer('height');
-            $table->integer('weight_id')->nullable();
             $table->string('email')->unique();
             $table->string('photo_id')->default(0);
             $table->string('password');

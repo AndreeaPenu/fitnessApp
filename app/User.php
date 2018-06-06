@@ -8,9 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+
 class User extends Authenticatable
 {
-
+    use AuthenticableTrait;
     use SoftDeletes;
     protected $table = 'users';
     protected $dates = ['deleted_at'];
@@ -22,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'gender', 'age', 'height', 'weight_id', 'email', 'password', 'role_id', 'photo_id',
+        'name', 'gender', 'age', 'height', 'email', 'password', 'role_id', 'photo_id',
     ];
 
     /**

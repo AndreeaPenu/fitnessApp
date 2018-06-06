@@ -68,18 +68,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $weight = new Weight;
-        $weight->weight = $data['weight'];
-        $weight->save();
-        
-        return User::create([
+
+        $user = User::create([
             'name' => $data['name'],
             'gender' => $data['gender'],
             'age' => $data['age'],
             'height' => $data['height'],
-            'weight_id' => $weight['id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $weight = new Weight;
+        $weight->weight = $data['weight'];
+        $weight->user_id = $user->id;
+        $weight->save();
+        return $user;
+       
     }
 }

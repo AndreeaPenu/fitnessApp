@@ -82,19 +82,20 @@ class AdminUsersController extends Controller
     public function profile($id)
     {
         $user = Auth::user();
-        $weight = Weight::findOrFail($user->weight_id);
+        $weights = Weight::where('user_id',$user->id)->get();
+     //   $weight = $weights->last();
         
-        
-        return view('admin.users.profile', compact('user','weight'));
+        return view('admin.users.profile', compact('user','weights'));
     }
 
-    public function addWeight($id) {
+    public function addWeight(Request $request, $id) {
         //id = user id
         $weight = new Weight;
-       // $weight->user_id = $id;
-        $weight->weight = $request->weight;
+        $weight->user_id = $id;
+        $weight->weight =  $request->weight;
         
         $weight->save();
+        return redirect()->back();
     }
     /**
      * Show the form for editing the specified resource.

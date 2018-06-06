@@ -8,7 +8,7 @@ class Weight extends Model
 {
     //
     protected $fillable = [
-        'weight', 
+        'weight', 'user_id'
     ];
 
     public function user(){
