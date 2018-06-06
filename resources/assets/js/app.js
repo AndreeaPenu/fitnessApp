@@ -21,8 +21,29 @@ window.Vue = require('vue');
  */
 
 Vue.component('navbar', require('./components/Navbar.vue'));
-Vue.component('plans', require('./components/Plans.vue'));
+Vue.component('agenda', require('./components/Agenda.vue'));
+
+
+Vue.component('line-chart', {
+    extends: VueChartJs.Line,
+    mounted () {
+      this.renderChart({
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+          {
+            label: 'My weight',
+            backgroundColor: '#4A368B',
+            data: [90, 85, 80, 82, 78, 76, 73]
+          }
+        ]
+      }, {responsive: true, maintainAspectRatio: false})
+    }
+    
+  })
 
 const app = new Vue({
     el: '#app'
 });
+
+
+  

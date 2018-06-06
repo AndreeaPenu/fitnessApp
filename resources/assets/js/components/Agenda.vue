@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'plans',
+  name: 'agenda',
   data () {
     return {
       demoEvents: [{

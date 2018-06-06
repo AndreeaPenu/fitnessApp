@@ -22,7 +22,9 @@
     "dependencies": {
         "ajv": "^6.5.0",
         "bootstrap-sass": "^3.3.7",
+        "chart.js": "^2.7.2",
         "gulp": "^3.9.1",
+        "vue-chartjs": "^3.3.1",
         "vue-event-calendar": "^1.5.2"
     }
 }
