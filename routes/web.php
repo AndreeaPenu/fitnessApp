@@ -26,7 +26,7 @@ Route::get('/admin', function(){
 Route::get('/admin/workouts/{id}/add','WorkoutsController@addWorkout');
 
 Route::get('/admin/workouts/{id}/addSet','WorkoutsController@addSet');
-Route::patch('/admin/workouts/{id}/updateSet','WorkoutsController@updateSet');
+Route::post('/admin/workouts/{id}/updateSet','WorkoutsController@updateSet');
 
 Route::get('/admin/workouts/{id}/addWorkout','WorkoutsController@addWorkout');
 Route::get('/admin/workouts/{id}/addExercise','WorkoutsController@addExercise');
