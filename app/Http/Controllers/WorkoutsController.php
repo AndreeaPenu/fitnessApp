@@ -16,7 +16,7 @@ class WorkoutsController extends Controller
 {
     public function index()
     {
-        $workouts = Workout::all();
+        $workouts = DB::table('workouts')->where('original','1')->get();
         $exercises = Exercise::all();
         $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
         return view('admin.workouts.index', compact('workouts','exercises','userWorkouts'));
@@ -31,8 +31,8 @@ class WorkoutsController extends Controller
 
 
     public function myWorkouts($id) {
-        $workouts = Workout::all();
-        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
+        $workouts = DB::table('workouts')->where('original','1')->get();
+        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->where('original','1')->get();
         return view('admin.workouts.myworkouts', compact('workouts', 'userWorkouts'));
     }
 
@@ -42,6 +42,7 @@ class WorkoutsController extends Controller
         $workout->user_id = Auth::user()->id;
         $workout->title = $request->title;
         $workout->description = $request->description;
+        $workout->original = 1;
         $workout->save();
       //  $workout->exercises()->sync($request->exercises, false);
 
@@ -118,6 +119,7 @@ class WorkoutsController extends Controller
         //duplicate plan
         $workout = Workout::findOrFail($id);
         $newWorkout = $workout->replicate();
+        $newWorkout->original = 0;
         $newWorkout->save();
 /* 
          foreach($workout->exercises as $exercise)
@@ -192,6 +194,7 @@ class WorkoutsController extends Controller
                 //duplicate plan
                 $workout = Workout::findOrFail($id);
                 $newWorkout = $workout->replicate();
+                $newWorkout->original = 0;
                 $newWorkout->save();
                 //duplicate exercises
                 foreach($workout->exercises()->get() as $e){

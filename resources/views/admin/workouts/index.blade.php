@@ -27,7 +27,7 @@
                         <td>{{$workout->id}}</td>
                         <td>{{$workout->title}}</td>
                         <td>{{$workout->description}}</td>
-                        <td>{{$workout->user->name}}</td>
+                       
                         <td><a href="{{ url('/admin/workouts/' . $workout->id . '/add') }}" class="btn btn-xs btn-info pull-right">+ ADD</a></td>
                     </tr>
                     @endforeach
@@ -55,7 +55,7 @@
                     </tr>
                     @if($userWorkouts)
                         @foreach($userWorkouts as $userWorkout)
-                        @if($userWorkout->deleted_at == null)
+                        @if($userWorkout->deleted_at == null && $userWorkout->original == 1)
                                 <tr>
                                     <td>{{$userWorkout->id}}</td>
                                     <td>{{$userWorkout->title}}</td>

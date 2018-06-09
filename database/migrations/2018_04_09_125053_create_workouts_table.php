@@ -19,6 +19,7 @@ class CreateWorkoutsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('description');
+            $table->boolean('original')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
