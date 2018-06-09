@@ -1,37 +1,67 @@
-<template>
-<div class="app">
-  <h1>Vue Line-chart</h1>
-  <vue-event-calendar :events="demoEvents"></vue-event-calendar>
-  </div>
-</template>
-
 
 
 <script>
 
-    Vue.component('line-chart', {
-    extends: VueChartJs.Line,
-    mounted () {
-      this.renderChart({
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 39, 10, 40, 39, 80, 40]
-          }
-        ]
-      }, {responsive: true, maintainAspectRatio: false})
-    }
-    
-  })
-  
-  var vm = new Vue({
-    el: '.app',
-    data: {
-      message: 'Hello World'
-    }
-  })
-</script>
+    import { Line } from 'vue-chartjs';
 
-  
+    export default {
+        extends: Line,
+        props: ['w'],
+        data () {
+            return {
+                weights: [],
+                lbls: [],
+                options: {
+                scales: {
+                    yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                    }],
+                    xAxes: [ {
+                    gridLines: {
+                        display: false
+                    }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                responsive: true,
+                maintainAspectRatio: false
+                }
+            }
+        },
+        mounted () {
+            this.renderChart({
+                labels: this.lbls,
+                datasets: [
+                {
+                    label: 'My weight',
+                    borderColor: '#4A368B',
+                    pointBackgroundColor: 'white',
+                    borderWidth: 1,
+                    pointBorderColor: '#4A368B',
+                    backgroundColor: 'transparent',
+                    data: this.weights
+                }
+                ]
+            }, this.options)
+        },
+        methods: {
+             addToArray(){
+                for(var i = 0; i < this.w.length; i++){
+                   this.weights.push(this.w[i].weight);
+                   this.lbls.push(this.w[i].created_at);
+               }
+            }
+        },
+        beforeMount(){
+            this.addToArray()
+        },
+    }
+
+</script>

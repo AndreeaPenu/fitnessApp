@@ -50,6 +50,6 @@ Route::get('admin/workouts/myworkouts/{id}', 'WorkoutsController@myWorkouts');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('admin/users/profile/{id}','AdminUsersController@profile');
-Route::get('admin/users/{id}/addWeight','AdminUsersController@addWeight');
+Route::post('admin/users/addWeight','AdminUsersController@addWeight');
 
 Route::get('agenda','HomeController@agenda');
