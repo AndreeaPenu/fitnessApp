@@ -43685,6 +43685,7 @@ window.Vue = __webpack_require__(12);
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('navbar', __webpack_require__(183));
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('agenda', __webpack_require__(185));
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('line-chart', __webpack_require__(188));
+__WEBPACK_IMPORTED_MODULE_2_vue___default.a.component('bmi-calculator', __webpack_require__(242));
 
 var app = new __WEBPACK_IMPORTED_MODULE_2_vue___default.a({
   el: '#app'
@@ -80889,6 +80890,37 @@ module.exports = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 241 */,
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Bmi-calculator.vue"
+
+module.exports = Component.exports
+
 
 /***/ })
 /******/ ]);
