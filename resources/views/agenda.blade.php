@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Workouts I did</h1>
     @foreach($myWorkouts as $myWorkout)
-    @if($myWorkout->deleted_at == null)
+    @if($myWorkout->deleted_at == null && $myWorkout->original == 0)
     
         <ul>
             <li>{{$myWorkout->title}} / {{$myWorkout->description}} / {{$myWorkout->created_at}}</li>
@@ -44,7 +44,7 @@
  
 
     <div id="app">
-        <agenda :workouts="{{$workouts}}"></agenda>
+        <agenda :workouts="{{$myWorkouts}}"></agenda>
     </div>
 </div>
 @endsection
