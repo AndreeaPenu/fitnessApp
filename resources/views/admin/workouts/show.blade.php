@@ -40,6 +40,7 @@
                    
                         
                     @foreach($sets as $set)
+                    @if($set->reps == null)
                         @if($set->exercise_id == $exercise->id)
                                 <div class="row">
                                     <div class="col">
@@ -56,6 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
+                        @endif
                         @endif
                     @endforeach     
                     <a href="{{ url('/admin/workouts/' . $exercise->id . '/addSet') }}" class="btn btn-xs btn-info pull-right">Add set</a>

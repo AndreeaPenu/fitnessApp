@@ -189,44 +189,27 @@ class WorkoutsController extends Controller
 
     public function updateSet(Request $request,$id)
     {
-      //  var_dump($request);
-       /*  $set = Set::findOrFail($id);
-        $input = $request->all();
-        $set->update($input);
-        return redirect()->back(); */
-
-               
-       $workout = Workout::findOrFail($id);
-        foreach($workout->exercises()->get() as $exercise){
-           foreach($exercise->sets()->get() as $set){   
-             $set = new Set;
-                $set->exercise_id = $exercise->id;
-                $set->reps = $request->reps;
-                $set->weight = $request->weight;
-                $set->save(); 
-            }  
-            $exercise->save();
-        }
-        return redirect()->back(); 
-
-
-        
-        
-
-        
-/*         foreach ($sets as $set)
-        {
-
-            $set = new Set;
-            $set->exercise_id = $exercise->id;
-            $set->reps = $request->reps;
-            $set->weight = $request->weight;
-            $set->save();
-            
-        } 
-
-        return redirect()->back(); */
-      
+                //duplicate plan
+                $workout = Workout::findOrFail($id);
+                $newWorkout = $workout->replicate();
+                $newWorkout->save();
+                //duplicate exercises
+                foreach($workout->exercises()->get() as $e){
+                    $exercise = Exercise::with('sets')->where('exercises.id', $e->id)->first();
+                    $newExercise = $exercise->replicate();
+                    $newExercise->save();
+                    $newExercise->workouts()->sync($newWorkout);        
+                    //duplicate sets
+                    foreach($exercise->sets()->get() as $s){
+                        $set = Set::where('sets.id', $s->id)->first();
+                        $newSet = $set->replicate();
+                        $newSet->exercise_id = $newExercise->id;
+                        $newSet->weight = $request->weight;
+                        $newSet->reps = $request->reps;
+                        $newSet->save();
+                    }
+                }
+                return redirect()->back();
     } 
 
     public function destroy($id)
