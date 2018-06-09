@@ -43643,7 +43643,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(150);
-module.exports = __webpack_require__(241);
+module.exports = __webpack_require__(240);
 
 
 /***/ }),
@@ -67877,18 +67877,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'agenda',
+  props: ['workouts'],
   data: function data() {
     return {
-      demoEvents: [{
-        date: '2016/11/12', // Required
-        title: 'Foo' // Required
-      }, {
-        date: '2016/12/15',
-        title: 'Bar',
-        desc: 'description',
-        customClass: 'disabled highlight' // Custom classes to an calendar cell
-      }]
+      demoEvents: []
     };
+  },
+
+  methods: {
+    addToArray: function addToArray() {
+      for (var i = 0; i < this.workouts.length; i++) {
+
+        this.demoEvents.push({
+          date: this.workouts[i].created_at,
+          title: this.workouts[i].title,
+          desc: this.workouts[i].description
+        });
+      }
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.addToArray();
   }
 });
 
@@ -80876,8 +80885,7 @@ module.exports = {
 
 
 /***/ }),
-/* 240 */,
-/* 241 */
+/* 240 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

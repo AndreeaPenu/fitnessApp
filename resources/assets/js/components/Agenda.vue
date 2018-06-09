@@ -8,18 +8,26 @@
 <script>
 export default {
   name: 'agenda',
+  props: ['workouts'],
   data () {
     return {
-      demoEvents: [{
-        date: '2016/11/12', // Required
-        title: 'Foo' // Required
-      }, {
-        date: '2016/12/15',
-        title: 'Bar',
-        desc: 'description',
-        customClass: 'disabled highlight' // Custom classes to an calendar cell
-      }]
+      demoEvents: []
+    }
+  },
+  methods: {
+    addToArray(){
+      for(var i = 0; i < this.workouts.length; i++){
+        
+        this.demoEvents.push({
+          date: this.workouts[i].created_at,
+          title: this.workouts[i].title,
+          desc: this.workouts[i].description
+        })
     }
   }
+},
+beforeMount(){
+  this.addToArray()
+},
 }
 </script>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Workout;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +27,9 @@ class HomeController extends Controller
     }
 
     public function agenda() {
-        return view('agenda');
+        $workouts = Workout::all();
+        return view('agenda', compact('workouts'));
     }
+
+
 }
