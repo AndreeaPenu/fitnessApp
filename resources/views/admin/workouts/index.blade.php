@@ -55,6 +55,7 @@
                     </tr>
                     @if($userWorkouts)
                         @foreach($userWorkouts as $userWorkout)
+                        @if($userWorkout->deleted_at == null)
                                 <tr>
                                     <td>{{$userWorkout->id}}</td>
                                     <td>{{$userWorkout->title}}</td>
@@ -63,6 +64,7 @@
                                   <!--  <td><a href="{{ url('/admin/workouts/' . $userWorkout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a></td> -->
                                   <!--  <td> <a href="{{ url('/admin/workouts/' . $userWorkout->id .'/addWorkout') }}" class="btn btn-xs btn-danger pull-right">Add exercises</a></td> -->
                                 </tr>
+                        @endif
                         @endforeach
                     @endif
                 </table>
