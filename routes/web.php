@@ -53,3 +53,15 @@ Route::get('admin/users/profile/{id}','AdminUsersController@profile');
 Route::post('admin/users/addWeight','AdminUsersController@addWeight');
 
 Route::get('agenda','HomeController@agenda');
+
+Route::get('/test', function(){
+    return Auth::user()->test();
+});
+
+Route::get('/findFriends', 'HomeController@findFriends');
+
+Route::get('/addFriend/{id}', 'HomeController@sendRequest');
+
+Route::get('/requests','HomeController@requests');
+
+Route::get('/accept/{id}','HomeController@accept');

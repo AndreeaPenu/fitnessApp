@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\Friendable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -17,6 +18,7 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $dates = ['deleted_at'];
     use Notifiable;
+    use Friendable;
 
     /**
      * The attributes that are mass assignable.
