@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Workouts I did</h1>
     @foreach($myWorkouts as $myWorkout)
-    @if($myWorkout->deleted_at == null && $myWorkout->original == 0)
+    @if($myWorkout->deleted_at == null)
     
         <ul>
             <li>{{$myWorkout->title}} / {{$myWorkout->description}} / {{$myWorkout->created_at}}</li>
