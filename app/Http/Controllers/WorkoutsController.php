@@ -119,7 +119,7 @@ class WorkoutsController extends Controller
         //duplicate plan
         $workout = Workout::findOrFail($id);
         $newWorkout = $workout->replicate();
-        $newWorkout->original = 0;
+        $newWorkout->original = 1;
         $newWorkout->save();
 /* 
          foreach($workout->exercises as $exercise)
@@ -191,7 +191,22 @@ class WorkoutsController extends Controller
 
     public function updateSet(Request $request,$id)
     {
-                //duplicate plan
+
+        $input = $request->all();
+       
+        foreach($request->exercise_id as $key => $e){
+        // var_dump($e);
+            $exercise = Exercise::findOrFail($e);
+            $set = new Set;
+            $set->exercise_id = $exercise->id;
+            $set->weight = $request->weight[$key];
+            $set->reps = $request->reps[$key];
+            $set->save();
+           // var_dump($key);
+        }
+        
+
+/*                 //duplicate plan
                 $workout = Workout::findOrFail($id);
                 $newWorkout = $workout->replicate();
                 $newWorkout->original = 0;
@@ -203,16 +218,17 @@ class WorkoutsController extends Controller
                     $newExercise->save();
                     $newExercise->workouts()->sync($newWorkout);        
                     //duplicate sets
-                    foreach($exercise->sets()->get() as $s){
-                        $set = Set::where('sets.id', $s->id)->first();
-                        $newSet = $set->replicate();
-                        $newSet->exercise_id = $newExercise->id;
-                        $newSet->weight = $request->weight;
-                        $newSet->reps = $request->reps;
-                        $newSet->save();
-                    }
-                }
-                return redirect()->back();
+                    foreach($exercise->sets()->get() as $key => $s){
+                        var_dump($key);
+                            /* $set = Set::where('sets.id', $s->id)->first();
+                            $newSet = $set->replicate();
+                            $newSet->exercise_id = $request->exercise_id[$key];
+                            $newSet->weight = $request->weight[$key];
+                            $newSet->reps = $request->reps[$key];
+                            $newSet->save(); */
+                  //  }
+              //  }
+              //  return redirect()->back(); */
     } 
 
     public function destroy($id)

@@ -46,17 +46,19 @@
                                     <div class="col">
                                         <div class="form-group">
                                             {!! Form::label('weight', 'Weight:') !!}
-                                            {!! Form::text('weight',null, ['class'=>'form-control', 'placeholder'=>'']) !!}
+                                            {!! Form::text('weight[]',null, ['class'=>'form-control', 'placeholder'=>'']) !!}
                                         </div>
                                     </div>
 
                                     <div class="col">
                                         <div class="form-group">
                                             {!! Form::label('reps', 'Reps:') !!}
-                                            {!! Form::text('reps', null, ['class'=>'form-control', 'placeholder'=>'']) !!}
+                                            {!! Form::text('reps[]', null, ['class'=>'form-control', 'placeholder'=>'']) !!}
                                         </div>
                                     </div>
                                 </div>
+                                {!! Form::hidden('exercise_id[]', $exercise->id) !!}
+                                {!! Form::hidden('set_id[]', $set->id) !!}
                         @endif
                         @endif
                     @endforeach     
