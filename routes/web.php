@@ -65,3 +65,5 @@ Route::get('/addFriend/{id}', 'HomeController@sendRequest');
 Route::get('/requests','HomeController@requests');
 
 Route::get('/accept/{id}','HomeController@accept');
+
+Route::get('/showFriends', 'HomeController@showFriends');

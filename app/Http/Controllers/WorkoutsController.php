@@ -228,7 +228,7 @@ class WorkoutsController extends Controller
                             $newSet->save(); */
                   //  }
               //  }
-              //  return redirect()->back(); */
+                return redirect()->back();
     } 
 
     public function destroy($id)

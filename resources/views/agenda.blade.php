@@ -21,15 +21,16 @@
                             <li>
                             
                                 {{$exercise->name}} <!-- {{$exercise->sets}} -->
-                                <ul>
-                                    <li>
+                             
                                         @foreach($sets as $set)
                                             @if($set->exercise_id == $exercise->id && $set->reps != null)
-                                                {{$set->reps}} x {{$set->weight}}kg . {{$set->created_at}}
+                                            <ul>
+                                                <li> {{$set->reps}} x {{$set->weight}}kg . {{$set->created_at}}</li>
+                                            </ul>
+                                               
                                             @endif
                                         @endforeach
-                                    </li>
-                                </ul>
+                                    
                             
                             </li>
                         </ul>

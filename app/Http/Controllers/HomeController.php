@@ -52,6 +52,13 @@ class HomeController extends Controller
         return view('findFriends', compact('allUsers'));
     }
 
+    public function showFriends(){
+        $allFriends = DB::table('friendships')->where('requester', Auth::user()->id)->where('status',1)->get();
+        $users = User::all();
+        
+        return view('showFriends', compact('allFriends','users'));
+    }
+
     public function sendRequest($id){
         Auth::user()->addFriend($id);
         return back();
