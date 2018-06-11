@@ -15,55 +15,49 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//auth
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//admin
 
-Route::get('/admin', function(){
+Route::get('admin', function(){
     return view('admin.index');
 });
 
-Route::get('/admin/workouts/{id}/add','WorkoutsController@addWorkout');
-
-Route::get('/admin/workouts/{id}/addSet','WorkoutsController@addSet');
-Route::post('/admin/workouts/{id}/updateSet','WorkoutsController@updateSet');
-
-Route::get('/admin/workouts/{id}/addWorkout','WorkoutsController@addWorkout');
-Route::get('/admin/workouts/{id}/addExercise','WorkoutsController@addExercise');
-
-Route::post('/admin/workouts/{id}/storeExercise','WorkoutsController@storeExercises');
-
 Route::group(['middleware' => 'admin'], function(){
-   
     Route::resource('admin/users','AdminUsersController');
-    Route::resource('admin/workouts','WorkoutsController');
     Route::resource('admin/exercises','ExercisesController');
-
 });
 
-Route::get('admin/workouts/create/{id}', 'WorkoutsController@getExercises');
-Route::post('admin/workouts/create/{id}', 'WorkoutsController@getExercises');
-Route::post('admin/workouts/create', 'WorkoutsController@create');
+//workouts
+Route::resource('workouts','WorkoutsController');
+Route::get('workouts/{id}/add','WorkoutsController@addWorkout');
+Route::get('workouts/{id}/addSet','WorkoutsController@addSet');
+Route::get('workouts/{id}/addWorkout','WorkoutsController@addWorkout');
+Route::get('workouts/{id}/addExercise','WorkoutsController@addExercise');
+Route::get('workouts/create/{id}', 'WorkoutsController@getExercises');
+Route::get('workouts/myworkouts/{id}', 'WorkoutsController@myWorkouts');
+Route::post('workouts/create', 'WorkoutsController@create');
+Route::post('workouts/create/{id}', 'WorkoutsController@getExercises');
+Route::post('workouts/{id}/updateSet','WorkoutsController@updateSet');
+Route::post('workouts/{id}/storeExercise','WorkoutsController@storeExercises');
 
-Route::get('admin/workouts/myworkouts/{id}', 'WorkoutsController@myWorkouts');
+//home
+Route::get('home', 'HomeController@index')->name('home');
 
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-Route::get('admin/users/profile/{id}','AdminUsersController@profile');
-Route::post('admin/users/addWeight','AdminUsersController@addWeight');
-
+//user?
 Route::get('agenda','HomeController@agenda');
+Route::get('profile/{id}','HomeController@profile');
+Route::post('addWeight','HomeController@addWeight');
 
+//friendship
 Route::get('/test', function(){
     return Auth::user()->test();
 });
 
-Route::get('/findFriends', 'HomeController@findFriends');
-
-Route::get('/addFriend/{id}', 'HomeController@sendRequest');
-
-Route::get('/requests','HomeController@requests');
-
-Route::get('/accept/{id}','HomeController@accept');
-
-Route::get('/showFriends', 'HomeController@showFriends');
+Route::get('requests','HomeController@requests');
+Route::get('findFriends', 'HomeController@findFriends');
+Route::get('showFriends', 'HomeController@showFriends');
+Route::get('addFriend/{id}', 'HomeController@sendRequest');
+Route::get('accept/{id}','HomeController@accept');

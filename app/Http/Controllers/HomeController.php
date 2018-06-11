@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Friendship;
 use App\Exercise;
 use App\Workout;
+use App\Weight;
 use App\User;
 use App\Set;
 use Redirect;
@@ -21,6 +22,25 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function profile($id)
+    {
+        $user = Auth::user();
+        $weights = Weight::where('user_id',$user->id)->get();
+        //enkel laatste nieuwe weergeven: $weight = Weight::where('user_id',$user->id)->orderBy('created_at', 'desc')->limit(1);
+        
+        return view('profile', compact('user','weights'));
+    }
+
+    public function addWeight(Request $request) {
+        $user = Auth::user();
+        $weight = new Weight;
+        $weight->user_id = $user->id;
+        $weight->weight =  $request->weight;
+        $weight->save();
+
+        return redirect()->back();
     }
 
     public function agenda() {

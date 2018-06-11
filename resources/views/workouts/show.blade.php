@@ -8,8 +8,8 @@
     <h1>Title: {{$workout->title}}</h1>
     <h4>Description: {{$workout->description}}</h4>
     <!--   <h6>Made by: {{$workout->user->name}}</h6>-->
-    <a href="{{ url('/admin/workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a>
-    <a href="{{ url('/admin/workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-primary pull-right">Add Exercises</a>  
+    <a href="{{ url('workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a>
+    <a href="{{ url('workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-primary pull-right">Add Exercises</a>  
 
     
     <hr>
@@ -62,7 +62,7 @@
                         @endif
                         @endif
                     @endforeach     
-                    <a href="{{ url('/admin/workouts/' . $exercise->id . '/addSet') }}" class="btn btn-xs btn-info pull-right">Add set</a>
+                    <a href="{{ url('workouts/' . $exercise->id . '/addSet') }}" class="btn btn-xs btn-info pull-right">Add set</a>
                   
 
             

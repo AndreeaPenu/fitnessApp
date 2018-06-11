@@ -19,7 +19,7 @@ class WorkoutsController extends Controller
         $exercises = Exercise::all();
         $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
 
-        return view('admin.workouts.index', compact('workouts','exercises','userWorkouts'));
+        return view('workouts.index', compact('workouts','exercises','userWorkouts'));
     }
 
     public function create()
@@ -27,7 +27,7 @@ class WorkoutsController extends Controller
         $exercises = DB::table('exercises')->where('official','1')->get();
         $id = Input::get('exercises');
 
-        return view('admin.workouts.create', compact('exercises', 'id'));
+        return view('workouts.create', compact('exercises', 'id'));
     }
 
 
@@ -35,7 +35,7 @@ class WorkoutsController extends Controller
         $workouts = DB::table('workouts')->where('original','1')->get();
         $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->where('original','1')->get();
 
-        return view('admin.workouts.myworkouts', compact('workouts', 'userWorkouts'));
+        return view('workouts.myworkouts', compact('workouts', 'userWorkouts'));
     }
 
     public function store(Request $request)
@@ -58,7 +58,7 @@ class WorkoutsController extends Controller
             $exercise->sets()->save($set);
         }
 
-        return redirect('/admin/workouts');
+        return redirect('workouts');
     }
 
     public function storeExercises(Request $request, $id){
@@ -82,7 +82,7 @@ class WorkoutsController extends Controller
         $workout = Workout::findOrFail($id);
         $exercises = Exercise::where('official', '1')->get();
 
-        return view('admin.workouts.addExercise', compact('exercises', 'workout'));
+        return view('workouts.addExercise', compact('exercises', 'workout'));
     }
 
     public function show($id)
@@ -91,7 +91,7 @@ class WorkoutsController extends Controller
         $exercises = $workout->exercises()->where('workout_id', $id)->get();
         $sets = Set::all();
 
-        return view('admin.workouts.show', compact('workout','exercises','sets'));
+        return view('workouts.show', compact('workout','exercises','sets'));
     }
 
     public function addWorkout(Request $request, $id) {
@@ -134,7 +134,7 @@ class WorkoutsController extends Controller
     {
         $workout = Workout::findOrFail($id);
 
-        return view('admin.workouts.edit', compact('workout'));
+        return view('workouts.edit', compact('workout'));
         
     }
 
@@ -145,7 +145,7 @@ class WorkoutsController extends Controller
         $workout->update($input);
         $workout->save();
 
-        return redirect('/admin/workouts');
+        return redirect('workouts');
 
     }
 
@@ -168,7 +168,7 @@ class WorkoutsController extends Controller
         $workout = Workout::findOrFail($id);
         $workout->delete();
         Session::flash('deleted_workout', 'The workout has been deleted');
-        
-        return redirect('/admin/workouts');
+
+        return redirect('workouts');
     }
 }

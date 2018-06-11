@@ -55,25 +55,6 @@ class AdminUsersController extends Controller
         return view('admin.users.show');
     }
 
-    public function profile($id)
-    {
-        $user = Auth::user();
-        $weights = Weight::where('user_id',$user->id)->get();
-        //enkel laatste nieuwe weergeven: $weight = Weight::where('user_id',$user->id)->orderBy('created_at', 'desc')->limit(1);
-        
-        return view('admin.users.profile', compact('user','weights'));
-    }
-
-    public function addWeight(Request $request) {
-        $user = Auth::user();
-        $weight = new Weight;
-        $weight->user_id = $user->id;
-        $weight->weight =  $request->weight;
-        $weight->save();
-
-        return redirect()->back();
-    }
-
     public function edit($id)
     {
         $user = User::findOrFail($id);

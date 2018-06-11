@@ -18,7 +18,7 @@
                 @foreach($weights as $weight)
                 <p>Weight: {{ $weight->weight }} kg</p> 
                 @endforeach
-                <a href="{{ url('/admin/users/' . $user->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a>
+               <!-- <a href="{{ url('/admin/users/' . $user->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a> -->
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 New weight entry
@@ -42,7 +42,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                {!! Form::open(['method'=>'POST','action'=>'AdminUsersController@addWeight','files'=>true]) !!}
+                {!! Form::open(['method'=>'POST','action'=>'HomeController@addWeight','files'=>true]) !!}
                     <div class="form-group">
                         {!! Form::label('weight', 'Weight:') !!}
                         {!! Form::text('weight', null, ['class'=>'form-control']) !!}

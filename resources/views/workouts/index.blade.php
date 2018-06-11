@@ -28,7 +28,7 @@
                         <td>{{$workout->title}}</td>
                         <td>{{$workout->description}}</td>
                        
-                        <td><a href="{{ url('/admin/workouts/' . $workout->id . '/add') }}" class="btn btn-xs btn-info pull-right">+ ADD</a></td>
+                        <td><a href="{{ url('workouts/' . $workout->id . '/add') }}" class="btn btn-xs btn-info pull-right">+ ADD</a></td>
                     </tr>
                     @endforeach
                 @endif
@@ -39,8 +39,8 @@
 
         <div class="card">
             <div class="card-header">
-                My workouts <a href="{{ url('/admin/workouts/create') }}" class="btn btn-xs btn-info pull-right">Create new workout</a>
-                <a href="{{ url('/admin/workouts/myworkouts/1') }}" class="btn btn-xs btn-secondary pull-right">All my workouts</a>
+                My workouts <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-info pull-right">Create new workout</a>
+                <a href="{{ url('workouts/myworkouts/1') }}" class="btn btn-xs btn-secondary pull-right">All my workouts</a>
             </div>
 
             <div class="card-body">
@@ -60,9 +60,9 @@
                                     <td>{{$userWorkout->id}}</td>
                                     <td>{{$userWorkout->title}}</td>
                                     <td>{{$userWorkout->description}}</td>
-                                    <td><a href="{{ url('/admin/workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a></td>
-                                  <!--  <td><a href="{{ url('/admin/workouts/' . $userWorkout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a></td> -->
-                                  <!--  <td> <a href="{{ url('/admin/workouts/' . $userWorkout->id .'/addWorkout') }}" class="btn btn-xs btn-danger pull-right">Add exercises</a></td> -->
+                                    <td><a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a></td>
+                                  <!--  <td><a href="{{ url('workouts/' . $userWorkout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a></td> -->
+                                  <!--  <td> <a href="{{ url('workouts/' . $userWorkout->id .'/addWorkout') }}" class="btn btn-xs btn-danger pull-right">Add exercises</a></td> -->
                                 </tr>
                         @endif
                         @endforeach

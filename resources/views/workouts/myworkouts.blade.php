@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2>My workouts <a href="{{ url('/admin/workouts/create') }}" class="btn btn-xs btn-info pull-right">Create new workout</a></h2>
+        <h2>My workouts <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-info pull-right">Create new workout</a></h2>
     </div>
 
     <div class="card-body">
@@ -23,7 +23,7 @@
                                 <td>{{$userWorkout->id}}</td>
                                 <td>{{$userWorkout->title}}</td>
                                 <td>{{$userWorkout->description}}</td>
-                                <td> <a href="{{ url('/admin/workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-info pull-right">Details workout</a></td>
+                                <td> <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-info pull-right">Details workout</a></td>
                             </tr>
                     @endforeach
                 @endif
