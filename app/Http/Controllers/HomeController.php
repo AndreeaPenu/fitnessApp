@@ -1,46 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Workout;
-use App\Exercise;
-use App\Friendship;
-use App\Set;
-use App\User;
-use Auth;
 use Illuminate\Http\Request;
-use DB;
+use App\Friendship;
+use App\Exercise;
+use App\Workout;
+use App\User;
+use App\Set;
 use Redirect;
+use Auth;
+use DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('home');
     }
 
     public function agenda() {
-        //$jobs = Job::with('steps', 'poles', 'permits')->get();
         $workouts = Workout::with('exercises')->get();
         $exercises = Exercise::all();
-
         $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
         $sets = Set::all();
-        
   
         return view('agenda', compact('workouts', 'myWorkouts', 'exercises','sets'));
     }
@@ -61,6 +48,7 @@ class HomeController extends Controller
 
     public function sendRequest($id){
         Auth::user()->addFriend($id);
+
         return back();
     }
 
@@ -70,6 +58,7 @@ class HomeController extends Controller
                         ->rightJoin('users', 'users.id', '=', 'friendships.requester')
                         ->where('status', '=', 0)
                         ->where('friendships.user_requested', '=', $uid)->get();
+
         return view('requests', compact('FriendRequests'));
     }
 
@@ -79,7 +68,6 @@ class HomeController extends Controller
                 ->where('user_requested', $uid)
                 ->first();
         if ($checkRequest) {
-            // echo "yes, update here";
             $updateFriendship = DB::table('friendships')
                     ->where('user_requested', $uid)
                     ->where('requester', $id)
@@ -90,9 +78,6 @@ class HomeController extends Controller
             }
         } else {
             return back()->with('msg', 'You are now Friend with this user');
-        }
-            
+        } 
     }
-
-
 }

@@ -19,6 +19,7 @@ class ExercisesController extends Controller
     public function create()
     {
         $sets = Set::all();
+
         return view('admin.exercises.create', compact('sets'));
     }
 
@@ -33,15 +34,8 @@ class ExercisesController extends Controller
         $set->weight = $request->weight;
         $set->exercise_id = $exercise->id;
         $set->save();
-        
 
         return redirect('/admin/exercises');
-        
-    }
-
-    public function show($id)
-    {
-        //
     }
 
     public function edit($id)

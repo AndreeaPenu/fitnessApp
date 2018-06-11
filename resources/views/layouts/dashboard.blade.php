@@ -35,10 +35,10 @@
                 <a href="{{ url('/home/') }}">Feed</a>
                 <a href="{{ url('/admin/users/profile/1') }}">Profile</a>
                 <a href="{{ url('/findFriends/') }}">Find Friends</a>
+                <a href="{{ url('/showFriends/') }}">Show Friends</a>
                 <a href="{{ url('/requests/') }}">My Friend Requests</a>
                 <a href="{{ url('/admin/workouts/') }}">Workouts</a>
                 <a href="{{ url('/agenda/')}}">Agenda</a>
-                <a href="">Settings</a>
             </div>
         </div>
         <main class="py-4">

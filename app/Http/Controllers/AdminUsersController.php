@@ -1,19 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\User;
-use App\Role;
-use App\Photo;
-use App\Weight;
-use Illuminate\Http\Request;
-use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
 use Illuminate\Support\Facades\Session;
-
+use App\Http\Requests\UsersRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Weight;
+use App\Photo;
+use App\Role;
+use App\User;
 use Auth;
-
 
 class AdminUsersController extends Controller
 {
@@ -21,18 +18,19 @@ class AdminUsersController extends Controller
     public function index()
     {
         $users = User::all();
+
         return view('admin.users.index', compact('users'));
     }
 
     public function create()
     {
         $roles = Role::pluck('name','id')->all();
+
         return view('admin.users.create', compact('roles'));
     }
 
     public function store(UsersRequest $request)
     {
-
         if(trim($request->password) == ''){
             $input = $request->except('password');
         } else {
@@ -46,7 +44,6 @@ class AdminUsersController extends Controller
            $photo = Photo::create(['file'=>$name]);
            $input['photo_id'] = $photo->id;
        }
-
 
        User::create($input);
        
@@ -72,16 +69,16 @@ class AdminUsersController extends Controller
         $weight = new Weight;
         $weight->user_id = $user->id;
         $weight->weight =  $request->weight;
-        
         $weight->save();
+
         return redirect()->back();
     }
 
     public function edit($id)
     {
         $user = User::findOrFail($id);
-
         $roles = Role::pluck('name','id')->all();
+
         return view('admin.users.edit', compact('user','roles'));
     }
 
@@ -104,6 +101,7 @@ class AdminUsersController extends Controller
         }
 
         $user->update($input);
+
         return redirect('/admin/users');
     }
 
@@ -111,9 +109,7 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
         //unlink(public_path() . $user->photo->file);
-
         $user->delete();
-
         Session::flash('deleted_user', 'The user has been deleted');
 
         return redirect('/admin/users');

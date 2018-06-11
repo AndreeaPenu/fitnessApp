@@ -11,7 +11,6 @@ import Vue from 'vue'
 
 //js bestanden
 require('./bootstrap');
-require('./video');
 require('./navbar');
 
 window.Vue = require('vue');
