@@ -25,7 +25,7 @@
     @if($exercises)
         @foreach($exercises as $exercise)
         <div class="card-header">
-            <h1>{{$exercise->name}} </h1> 
+            <h1>{{ $exercise->name }} </h1> 
       <!--      {!! Form::open(['method'=>'DELETE', 'action'=>['ExercisesController@destroy', $exercise->id]]) !!}
                 <div class="form-group">
                     {!! Form::submit('X Delete', ['class'=>'btn btn-danger']) !!}

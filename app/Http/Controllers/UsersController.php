@@ -12,21 +12,14 @@ use App\Role;
 use App\User;
 use Auth;
 
-class AdminUsersController extends Controller
+class UsersController extends Controller
 {
 
     public function index()
     {
         $users = User::all();
 
-        return view('admin.users.index', compact('users'));
-    }
-
-    public function create()
-    {
-        $roles = Role::pluck('name','id')->all();
-
-        return view('admin.users.create', compact('roles'));
+        return view('users.index', compact('users'));
     }
 
     public function store(UsersRequest $request)
@@ -47,12 +40,16 @@ class AdminUsersController extends Controller
 
        User::create($input);
        
-       return redirect('/admin/users');
+       return redirect('users');
     }
 
     public function show($id)
     {
-        return view('admin.users.show');
+        $user = User::findOrFail($id);
+        $weights = Weight::where('user_id',$user->id)->get();
+        $weight = Weight::where('user_id',$user->id)->orderBy('created_at', 'desc')->first();
+         
+         return view('users.show', compact('user','weights','weight'));
     }
 
     public function edit($id)
@@ -60,7 +57,7 @@ class AdminUsersController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::pluck('name','id')->all();
 
-        return view('admin.users.edit', compact('user','roles'));
+        return view('users.edit', compact('user','roles'));
     }
 
     public function update(UsersEditRequest $request, $id)
@@ -83,7 +80,7 @@ class AdminUsersController extends Controller
 
         $user->update($input);
 
-        return redirect('/admin/users');
+        return redirect('users');
     }
 
     public function destroy($id)
@@ -93,6 +90,6 @@ class AdminUsersController extends Controller
         $user->delete();
         Session::flash('deleted_user', 'The user has been deleted');
 
-        return redirect('/admin/users');
+        return redirect('users');
     }
 }

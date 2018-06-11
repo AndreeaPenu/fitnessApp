@@ -26,9 +26,11 @@ Route::get('admin', function(){
 });
 
 Route::group(['middleware' => 'admin'], function(){
-    Route::resource('admin/users','AdminUsersController');
+  
     Route::resource('admin/exercises','ExercisesController');
 });
+
+Route::resource('users','UsersController');
 
 //workouts
 Route::resource('workouts','WorkoutsController');
@@ -48,7 +50,6 @@ Route::get('home', 'HomeController@index')->name('home');
 
 //user?
 Route::get('agenda','HomeController@agenda');
-Route::get('profile/{id}','HomeController@profile');
 Route::post('addWeight','HomeController@addWeight');
 
 //friendship

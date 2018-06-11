@@ -25,8 +25,8 @@
                 @if($exercises)
                     @foreach($exercises as $exercise)
                         <div>
-                            <input type="checkbox" id="exerises" name="exercises[]" value="{{$exercise->name}}">
-                            <label for="exercises[]">{{$exercise->name}}</label>
+                            <input type="checkbox" id="exerises" name="exercises[]" value="{{ $exercise->name }}">
+                            <label for="exercises[]">{{ $exercise->name }}</label>
                         </div>
                     @endforeach
                 @endif
@@ -40,19 +40,12 @@
                 <div class="alert alert-danger">
                     <ul>
                         @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
+                            <li>{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
             @endif
         </div>
     </div>
-   
-
-        
-
-</div>
-        
-
-    
-    @endsection
+</div>   
+@endsection

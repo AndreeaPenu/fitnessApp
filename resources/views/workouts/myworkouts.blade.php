@@ -20,9 +20,9 @@
                 @if($userWorkouts)
                     @foreach($userWorkouts as $userWorkout)
                             <tr>
-                                <td>{{$userWorkout->id}}</td>
-                                <td>{{$userWorkout->title}}</td>
-                                <td>{{$userWorkout->description}}</td>
+                                <td>{{ $userWorkout->id }}</td>
+                                <td>{{ $userWorkout->title }}</td>
+                                <td>{{ $userWorkout->description }}</td>
                                 <td> <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-info pull-right">Details workout</a></td>
                             </tr>
                     @endforeach

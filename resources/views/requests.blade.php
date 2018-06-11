@@ -11,7 +11,7 @@
                     <ul>
                     @foreach($FriendRequests as $u)
                         <li>{{$u->name}} 
-                            <a href="{{url('/')}}/accept/{{$u->id}}" class="btn btn-success">Accept request</a>
+                            <a href="{{ url('/') }}/accept/{{ $u->id }}" class="btn btn-success">Accept request</a>
                         </li>
                     @endforeach
                     </ul>

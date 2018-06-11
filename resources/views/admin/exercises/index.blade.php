@@ -16,9 +16,8 @@
         @if($exercises)
             @foreach($exercises as $exercise)
             <tr>
-                <td>{{$exercise->id}}</td>
-                <td>{{$exercise->name}}</td>
-
+                <td>{{ $exercise->id }}</td>
+                <td>{{ $exercise->name }}</td>
             </tr>
             @endforeach
         @endif
@@ -26,4 +25,4 @@
     
 </div>
         
-        @endsection
+@endsection

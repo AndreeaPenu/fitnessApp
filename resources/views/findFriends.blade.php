@@ -10,7 +10,7 @@
                 <div class="card-body">   
                     <ul>
                     @foreach($allUsers as $u)
-                        <li>{{$u->name}} 
+                        <li>{{ $u->name }} 
                         
                         <?php 
                             $check = DB::table('friendships')
@@ -21,7 +21,7 @@
                                 ?>   
                             
                             
-                            <a href="{{url('/')}}/addFriend/{{$u->id}}" class="btn btn-success">Add to friends</a>
+                            <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-success">Add to friends</a>
                                 <?php } else { ?>
                                     <p>Request already sent</p>
                                 <?php  }?>

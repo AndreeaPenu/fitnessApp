@@ -11,13 +11,13 @@
             <div class="card-body">
                         
                 <p>Picture: <img height="50" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt=""></p>
-                <p>Name: {{ Auth::user()->name }}</p>
-                <p>Gender: {{ Auth::user()->gender }}</p>
-                <p>Age: {{ Auth::user()->age }}</p>
-                <p>Height: {{ Auth::user()->height }} cm</p>
-                @foreach($weights as $weight)
+                <p>Name: {{ $user->name }}</p>
+                <p>Gender: {{ $user->gender }}</p>
+                <p>Age: {{ $user->age }}</p>
+                <p>Height: {{ $user->height }} cm</p>
+                @if($weight)
                 <p>Weight: {{ $weight->weight }} kg</p> 
-                @endforeach
+                @endif
                <!-- <a href="{{ url('/admin/users/' . $user->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a> -->
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -25,7 +25,7 @@
                 </button>
                 
                   <div id="app" class="mt-4">
-                    <line-chart :w="{{$weights}}"></line-chart>
+                    <line-chart :w="{{ $weights }}"></line-chart>
                   </div>
                   
             </div>

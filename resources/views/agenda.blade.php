@@ -7,7 +7,7 @@
     @if($myWorkout->deleted_at == null)
     
         <ul>
-            <li>{{$myWorkout->title}} / {{$myWorkout->description}} / {{$myWorkout->created_at}}</li>
+            <li>{{ $myWorkout->title }} / {{ $myWorkout->description }} / {{ $myWorkout->created_at }}</li>
         </ul>
 
 
@@ -20,12 +20,12 @@
                         <ul>
                             <li>
                             
-                                {{$exercise->name}} <!-- {{$exercise->sets}} -->
+                                {{ $exercise->name }} <!-- {{$exercise->sets}} -->
                              
                                         @foreach($sets as $set)
                                             @if($set->exercise_id == $exercise->id && $set->reps != null)
                                             <ul>
-                                                <li> {{$set->reps}} x {{$set->weight}}kg . {{$set->created_at}}</li>
+                                                <li> {{ $set->reps }} x {{ $set->weight }}kg . {{ $set->created_at }}</li>
                                             </ul>
                                                
                                             @endif

@@ -4,7 +4,7 @@
 
     <div class="container">
             @if(Session::has('deleted_workout'))
-            <p>{{session('deleted_workout')}}</p>
+            <p>{{ session('deleted_workout') }}</p>
         @endif
 
 
@@ -18,15 +18,13 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Made by</th>
-                  
                 </tr>
                 @if($workouts)
                     @foreach($workouts as $workout)
                     <tr>
-                        <td>{{$workout->id}}</td>
-                        <td>{{$workout->title}}</td>
-                        <td>{{$workout->description}}</td>
+                        <td>{{ $workout->id }}</td>
+                        <td>{{ $workout->title }}</td>
+                        <td>{{ $workout->description }}</td>
                        
                         <td><a href="{{ url('workouts/' . $workout->id . '/add') }}" class="btn btn-xs btn-info pull-right">+ ADD</a></td>
                     </tr>
@@ -57,9 +55,9 @@
                         @foreach($userWorkouts as $userWorkout)
                         @if($userWorkout->deleted_at == null && $userWorkout->original == 1)
                                 <tr>
-                                    <td>{{$userWorkout->id}}</td>
-                                    <td>{{$userWorkout->title}}</td>
-                                    <td>{{$userWorkout->description}}</td>
+                                    <td>{{ $userWorkout->id }}</td>
+                                    <td>{{ $userWorkout->title }}</td>
+                                    <td>{{ $userWorkout->description }}</td>
                                     <td><a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a></td>
                                   <!--  <td><a href="{{ url('workouts/' . $userWorkout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a></td> -->
                                   <!--  <td> <a href="{{ url('workouts/' . $userWorkout->id .'/addWorkout') }}" class="btn btn-xs btn-danger pull-right">Add exercises</a></td> -->

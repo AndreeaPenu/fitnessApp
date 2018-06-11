@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Workout: {{$workout->title}}</h1>
+            <h1>Workout: {{ $workout->title }}</h1>
         </div>
 
         <div class="card-body">
@@ -18,7 +18,7 @@
                     @foreach($exercises as $exercise)
                         <div>
                             <input type="checkbox" id="exerises" name="exercises[]" value="{{$exercise->name}}">
-                            <label for="exercises[]">{{$exercise->name}}</label>
+                            <label for="exercises[]">{{ $exercise->name }}</label>
                         </div>
                     @endforeach
                 @endif

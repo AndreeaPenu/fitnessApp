@@ -24,15 +24,6 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function profile($id)
-    {
-        $user = Auth::user();
-        $weights = Weight::where('user_id',$user->id)->get();
-        //enkel laatste nieuwe weergeven: $weight = Weight::where('user_id',$user->id)->orderBy('created_at', 'desc')->limit(1);
-        
-        return view('profile', compact('user','weights'));
-    }
-
     public function addWeight(Request $request) {
         $user = Auth::user();
         $weight = new Weight;
