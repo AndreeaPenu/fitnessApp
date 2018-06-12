@@ -23,7 +23,7 @@
 
 
                 <div class="form-group">
-                    {!! Form::submit('Update Workout', ['class'=>'btn btn-primary']) !!}
+                    {!! Form::submit('Update Workout', ['class'=>'btn btn-success']) !!}
                 </div>
             {!! Form::close() !!}
 

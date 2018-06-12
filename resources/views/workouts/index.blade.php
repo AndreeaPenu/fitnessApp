@@ -8,7 +8,7 @@
         @endif
 
 
-        <h1>Workouts <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-info pull-right">Create new workout</a>
+        <h1>Workouts <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-primary pull-right">Create new workout</a>
                 <a href="{{ url('workouts/myworkouts/1') }}" class="btn btn-xs btn-secondary pull-right">All my workouts</a>
 </h1>
              @if($userWorkouts)
@@ -27,7 +27,7 @@
                         
                         <p class="card-description">{{ $userWorkout->description }}</p>
                         <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a>
-                        <a href="{{ url('workouts/' . $userWorkout->id . '/change') }}" class="btn btn-xs btn-primary pull-right">edit</a>      
+                        <a href="{{ url('workouts/' . $userWorkout->id . '/change') }}" class="btn btn-xs btn-secondary pull-right">edit</a>      
                   
                    
                 

@@ -6,8 +6,8 @@
 <div class="container">
     <h1>{{$workout->title}}</h1>
     <h4>{{$workout->description}}</h4>
-    <a href="{{ url('workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a>
-    <a href="{{ url('workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-success pull-right">Add Exercises</a>  
+    <a href="{{ url('workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-secondary pull-right">Edit</a>
+    <a href="{{ url('workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-primary pull-right">Add Exercises</a>  
 
     
 

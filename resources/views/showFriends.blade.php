@@ -4,7 +4,23 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <a href="{{ url('/') }}/users" class="btn btn-success">Find Friends</a>
+        <a href="{{ url('/') }}/users" class="btn btn-secondary">Find Friends</a>
+
+        <div class="card">
+            <div class="card-header">
+          My Requests ({{App\Friendship::where('status',0)->where('user_requested',Auth::user()->id)->count()}})
+            </div>
+            <div class="card-body">
+            <ul>
+                    @foreach($FriendRequests as $u)
+                        <li> <a href="{{ url('/') }}/users/{{ $u->id }}">{{$u->name}} </a> 
+                            <a href="{{ url('/') }}/accept/{{ $u->id }}" class="btn btn-success">Accept request</a>
+                        </li>
+                    @endforeach
+                    </ul>
+            </div>
+            
+        </div>
             <div class="card">
                 <div class="card-header">My Friends</div>
                 <div class="card-body">   

@@ -8,11 +8,25 @@
                 Profile
             </div>
 
-            <div class="card-body">
-                <p>Picture: <img height="50" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt=""></p>
-                <p>Name: {{ $user->name }}</p>
+            <div class="card-body profile-card text-center">
+                <div class="row">
+            <div class="col-md-12">
+                <img class="round-pic" height="150" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt="">
+              
+            </div>
+                          
+              
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                         <p>Hi, my name is {{ $user->name }}</p>
                 <p>Gender: {{ $user->gender }}</p>
                 <p>Age: {{ $user->age }}</p>
+                    </div>
+               
+                </div>
+                    
+               
 
             @if($user->id == Auth::user()->id)
                 <p>Height: {{ $user->height }} cm</p>
@@ -51,7 +65,7 @@
                         <td>{{ $workout->title }}</td>
                         <td>{{ $workout->description }}</td>
                        
-                        <td><a href="{{ url('workouts/' . $workout->id . '/add') }}" class="btn btn-xs btn-info pull-right">+ ADD</a></td>
+                        <td><a href="{{ url('workouts/' . $workout->id . '/add') }}" class="btn btn-xs btn-secondary pull-right">+ ADD</a></td>
                     </tr>
                     @endif
                     @endforeach

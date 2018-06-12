@@ -12,7 +12,7 @@
     <div class="card-body">
         <table style="width:100%" class="w3-table w3-striped">
                 <tr>
-                    <th>ID</th>
+             
                     <th>Title</th>
                     <th>Description</th>
                     <th></th>
@@ -20,10 +20,10 @@
                 @if($userWorkouts)
                     @foreach($userWorkouts as $userWorkout)
                             <tr>
-                                <td>{{ $userWorkout->id }}</td>
                                 <td>{{ $userWorkout->title }}</td>
                                 <td>{{ $userWorkout->description }}</td>
-                                <td> <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-info pull-right">Details workout</a></td>
+                                <td> <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a></td>
+                       <td> <a href="{{ url('workouts/' . $userWorkout->id . '/change') }}" class="btn btn-xs btn-primary pull-right">edit</a></td>
                             </tr>
                     @endforeach
                 @endif

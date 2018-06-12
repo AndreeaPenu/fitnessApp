@@ -10401,6 +10401,16 @@ ul {
   list-style: none;
 }
 
+a {
+  color: #323232;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #5BC0BE;
+  text-decoration: none;
+}
+
 .navbar-light {
   background-color: transparent !important;
 }
@@ -10429,7 +10439,7 @@ a.py-2:hover {
 }
 
 .is-today {
-  background-color: red !important;
+  background-color: #5BC0BE !important;
 }
 
 .cal-body {
@@ -10437,7 +10447,7 @@ a.py-2:hover {
 }
 
 .cal-header {
-  background-color: red !important;
+  background-color: #5BC0BE !important;
   color: #FFFFFF;
 }
 
@@ -10494,6 +10504,10 @@ a.py-2:hover {
 .round-pic {
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.profile-card {
+  padding: 50px;
 }
 
 .circle {
@@ -10575,9 +10589,48 @@ a.py-2:hover {
 }
 
 .btn-primary:hover {
-  background-color: #4A368B;
+  background-color: #FFFFFF;
   border-color: #4A368B;
+  color: #4A368B;
+}
+
+.btn-secondary {
+  background-color: #5BC0BE;
+  border-color: #5BC0BE;
   color: #FFFFFF;
+  border-radius: 0;
+}
+
+.btn-secondary:hover {
+  background-color: #FFFFFF;
+  border-color: #5BC0BE;
+  color: #5BC0BE;
+}
+
+.btn-danger {
+  background-color: #C1292E;
+  border-color: #C1292E;
+  color: #FFFFFF;
+  border-radius: 0;
+}
+
+.btn-danger:hover {
+  background-color: #FFFFFF;
+  border-color: #C1292E;
+  color: #C1292E;
+}
+
+.btn-success {
+  background-color: #06D6A0;
+  border-color: #06D6A0;
+  color: #FFFFFF;
+  border-radius: 0;
+}
+
+.btn-success:hover {
+  background-color: #FFFFFF;
+  border-color: #06D6A0;
+  color: #06D6A0;
 }
 
 .overlay {

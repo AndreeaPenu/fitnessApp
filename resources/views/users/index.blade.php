@@ -29,7 +29,7 @@
                                                 ?>   
                                             
                                             
-                                            <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-success">Send request</a>
+                                            <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-secondary">Send request</a>
                                                 <?php } else { ?>
                                                     <p>Request already sent</p>
                                                 <?php  }?>

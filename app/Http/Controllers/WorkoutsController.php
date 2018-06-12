@@ -15,9 +15,9 @@ class WorkoutsController extends Controller
 {
     public function index()
     {
-        $workouts = DB::table('workouts')->where('original','1')->get();
+        $workouts = DB::table('workouts')->orderBy('created_at','asc')->get();
         $exercises = Exercise::all();
-        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
+        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->orderBy('created_at','desc')->limit(5)->get();
 
         return view('workouts.index', compact('workouts','exercises','userWorkouts'));
     }
@@ -41,7 +41,7 @@ class WorkoutsController extends Controller
 
     public function myWorkouts($id) {
         $workouts = DB::table('workouts')->where('original','1')->get();
-        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->where('original','1')->get();
+        $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->where('deleted_at',null)->get();
 
         return view('workouts.myworkouts', compact('workouts', 'userWorkouts'));
     }

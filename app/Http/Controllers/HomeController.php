@@ -44,10 +44,16 @@ class HomeController extends Controller
     }
 
     public function showFriends(){
+        $uid = Auth::user()->id;
+        $FriendRequests = DB::table('friendships')
+                        ->rightJoin('users', 'users.id', '=', 'friendships.requester')
+                        ->where('status', '=', 0)
+                        ->where('friendships.user_requested', '=', $uid)->get();
+
         $allFriends = DB::table('friendships')->where('requester', Auth::user()->id)->where('status',1)->get();
         $users = User::all();
         
-        return view('showFriends', compact('allFriends','users'));
+        return view('showFriends', compact('allFriends','users','FriendRequests'));
     }
 
     public function sendRequest($id){

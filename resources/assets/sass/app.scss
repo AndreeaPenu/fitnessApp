@@ -20,6 +20,15 @@ ul {
   list-style: none;
 }
 
+a {
+  color: $lighter-black;
+  text-decoration: none;
+  &:hover {
+    color: $secondary-color;
+    text-decoration: none;
+  }
+}
+
 // Narbar
 .navbar-light {
   background-color: transparent!important;
@@ -50,14 +59,14 @@ a.py-2 {
 // Agenda
 
 .is-today {
-  background-color: red!important;
+  background-color: $secondary-color!important;
 }
 .cal-body {
   background-color: $white;
 }
 
 .cal-header {
-  background-color: red!important;
+  background-color: $secondary-color!important;
   color: $white;
 }
 
@@ -116,6 +125,12 @@ a.py-2 {
 .round-pic {
   border-radius: 50%;
   margin-right: 10px;
+}
+
+
+// Profile
+.profile-card {
+  padding: 50px;
 }
 
 // Workouts
@@ -195,11 +210,49 @@ a.py-2 {
   color: $white;
   border-radius: 0;
   &:hover {
-    background-color: $primary-color;
+    background-color: $white;
     border-color: $primary-color;
-    color: $white;
+    color: $primary-color;
   }
 }
+
+.btn-secondary {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+  color: $white;
+  border-radius: 0;
+  &:hover {
+    background-color: $white;
+    border-color: $secondary-color;
+    color: $secondary-color;
+  }
+}
+
+.btn-danger {
+  background-color: $danger-color;
+  border-color: $danger-color;
+  color: $white;
+  border-radius: 0;
+  &:hover {
+    background-color: $white;
+    border-color: $danger-color;
+    color: $danger-color;
+  }
+}
+
+.btn-success {
+  background-color: $success-color;
+  border-color: $success-color;
+  color: $white;
+  border-radius: 0;
+  &:hover {
+    background-color: $white;
+    border-color: $success-color;
+    color: $success-color;
+  }
+
+}
+
 
 // Full screen navs
 .overlay {
