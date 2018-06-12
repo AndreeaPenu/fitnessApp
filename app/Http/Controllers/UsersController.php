@@ -49,7 +49,6 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $weights = Weight::where('user_id',$user->id)->get();
         $weight = Weight::where('user_id',$user->id)->orderBy('created_at', 'desc')->first();
-        
         $workouts = Workout::all();
          
          return view('users.show', compact('user','weights','weight','workouts'));

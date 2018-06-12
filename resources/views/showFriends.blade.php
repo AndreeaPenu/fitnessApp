@@ -10,12 +10,11 @@
                 <div class="card-body">   
                     <ul>
                     @foreach($allFriends as $friend)
-                        <li>{{$friend->user_requested}}
+                        <li class="mb-3">
                             @foreach($users as $user)
                                 @if($user->id == $friend->user_requested)
-                                <img height="50" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt="">
+                                <img class="round-pic" height="50" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt="">
                                 <a href="{{ url('/') }}/users/{{ $user->id }}">{{$user->name}}</a> 
-                                <p>Since {{$user->created_at}}</p>
                                 @endif
                             @endforeach
                             </li>

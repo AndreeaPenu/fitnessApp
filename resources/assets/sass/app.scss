@@ -16,6 +16,10 @@ h1, h4 {
   color: $lighter-black!important;
 }
 
+ul {
+  list-style: none;
+}
+
 // Narbar
 .navbar-light {
   background-color: transparent!important;
@@ -107,6 +111,11 @@ a.py-2 {
 .card-title {
   display: inline-block;
   margin-left: 10px;
+}
+
+.round-pic {
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 // Workouts

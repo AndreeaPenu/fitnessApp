@@ -61,7 +61,6 @@ Route::get('/test', function(){
 });
 
 Route::get('requests','HomeController@requests');
-Route::get('findFriends', 'HomeController@findFriends');
 Route::get('showFriends', 'HomeController@showFriends');
 Route::get('addFriend/{id}', 'HomeController@sendRequest');
 Route::get('accept/{id}','HomeController@accept');

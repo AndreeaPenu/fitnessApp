@@ -23,12 +23,12 @@
             <div class="card-body">
 
                
-                        @if($userWorkout->deleted_at == null && $userWorkout->original == 1)
+                        
                         
                         <p class="card-description">{{ $userWorkout->description }}</p>
                         <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a>
                         <a href="{{ url('workouts/' . $userWorkout->id . '/change') }}" class="btn btn-xs btn-primary pull-right">edit</a>      
-                        @endif
+                  
                    
                 
             </div>

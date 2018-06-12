@@ -8,7 +8,6 @@ use App\Workout;
 use App\Weight;
 use App\User;
 use App\Set;
-use App\Photo;
 use Redirect;
 use Auth;
 use DB;
@@ -42,13 +41,6 @@ class HomeController extends Controller
         $sets = Set::all();
   
         return view('agenda', compact('workouts', 'myWorkouts', 'exercises','sets'));
-    }
-
-    public function findFriends(){
-        $uid = Auth::user()->id;
-        $allUsers = DB::table('users')->where('id', '!=', $uid)->get();
-        
-        return view('findFriends', compact('allUsers'));
     }
 
     public function showFriends(){

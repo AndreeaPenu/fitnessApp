@@ -10397,6 +10397,10 @@ h4 {
   color: #323232 !important;
 }
 
+ul {
+  list-style: none;
+}
+
 .navbar-light {
   background-color: transparent !important;
 }
@@ -10485,6 +10489,11 @@ a.py-2:hover {
 .card-title {
   display: inline-block;
   margin-left: 10px;
+}
+
+.round-pic {
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .circle {
