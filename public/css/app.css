@@ -10389,12 +10389,12 @@ a.text-dark:focus {
 }
 
 body {
-  background-color: #4A368B;
+  background-color: #f5f8fa;
 }
 
 h1,
 h4 {
-  color: #FFFFFF !important;
+  color: #323232 !important;
 }
 
 .navbar-light {
@@ -10425,7 +10425,7 @@ a.py-2:hover {
 }
 
 .is-today {
-  background-color: #4A368B !important;
+  background-color: red !important;
 }
 
 .cal-body {
@@ -10447,12 +10447,13 @@ a.py-2:hover {
 }
 
 .__vev_calendar-wrapper .events-wrapper {
-  background-color: #4A368B !important;
+  border-radius: 0.25rem !important;
+  background-color: transparent !important;
 }
 
 .__vev_calendar-wrapper .events-wrapper .date {
-  background-color: #4A368B !important;
-  color: #FFFFFF;
+  background-color: transparent !important;
+  color: #323232 !important;
   text-transform: uppercase;
 }
 
@@ -10460,8 +10461,17 @@ a.py-2:hover {
   margin: 32px 0 !important;
 }
 
+.__vev_calendar-wrapper .events-wrapper .cal-events .event-item {
+  border-radius: 0.25rem;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
+}
+
 .card {
   margin-bottom: 10px;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
+  border: 0;
 }
 
 .card-header {
@@ -10469,7 +10479,7 @@ a.py-2:hover {
 }
 
 .card-header h1 {
-  color: black !important;
+  color: #323232 !important;
 }
 
 .hero {
@@ -10648,16 +10658,17 @@ input[type="password"] {
 .inputGroup {
   background-color: #fff;
   display: block;
-  margin: 10px 0;
   position: relative;
 }
 
 .inputGroup label {
+  font-weight: 500;
+  text-transform: uppercase;
   padding: 12px 30px;
   width: 100%;
   display: block;
   text-align: left;
-  color: #3C454C;
+  color: #9b9b9b;
   cursor: pointer;
   position: relative;
   z-index: 2;
@@ -10667,11 +10678,11 @@ input[type="password"] {
 }
 
 .inputGroup label:before {
-  width: 10px;
+  width: 100%;
   height: 10px;
   border-radius: 50%;
   content: '';
-  background-color: #4A368B;
+  background-color: #FFFFFF;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -10705,7 +10716,7 @@ input[type="password"] {
 }
 
 .inputGroup input:checked ~ label {
-  color: #fff;
+  color: #323232;
 }
 
 .inputGroup input:checked ~ label:before {
@@ -10737,8 +10748,6 @@ input[type="password"] {
 
 .form {
   padding: 0 16px;
-  max-width: 550px;
-  margin: 50px auto;
   font-size: 18px;
   font-weight: 600;
   line-height: 36px;

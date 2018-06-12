@@ -9,11 +9,11 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-color: $primary-color;
+  background-color: $body-bg;
 }
 
 h1, h4 {
-  color: $white!important;
+  color: $lighter-black!important;
 }
 
 // Narbar
@@ -46,7 +46,7 @@ a.py-2 {
 // Agenda
 
 .is-today {
-  background-color: $primary-color!important;
+  background-color: red!important;
 }
 .cal-body {
   background-color: $white;
@@ -66,16 +66,24 @@ a.py-2 {
   }
 
   & .events-wrapper {
-    background-color: $primary-color!important;
+    border-radius: 0.25rem!important;
+    background-color: transparent!important;
     & .date {
-      background-color: $primary-color!important;
-      color: $white;
+      background-color: transparent!important;
+      color: $lighter-black!important;
       text-transform: uppercase;
     }
   }
 
   & .events-wrapper .cal-events {
     margin: 32px 0!important;
+    & .event-item {
+      border-radius: 0.25rem;
+      -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+      -moz-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+      box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+
+    }
   }
 }
 
@@ -83,12 +91,16 @@ a.py-2 {
 
 .card {
   margin-bottom: 10px;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  border: 0;
 }
 
 .card-header {
   background-color: $white!important;
   & h1 {
-    color: black!important;
+    color: $lighter-black!important;
   }
 }
 
@@ -266,15 +278,17 @@ input[type="text"], input[type="email"], input[type="password"]
 .inputGroup {
   background-color: #fff;
   display: block;
-  margin: 10px 0;
+  //margin: 10px 0;
   position: relative;
 
   label {
+    font-weight: 500;
+    text-transform: uppercase;
     padding: 12px 30px;
     width: 100%;
     display: block;
     text-align: left;
-    color: #3C454C;
+    color: #9b9b9b;
     cursor: pointer;
     position: relative;
     z-index: 2;
@@ -282,11 +296,11 @@ input[type="text"], input[type="email"], input[type="password"]
     overflow: hidden;
 
     &:before {
-      width: 10px;
+      width: 100%;
       height: 10px;
       border-radius: 50%;
       content: '';
-      background-color: $primary-color;
+      background-color: $white;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -317,7 +331,7 @@ input[type="text"], input[type="email"], input[type="password"]
   }
 
   input:checked ~ label {
-    color: #fff;
+    color: $lighter-black;
 
     &:before {
       transform: translate(-50%, -50%) scale3d(56, 56, 1);
@@ -348,8 +362,8 @@ input[type="text"], input[type="email"], input[type="password"]
 // codepen formatting
 .form {
 padding: 0 16px;
-max-width: 550px;
-margin: 50px auto;
+//max-width: 550px;
+//margin: 50px auto;
 font-size: 18px;
 font-weight: 600;
 line-height: 36px;
