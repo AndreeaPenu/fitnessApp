@@ -67818,6 +67818,15 @@ var staticRenderFns = [
               attrs: { href: "/users" }
             },
             [_vm._v("Profile")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "py-2 d-none d-md-inline-block",
+              attrs: { href: "/logout" }
+            },
+            [_vm._v("Log out")]
           )
         ]
       )

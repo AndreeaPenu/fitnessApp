@@ -10482,6 +10482,25 @@ a.py-2:hover {
   color: #323232 !important;
 }
 
+.card-title {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #5BC0BE;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.circle img {
+  margin-top: 25%;
+}
+
 .hero {
   position: absolute;
   top: 0;

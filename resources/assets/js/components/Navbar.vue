@@ -8,6 +8,7 @@
         <a class="py-2 d-none d-md-inline-block" href="/agenda">Calendar</a>
         <a class="py-2 d-none d-md-inline-block" href="/showFriends">Friends</a>
         <a class="py-2 d-none d-md-inline-block" href="/users">Profile</a>
+        <a class="py-2 d-none d-md-inline-block" href="/logout">Log out</a>
       </div>
     </nav>
 </template>

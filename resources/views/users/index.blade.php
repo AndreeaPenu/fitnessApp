@@ -1,37 +1,49 @@
 @extends('layouts.dashboard')
 
 @section('content')
-
 <div class="container">
-     @if(Session::has('deleted_user'))
-        <p>{{ session('deleted_user') }}</p>
-    @endif
-
-    <h1>Users</h1>
-
-    <table style="width:100%" class="w3-table w3-striped">
-    <tr>
-        <th>ID</th>
-        <th>Photo</th>
-        <th>Name</th> 
-        <th>Email</th>
-        <th>Role</th>
-        <th>Created</th>
-        <th>Updated</th>
-    </tr>
-    @if($users)
-        @foreach($users as $user)
-        <tr>
-            <td>{{ $user->id }}</td>
-            <td> <img height="50" src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt=""></td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->role->name }}</td>
-            <td>{{ $user->created_at }}</td>
-            <td>{{ $user->updated_at }}</td>
-        </tr>
-        @endforeach
-    @endif
-    </table>
-</div> 
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Friends</div>
+             
+                <div class="card-body">   
+                   
+                    @foreach($users as $u)
+                        @if($u->id != Auth::user()->id)
+                        <div class="row">
+                            <img height="50" src="{{$u->photo ? $u->photo->file : '/images/placeholder.png'}}" alt="">
+                        <div class="col-md">
+                            <a href="{{ url('/') }}/users/{{ $u->id }}">{{$u->name}}</a> 
+                        </div>
+                        <div class="col-md">
+                                 <p>Since {{$u->created_at}}</p>
+                        </div>
+                    
+            
+                        
+                        <?php 
+                            $check = DB::table('friendships')
+                            ->where('user_requested', '=', $u->id)
+                            ->where('requester', '=', Auth::user()->id)
+                            ->first();
+                            if($check == '') {
+                                ?>   
+                            
+                            
+                            <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-success">Send request</a>
+                                <?php } else { ?>
+                                    <p>Request already sent</p>
+                                <?php  }?>
+                               
+                     </div>
+                     @endif
+                    @endforeach
+                    </ul>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

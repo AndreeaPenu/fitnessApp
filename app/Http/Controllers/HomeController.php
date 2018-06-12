@@ -8,6 +8,7 @@ use App\Workout;
 use App\Weight;
 use App\User;
 use App\Set;
+use App\Photo;
 use Redirect;
 use Auth;
 use DB;

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\UsersRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Workout;
 use App\Weight;
 use App\Photo;
 use App\Role;
@@ -48,8 +49,10 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $weights = Weight::where('user_id',$user->id)->get();
         $weight = Weight::where('user_id',$user->id)->orderBy('created_at', 'desc')->first();
+        
+        $workouts = Workout::all();
          
-         return view('users.show', compact('user','weights','weight'));
+         return view('users.show', compact('user','weights','weight','workouts'));
     }
 
     public function edit($id)

@@ -103,9 +103,11 @@ class WorkoutsController extends Controller
     }
 
     public function addWorkout(Request $request, $id) {
+        $uid = Auth::user()->id;
         //duplicate workout
         $workout = Workout::findOrFail($id);
         $newWorkout = $workout->replicate();
+        $newWorkout->user_id = $uid;
         $newWorkout->original = 1;
         $newWorkout->save();
 

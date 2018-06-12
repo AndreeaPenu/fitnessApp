@@ -8,9 +8,20 @@
                 <div class="card-header">Friends</div>
              
                 <div class="card-body">   
-                    <ul>
+                   
                     @foreach($allUsers as $u)
-                        <li>{{ $u->name }} 
+                        <div class="row">
+                            <img height="50" src="{{$u->photo ? $u->photo->file : '/images/placeholder.png'}}" alt="">
+                        <div class="col-md">
+                            <a href="{{ url('/') }}/users/{{ $u->id }}">{{$u->name}}</a> 
+                        </div>
+                        <div class="col-md">
+                                 <p>Since {{$u->created_at}}</p>
+                        </div>
+                      
+                                
+                           
+                     
                         
                         <?php 
                             $check = DB::table('friendships')
@@ -21,12 +32,12 @@
                                 ?>   
                             
                             
-                            <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-success">Add to friends</a>
+                            <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-success">Send request</a>
                                 <?php } else { ?>
                                     <p>Request already sent</p>
                                 <?php  }?>
                                
-                        </li>
+                     </div>
                     @endforeach
                     </ul>
                   
