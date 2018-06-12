@@ -25,22 +25,8 @@
 </head>
 <body>
     <div id="app">
+        <navbar></navbar>
 
-        <div class="left-nav">
-            <a class="navbar-brand" href="#">
-                <img src="images/dumbel-white.svg" width="30" height="30" class="d-inline-block align-top" alt="dumbel">
-                Dumbel
-            </a>
-            <div class="nav-links">
-                <a href="{{ url('users')}} ">Profile</a>
-                <a href="{{ url('workouts') }}">Workouts</a>
-                <a href="{{ url('agenda') }}">Agenda</a>
-                <a href=""></a>
-                <a href="{{ url('findFriends') }}">Find Friends</a>
-                <a href="{{ url('showFriends') }}">Show Friends</a>
-                <a href="{{ url('requests') }}">My Friend Requests</a>
-            </div>
-        </div>
         <main class="py-4">
             @yield('content')
         </main>

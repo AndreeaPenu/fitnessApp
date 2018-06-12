@@ -24,6 +24,7 @@ window.Vue = require('vue');
 Vue.component('navbar', require('./components/Navbar.vue'));
 Vue.component('agenda', require('./components/Agenda.vue'));
 Vue.component('line-chart', require('./components/Line-chart.vue'));
+Vue.component('workout-chart', require('./components/Workout-chart.vue'));
 Vue.component('bmi-calculator', require('./components/Bmi-calculator.vue'));
 
 const app = new Vue({

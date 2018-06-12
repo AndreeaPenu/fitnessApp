@@ -40,6 +40,9 @@ Route::get('workouts/{id}/addWorkout','WorkoutsController@addWorkout');
 Route::get('workouts/{id}/addExercise','WorkoutsController@addExercise');
 Route::get('workouts/create/{id}', 'WorkoutsController@getExercises');
 Route::get('workouts/myworkouts/{id}', 'WorkoutsController@myWorkouts');
+
+Route::get('workouts/{id}/change', 'WorkoutsController@change');
+
 Route::post('workouts/create', 'WorkoutsController@create');
 Route::post('workouts/create/{id}', 'WorkoutsController@getExercises');
 Route::post('workouts/{id}/updateSet','WorkoutsController@updateSet');

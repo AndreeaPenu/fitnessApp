@@ -10,15 +10,15 @@
 
         <div class="card-body">
            
-            {!! Form::model($workout,['method'=>'POST','action'=> ['WorkoutsController@storeExercises', $workout->id]]) !!}
+            {!! Form::model($workout,['class'=>'form','method'=>'POST','action'=> ['WorkoutsController@storeExercises', $workout->id]]) !!}
             {{ Form::hidden('id', $workout->id) }}
                 {{ csrf_field() }}
 
                 @if($exercises)
-                    @foreach($exercises as $exercise)
-                        <div>
-                            <input type="checkbox" id="exerises" name="exercises[]" value="{{$exercise->name}}">
-                            <label for="exercises[]">{{ $exercise->name }}</label>
+                    @foreach($exercises as $key => $exercise)
+                          <div class="inputGroup">
+                            <input id="exercises{{$key+1}}" name="exercises[]" type="checkbox" value="{{$exercise->name}}"/>
+                            <label for="exercises{{$key+1}}">{{ $exercise->name }}</label>
                         </div>
                     @endforeach
                 @endif

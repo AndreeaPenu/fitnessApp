@@ -2,38 +2,30 @@
 
 @section('content')
 
-{!! Form::open(['method'=>'POST', 'action'=>['WorkoutsController@updateSet', $workout->id]]) !!}
-                    {{ csrf_field() }}
+
 <div class="container">
-    <div class="row">
-
-        <div class="col-md-11">
-            <h1>{{$workout->title}}</h1>
-            <h4>{{$workout->description}}</h4>
-        </div>
-
-        <div class="col-md-1">
-
-        {!! Form::submit('Save', ['class'=>'btn btn-success']) !!}
-        
-        </div>
-    </div>
-   
-  
+    <h1>{{$workout->title}}</h1>
+    <h4>{{$workout->description}}</h4>
+    <a href="{{ url('workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-info pull-right">Edit</a>
+    <a href="{{ url('workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-success pull-right">Add Exercises</a>  
 
     
 
 
     </br>
-    <!-- show exercises here -->
+   <!-- show exercises here -->
     @if($exercises)
         @foreach($exercises as $exercise)
     <div class="card">
     
- 
+  
         <div class="card-header">
             <h1>{{ $exercise->name }} </h1> 
-
+            {!! Form::open(['method'=>'DELETE', 'action'=>['ExercisesController@destroy', $exercise->id]]) !!}
+                <div class="form-group">
+                    {!! Form::submit('X Delete', ['class'=>'btn btn-danger']) !!}
+                </div>
+            {!! Form::close() !!}
 
             
         </div>
@@ -71,9 +63,9 @@
             
                        
         </div>
- 
+  
     </div>
-       @endforeach
+      @endforeach
     @endif
       
   

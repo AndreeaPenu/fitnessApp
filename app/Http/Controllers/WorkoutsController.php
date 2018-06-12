@@ -30,6 +30,14 @@ class WorkoutsController extends Controller
         return view('workouts.create', compact('exercises', 'id'));
     }
 
+    public function change($id){
+        $workout = Workout::findOrFail($id);
+        $exercises = $workout->exercises()->where('workout_id', $id)->get();
+        $sets = Set::all();
+
+        return view('workouts.change', compact('workout','exercises','sets'));
+    }
+
 
     public function myWorkouts($id) {
         $workouts = DB::table('workouts')->where('original','1')->get();
@@ -145,7 +153,7 @@ class WorkoutsController extends Controller
         $workout->update($input);
         $workout->save();
 
-        return redirect('workouts');
+        return redirect('workouts.edit');
 
     }
 

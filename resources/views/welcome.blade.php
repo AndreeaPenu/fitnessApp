@@ -36,11 +36,11 @@
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
-            <a href="#">Home</a>
+            <a href="{{ url('/')}}">Home</a>
             <a href="#">About Us</a>
             <a href="#">Why Dumbel</a>
             <a href="#">App Tour</a>
-            <a href="#">Dashboard</a>
+            <a href="{{ url('workouts')}}">Dashboard</a>
             <a href="{{ route('login') }}">Login</a>
             <a href="{{ route('register') }}">Register</a>
         </div>

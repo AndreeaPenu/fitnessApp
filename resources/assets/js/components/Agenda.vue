@@ -1,7 +1,6 @@
 <template>
-<div id="app">
-  <h1>Vue calendar</h1>
-  <vue-event-calendar :events="demoEvents"></vue-event-calendar>
+  <div id="app">
+    <vue-event-calendar :events="demoEvents"></vue-event-calendar>
   </div>
 </template>
 
