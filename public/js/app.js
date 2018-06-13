@@ -80937,7 +80937,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             firstDate: this.getStartDate(this.s),
-            lastDate: '',
+            lastDate: this.getLastDate(this.s),
             labels: [],
             data: [],
             currentVolume: 0,
@@ -80982,42 +80982,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addToArray: function addToArray() {
-
+            var currentDate = this.firstDate;
             for (var i = 0; i < this.s.length; i++) {
                 if (this.eid == this.s[i].exercise_id) {
+                    if (this.s[i].created_at.split(' ')[0] == currentDate.split(' ')[0]) {
+                        this.currentVolume += this.calculateVolume(this.s[i]);
+                    }
+                    if (this.s[i + 1] != null && this.s[i + 1].created_at.split(' ')[0] != currentDate.split(' ')[0]) {
+                        this.data.push(this.currentVolume);
+                        this.labels.push(currentDate.split(' ')[0]);
+                        //console.log("Volume:" + this.currentVolume + " voor dag " + this.firstDate);
+                        this.currentVolume = 0;
 
-                    this.lastDate = this.s[this.s.length - 1].created_at;
-                    var currentDate = new Date();
-                    var moment = __webpack_require__(0);
-                    var firstDate = moment(this.firstDate).format("MMM Do YY");
-                    var lastDate = moment(this.lastDate).format("MMM Do YY");
-                    var firstDateDay = moment(this.firstDate).get('date');
-                    var firstDateDay1 = moment(this.firstDate).add(1, 'days');
-                    var nextDay = moment(firstDateDay1).format("MMM Do YY");
-
-                    if (this.s[i + 1]) {
-                        if (this.s[i + 1].created_at == this.firstDate) {
-                            this.currentVolume += this.calculateVolume(this.s[i]);
-                        }
-
-                        if (this.s[i + 1].created_at != this.firstDate) {
-                            this.data.push(this.currentVolume);
-                            this.labels.push(firstDate);
-                            console.log("Volume:" + this.currentVolume + " voor dag " + this.firstDate);
-                            this.currentVolume = 0;
-
-                            this.firstDate = this.s[i + 1].created_at;
-                            //   console.log(this.firstDate);
-                        }
+                        //this.firstDate = this.s[i+1].created_at.split(' ')[0];
+                        currentDate = this.s[i + 1].created_at.split(' ')[0];
+                        //console.log('firstdate:' + this.firstDate + ' created_at:' + this.s[i+1].created_at);
+                    }
+                    console.log(this.s[i].created_at.split(' ')[0]);
+                    console.log(this.lastDate.split(' ')[0]);
+                    if (this.s[i].created_at.split(' ')[0] == this.lastDate.split(' ')[0] && this.s[i + 1] == null) {
+                        console.log("einde loop");
+                        this.data.push(this.currentVolume);
+                        this.labels.push(currentDate.split(' ')[0]);
                     }
                 }
             }
         },
         getStartDate: function getStartDate($sets) {
             for (var i = 0; i < $sets.length; i++) {
-
                 if (this.eid == this.s[i].exercise_id) {
                     return $sets[i].created_at;
+                }
+            }
+        },
+        getLastDate: function getLastDate($sets) {
+            for (var i = 0; i < $sets.length; i++) {
+                if (this.eid == this.s[i].exercise_id) {
+                    return $sets[$sets.length - 1].created_at;
                 }
             }
         },
