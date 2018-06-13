@@ -80993,11 +80993,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         calculateVolume: function calculateVolume($weight, $reps, $created) {
-            console.log(this.firstDate + ' first ' + $created + ' created at');
+            var moment = __webpack_require__(0);
+            var created_at = moment($created).format("MMM Do YY");
+            var firstDate = moment(this.firstDate).format("MMM Do YY");
+            var lastDate = moment(this.lastDate).format("MMM Do YY");
 
-            if ($created == this.firstDate) {
+            var firstDateDay = moment(this.firstDate).get('date');
+            var lastDateDay = moment(this.lastDate).get('date');
+
+            var firstDateDay1 = moment(this.firstDate).add(1, 'days');
+
+            var nextDay = moment(firstDateDay1).format("MMM Do YY");
+
+            var daysBetween = lastDateDay - firstDateDay - 1;
+
+            // console.log(nextDay);
+
+
+            // var nextDate = moment(this.firstDate).get('date').add(1, 'days'); 
+
+            //console.log(nextDate +' next one');
+
+            //console.log(this.firstDate + ' first '  + $created +' created at');
+
+            if (created_at == firstDate) {
                 this.volume += $weight * $reps;
             }
+
+            if (created_at == lastDate) {
+                this.volume += $weight * $reps;
+            }
+
+            if (daysBetween > 1) {
+                for (var i = 0; i < daysBetween.length; i++) {
+                    if (created_at == daysBetween) {
+                        this.volume += $weight * $reps;
+                    }
+                }
+            }
+
+            //   console.log(created_at);
         }
     },
     beforeMount: function beforeMount() {
