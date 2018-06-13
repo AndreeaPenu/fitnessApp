@@ -67915,8 +67915,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     addToArray: function addToArray() {
       for (var i = 0; i < this.workouts.length; i++) {
 
+        var moment = __webpack_require__(0);
+        var dateF = moment(this.workouts[i].created_at).format('YYYY/MM/DD');
+        console.log(dateF);
+
         this.demoEvents.push({
-          date: this.workouts[i].created_at,
+          date: moment(this.workouts[i].created_at).format('YYYY/MM/DD'),
           title: this.workouts[i].title,
           desc: this.workouts[i].description
         });
@@ -80924,9 +80928,6 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(22);
-//
-//
-
 
 
 
@@ -80935,11 +80936,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['s', 'eid'],
     data: function data() {
         return {
-            weights: [],
-            lbls: [],
-            firstDate: '',
+            firstDate: this.getStartDate(this.s),
             lastDate: '',
-            volume: 0,
+            labels: [],
+            data: [],
+            currentVolume: 0,
             options: {
                 scales: {
                     yAxes: [{
@@ -80966,73 +80967,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.renderChart({
-            labels: this.lbls,
+            labels: this.labels,
             datasets: [{
-                label: 'Kg lifted: ',
+                label: 'Total volume: ',
                 borderColor: '#4A368B',
                 pointBackgroundColor: 'white',
                 borderWidth: 1,
                 pointBorderColor: '#4A368B',
                 backgroundColor: 'transparent',
-                data: this.weights
+                data: this.data
             }]
         }, this.options);
     },
 
     methods: {
         addToArray: function addToArray() {
+
             for (var i = 0; i < this.s.length; i++) {
                 if (this.eid == this.s[i].exercise_id) {
 
-                    this.firstDate = this.s[0].created_at;
                     this.lastDate = this.s[this.s.length - 1].created_at;
-                    this.calculateVolume(this.s[i].weight, this.s[i].reps, this.s[i].created_at);
-                    this.weights.push(this.s[i].weight);
-                    this.lbls.push(this.s[i].created_at);
-                }
-            }
-        },
-        calculateVolume: function calculateVolume($weight, $reps, $created) {
-            var moment = __webpack_require__(0);
-            var created_at = moment($created).format("MMM Do YY");
-            var firstDate = moment(this.firstDate).format("MMM Do YY");
-            var lastDate = moment(this.lastDate).format("MMM Do YY");
+                    var currentDate = new Date();
+                    var moment = __webpack_require__(0);
+                    var firstDate = moment(this.firstDate).format("MMM Do YY");
+                    var lastDate = moment(this.lastDate).format("MMM Do YY");
+                    var firstDateDay = moment(this.firstDate).get('date');
+                    var firstDateDay1 = moment(this.firstDate).add(1, 'days');
+                    var nextDay = moment(firstDateDay1).format("MMM Do YY");
 
-            var firstDateDay = moment(this.firstDate).get('date');
-            var lastDateDay = moment(this.lastDate).get('date');
+                    if (this.s[i + 1]) {
+                        if (this.s[i + 1].created_at == this.firstDate) {
+                            this.currentVolume += this.calculateVolume(this.s[i]);
+                        }
 
-            var firstDateDay1 = moment(this.firstDate).add(1, 'days');
+                        if (this.s[i + 1].created_at != this.firstDate) {
+                            this.data.push(this.currentVolume);
+                            this.labels.push(firstDate);
+                            console.log("Volume:" + this.currentVolume + " voor dag " + this.firstDate);
+                            this.currentVolume = 0;
 
-            var nextDay = moment(firstDateDay1).format("MMM Do YY");
-
-            var daysBetween = lastDateDay - firstDateDay - 1;
-
-            // console.log(nextDay);
-
-
-            // var nextDate = moment(this.firstDate).get('date').add(1, 'days'); 
-
-            //console.log(nextDate +' next one');
-
-            //console.log(this.firstDate + ' first '  + $created +' created at');
-
-            if (created_at == firstDate) {
-                this.volume += $weight * $reps;
-            }
-
-            if (created_at == lastDate) {
-                this.volume += $weight * $reps;
-            }
-
-            if (daysBetween > 1) {
-                for (var i = 0; i < daysBetween.length; i++) {
-                    if (created_at == daysBetween) {
-                        this.volume += $weight * $reps;
+                            this.firstDate = this.s[i + 1].created_at;
+                            //   console.log(this.firstDate);
+                        }
                     }
                 }
             }
+        },
+        getStartDate: function getStartDate($sets) {
+            for (var i = 0; i < $sets.length; i++) {
 
-            //   console.log(created_at);
+                if (this.eid == this.s[i].exercise_id) {
+                    return $sets[i].created_at;
+                }
+            }
+        },
+        calculateVolume: function calculateVolume($set) {
+            return $set.weight * $set.reps;
         }
     },
     beforeMount: function beforeMount() {

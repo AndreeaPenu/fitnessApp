@@ -58,6 +58,28 @@ a.py-2 {
 
 // Agenda
 
+span.is-event {
+  border-color: $secondary-color!important;
+  //background-color: $secondary-color!important;
+  & .selected-day {
+    background-color: $secondary-color!important;
+    border-color: $secondary-color!important;
+  }
+}
+
+.item.event.selected-day .date-num {
+  color: $white!important;
+}
+
+.item.event.selected-day .is-event {
+  background-color: $secondary-color!important;
+}
+
+.item.event .date-num {
+  color: $secondary-color!important;
+}
+
+
 .is-today {
   background-color: $secondary-color!important;
 }

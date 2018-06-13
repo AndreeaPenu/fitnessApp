@@ -10438,6 +10438,27 @@ a.py-2:hover {
   text-decoration: none;
 }
 
+span.is-event {
+  border-color: #5BC0BE !important;
+}
+
+span.is-event .selected-day {
+  background-color: #5BC0BE !important;
+  border-color: #5BC0BE !important;
+}
+
+.item.event.selected-day .date-num {
+  color: #FFFFFF !important;
+}
+
+.item.event.selected-day .is-event {
+  background-color: #5BC0BE !important;
+}
+
+.item.event .date-num {
+  color: #5BC0BE !important;
+}
+
 .is-today {
   background-color: #5BC0BE !important;
 }
