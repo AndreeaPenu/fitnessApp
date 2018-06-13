@@ -29,11 +29,11 @@
                                         @foreach($sets as $set)
                                             @if($set->exercise_id == $exercise->id && $set->reps != null)
                                             <ul>
-                                                <li> {{ $set->reps }} x {{ $set->weight }}kg . {{ $set->created_at->format('d/m/Y') }}</li>
+                                                <li> {{ $set->reps }} x {{ $set->weight }}kg . {{ $set->created_at }}</li>
                                             </ul>
                                             @endif
                                         @endforeach
-
+                                        <h6>Every set</h6>
                                         <workout-chart :s="{{$sets}}" :eid="{{$exercise->id}}"></workout-chart>
                             </li>
                         </ul>

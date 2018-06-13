@@ -50,8 +50,8 @@ class WorkoutsController extends Controller
         $workouts = Workout::with('exercises')->get();
         $exercises = Exercise::all();
         $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
-        $sets = Set::all();
-        $setsA =DB::table('sets')->where('exercise_id',3)->get();
+      //  $sets = Set::all();
+        $sets =DB::table('sets')->where('weight', '<>', '')->get();
 
          
         /* foreach($myWorkouts as $myWorkout){
@@ -66,7 +66,11 @@ class WorkoutsController extends Controller
             
         }
     */
-        return view('workouts.logs', compact('workouts','myWorkouts', 'exercises','sets','setsA'));
+      //  $firstDate = DB::table('sets')->orderBy('created_at','asc')->get();
+     //   var_dump($firstDate);
+
+      
+        return view('workouts.logs', compact('workouts','myWorkouts', 'exercises','sets'));
     }
 
 

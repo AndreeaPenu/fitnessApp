@@ -11,6 +11,9 @@
             return {
                 weights: [],
                 lbls: [],
+                firstDate: '',
+                lastDate: '',
+                volume: 0,
                 options: {
                 scales: {
                     yAxes: [{
@@ -53,15 +56,27 @@
         },
         methods: {
              addToArray(){    
-                
                 for(var i = 0; i < this.s.length; i++){
-                 if( this.eid == this.s[i].exercise_id){
+                 if(this.eid == this.s[i].exercise_id){
+                     
+                        this.firstDate = (this.s[0].created_at);
+                        this.lastDate = (this.s[this.s.length - 1].created_at);
+                        this.calculateVolume(this.s[i].weight, this.s[i].reps,this.s[i].created_at);
                         this.weights.push(this.s[i].weight);
                         this.lbls.push(this.s[i].created_at);
                     }
                   
                }
+            },
+            calculateVolume($weight, $reps, $created){
+             console.log(this.firstDate + ' first '  + $created +' created at');
+
+                if($created == this.firstDate){
+                        this.volume += ($weight * $reps);
+                }
+                 
             }
+
         },
         beforeMount(){
             this.addToArray()
