@@ -80932,7 +80932,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Line */],
-    props: ['s'],
+    props: ['s', 'eid'],
     data: function data() {
         return {
             weights: [],
@@ -80978,9 +80978,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addToArray: function addToArray() {
+
             for (var i = 0; i < this.s.length; i++) {
-                this.weights.push(this.s[i].weight);
-                this.lbls.push(this.s[i].created_at);
+                if (this.eid == this.s[i].exercise_id) {
+                    this.weights.push(this.s[i].weight);
+                    this.lbls.push(this.s[i].created_at);
+                }
             }
         }
     },

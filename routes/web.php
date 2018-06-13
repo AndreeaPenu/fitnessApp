@@ -42,6 +42,8 @@ Route::get('workouts/create/{id}', 'WorkoutsController@getExercises');
 Route::get('workouts/myworkouts/{id}', 'WorkoutsController@myWorkouts');
 
 Route::get('workouts/{id}/change', 'WorkoutsController@change');
+Route::get('workouts/logs/{id}', 'WorkoutsController@logs');
+Route::get('workouts/detail/{id}', 'WorkoutsController@detail');
 
 Route::post('workouts/create', 'WorkoutsController@create');
 Route::post('workouts/create/{id}', 'WorkoutsController@getExercises');

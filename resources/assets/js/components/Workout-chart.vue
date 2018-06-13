@@ -6,7 +6,7 @@
 
     export default {
         extends: Line,
-        props: ['s'],
+        props: ['s','eid'],
         data () {
             return {
                 weights: [],
@@ -52,10 +52,14 @@
             }, this.options)
         },
         methods: {
-             addToArray(){
+             addToArray(){    
+                
                 for(var i = 0; i < this.s.length; i++){
-                   this.weights.push(this.s[i].weight);
-                   this.lbls.push(this.s[i].created_at);
+                 if( this.eid == this.s[i].exercise_id){
+                        this.weights.push(this.s[i].weight);
+                        this.lbls.push(this.s[i].created_at);
+                    }
+                  
                }
             }
         },

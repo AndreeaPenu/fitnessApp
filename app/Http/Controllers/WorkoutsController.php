@@ -46,6 +46,43 @@ class WorkoutsController extends Controller
         return view('workouts.myworkouts', compact('workouts', 'userWorkouts'));
     }
 
+    public function logs(){
+        $workouts = Workout::with('exercises')->get();
+        $exercises = Exercise::all();
+        $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
+        $sets = Set::all();
+        $setsA =DB::table('sets')->where('exercise_id',3)->get();
+
+         
+        /* foreach($myWorkouts as $myWorkout){
+            $workout = Workout::findOrFail($myWorkout->id);
+            $exercises = $workout->exercises()->where('workout_id', $workout->id)->get();
+            foreach($exercises as $exercise){
+                $sets = $exercise->sets()->where('exercise_id', $exercise->id)->get();
+               // foreach($sets as $set){
+                  //  var_dump($set->created_at->format('d/m/Y'));
+               // }
+            } 
+            
+        }
+    */
+        return view('workouts.logs', compact('workouts','myWorkouts', 'exercises','sets','setsA'));
+    }
+
+
+    public function detail($id){
+        $workout = Workout::findOrFail($id);
+        $exercises = $workout->exercises()->where('workout_id', $workout->id)->get();
+        foreach($exercises as $exercise){
+            $sets = $exercise->sets()->where('exercise_id', $exercise->id)->get();
+           // foreach($sets as $set){
+              //  var_dump($set->created_at->format('d/m/Y'));
+           // }
+        } 
+
+        return view('workouts.detail', compact('workout','exercises','sets'));
+    }
+
     public function store(Request $request)
     {
         $workout = new Workout;
