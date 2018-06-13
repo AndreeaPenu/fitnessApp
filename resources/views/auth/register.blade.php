@@ -1,4 +1,8 @@
+@extends('layouts.dashboard')
 
+@section('content')
+
+<!-- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,19 +11,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>BMI Calculator</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
     
-    <!-- Google Fonts -->
+    
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800" rel="stylesheet"> 
     
-    <!-- custom CSS -->
+ 
     <link rel="stylesheet" type="text/css" href="css/animate.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
-<body>
+<body> -->
 
     <!-- app window -->
     <div id="app" class="animated fadeInUp" v-cloak>
@@ -113,7 +116,7 @@
                             </div>
                         </div>
 
-
+<!-- 
                          <div class="form-group">
                             <b-input-group prepend="Weight">
                                 <b-form-input v-if="weightSelected == 'kg'" v-model.number="weight" type="number" min=0 step="any" size="lg"></b-form-input>
@@ -153,7 +156,7 @@
                                     <div class="col bmi">
                                         @{{ bmi }}
                                     </div>
-                                </div>
+                                </div> -->
 
 
                         <div class="form-group row">
@@ -205,6 +208,7 @@
         </div>
     </div>
 </div>
+<!--
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
     <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
@@ -329,3 +333,6 @@
 
 </body>
 </html>
+-->
+
+@endsection
