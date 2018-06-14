@@ -12,8 +12,7 @@ export default {
     return {
       demoEvents: [],
       title: '',
-      desc: '',
-      xTimes: 0
+      desc: ''
     }
   },
   methods: {
@@ -22,21 +21,19 @@ export default {
         var moment = require('moment');
         var dateF = moment(this.sets[i].created_at).format('YYYY/MM/DD');
         
-           // this.title = this.getName(this.sets[i].exercise_id);
-          //  this.desc = this.sets[i].weight + 'x' + this.sets[i].reps;
-
-           // console.log(this.title + ' en ' + this.desc);
-           if(this.sets[i].exercise_id == this.sets[i+1].exercise_id){
-            this.title = this.getName(this.sets[i].exercise_id);
-            this.desc = this.sets[i].weight + 'x' + this.sets[i].reps + ' ' + this.sets[i+1].weight + 'x' + this.sets[i+1].reps;
-          } else if (this.sets[i].exercise_id != this.sets[i-1].exercise_id){
-            this.title = this.getName(this.sets[i].exercise_id);
-            this.desc = this.sets[i].weight + 'x' + this.sets[i].reps;
-          } else {
-            this.date = 'double'; 
-            this.title = 'double'; 
-            this.desc = 'double';
-          } 
+        if(this.sets[i].exercise_id == this.sets[i+1].exercise_id){
+          this.title = this.getName(this.sets[i].exercise_id);
+          this.desc = this.sets[i].weight + 'x' + this.sets[i].reps + ' ' + this.sets[i+1].weight + 'x' + this.sets[i+1].reps;
+        } 
+        else if (this.sets[i].exercise_id != this.sets[i-1].exercise_id){
+          this.title = this.getName(this.sets[i].exercise_id);
+          this.desc = this.sets[i].weight + 'x' + this.sets[i].reps;
+        } 
+        else {
+          this.date = 'double'; 
+          this.title = 'double'; 
+          this.desc = 'double';
+        } 
 
         if (this.date != 'double' || this.title != 'double' || this.desc !='double'){
           this.demoEvents.push({

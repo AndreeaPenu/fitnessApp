@@ -23,6 +23,37 @@ class ExercisesController extends Controller
         return view('admin.exercises.create', compact('sets'));
     }
 
+    public function show()
+    {
+       //
+    }
+
+    public function getExercises(){
+
+        $jsonurl = "https://www.primeboosting.com/api/exercise/getallexercises";
+        $json = file_get_contents($jsonurl);
+        $allExercises = json_decode($json, true);
+        
+        foreach($allExercises as $key => $exercise){
+            $name = $exercise['Name'];
+            $api_id = $exercise['ExerciseId'];
+            $muscle_group = $exercise['MuscleGroup'];
+            $exercise = new Exercise;
+            $exercise->api_id = $api_id;
+            $exercise->name = $name;
+            $exercise->muscle_group = $muscle_group;
+            $exercise->official = 1;
+            $exercise->save();
+            $set = new Set;
+            $set->reps = null;
+            $set->weight = null;
+            $set->exercise_id = $exercise->id;
+            $set->save();
+        }  
+
+      return view('admin.exercises.getExercises');
+    }
+
     public function store(Request $request)
     {
         $exercise = new Exercise;
@@ -35,7 +66,7 @@ class ExercisesController extends Controller
         $set->exercise_id = $exercise->id;
         $set->save();
 
-        return redirect('/admin/exercises');
+        return redirect('/workouts');
     }
 
     public function edit($id)

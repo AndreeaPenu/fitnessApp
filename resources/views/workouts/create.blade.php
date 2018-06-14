@@ -28,6 +28,7 @@
                             <input id="exercises{{$key+1}}" name="exercises[]" type="checkbox" value="{{$exercise->name}}"/>
                             <label for="exercises{{$key+1}}">{{ $exercise->name }}</label>
                         </div>
+                        {!! Form::hidden('muscle_group[]', $exercise->muscle_group) !!}
                     @endforeach
                 @endif
 

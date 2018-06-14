@@ -50,41 +50,9 @@ class WorkoutsController extends Controller
         $workouts = Workout::with('exercises')->get();
         $exercises = Exercise::all();
         $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
-      //  $sets = Set::all();
         $sets =DB::table('sets')->where('weight', '<>', '')->get();
-
-         
-        /* foreach($myWorkouts as $myWorkout){
-            $workout = Workout::findOrFail($myWorkout->id);
-            $exercises = $workout->exercises()->where('workout_id', $workout->id)->get();
-            foreach($exercises as $exercise){
-                $sets = $exercise->sets()->where('exercise_id', $exercise->id)->get();
-               // foreach($sets as $set){
-                  //  var_dump($set->created_at->format('d/m/Y'));
-               // }
-            } 
-            
-        }
-    */
-      //  $firstDate = DB::table('sets')->orderBy('created_at','asc')->get();
-     //   var_dump($firstDate);
-
       
         return view('workouts.logs', compact('workouts','myWorkouts', 'exercises','sets'));
-    }
-
-
-    public function detail($id){
-        $workout = Workout::findOrFail($id);
-        $exercises = $workout->exercises()->where('workout_id', $workout->id)->get();
-        foreach($exercises as $exercise){
-            $sets = $exercise->sets()->where('exercise_id', $exercise->id)->get();
-           // foreach($sets as $set){
-              //  var_dump($set->created_at->format('d/m/Y'));
-           // }
-        } 
-
-        return view('workouts.detail', compact('workout','exercises','sets'));
     }
 
     public function store(Request $request)
@@ -145,21 +113,18 @@ class WorkoutsController extends Controller
 
     public function addWorkout(Request $request, $id) {
         $uid = Auth::user()->id;
-        //duplicate workout
         $workout = Workout::findOrFail($id);
         $newWorkout = $workout->replicate();
         $newWorkout->user_id = $uid;
         $newWorkout->original = 1;
         $newWorkout->save();
 
-        //duplicate exercises
         foreach($workout->exercises()->get() as $e){
             $exercise = Exercise::with('sets')->where('exercises.id', $e->id)->first();
             $newExercise = $exercise->replicate();
             $newExercise->save();
             $newExercise->workouts()->sync($newWorkout);
  
-            //duplicate sets
             foreach($exercise->sets()->get() as $s){
                 $set = Set::where('sets.id', $s->id)->first();
                 $newSet = $set->replicate();
@@ -186,7 +151,6 @@ class WorkoutsController extends Controller
         $workout = Workout::findOrFail($id);
 
         return view('workouts.edit', compact('workout'));
-        
     }
 
     public function update(Request $request, $id)
@@ -197,7 +161,6 @@ class WorkoutsController extends Controller
         $workout->save();
 
         return redirect('workouts');
-
     }
 
     public function updateSet(Request $request,$id)

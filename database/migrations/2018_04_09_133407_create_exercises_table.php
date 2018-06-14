@@ -15,7 +15,9 @@ class CreateExercisesTable extends Migration
     {
         Schema::create('exercises', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('api_id')->nullable();
             $table->string('name');
+            $table->integer('muscle_group')->default(0);
             $table->boolean('official')->default(0);
             $table->timestamps();
             $table->softDeletes();

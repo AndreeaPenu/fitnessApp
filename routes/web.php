@@ -32,6 +32,8 @@ Route::group(['middleware' => 'admin'], function(){
 
 Route::resource('users','UsersController');
 
+Route::get('admin/exercises/getExercises/{id}','ExercisesController@getExercises');
+
 //workouts
 Route::resource('workouts','WorkoutsController');
 Route::get('workouts/{id}/add','WorkoutsController@addWorkout');
@@ -43,7 +45,6 @@ Route::get('workouts/myworkouts/{id}', 'WorkoutsController@myWorkouts');
 
 Route::get('workouts/{id}/change', 'WorkoutsController@change');
 Route::get('workouts/logs/{id}', 'WorkoutsController@logs');
-Route::get('workouts/detail/{id}', 'WorkoutsController@detail');
 
 Route::post('workouts/create', 'WorkoutsController@create');
 Route::post('workouts/create/{id}', 'WorkoutsController@getExercises');
