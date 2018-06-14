@@ -38,7 +38,7 @@ class HomeController extends Controller
         $workouts = Workout::with('exercises')->get();
         $exercises = Exercise::all();
         $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
-        $sets = Set::all();
+        $sets =DB::table('sets')->where('weight', '<>', '')->get();
   
         return view('agenda', compact('workouts', 'myWorkouts', 'exercises','sets'));
     }

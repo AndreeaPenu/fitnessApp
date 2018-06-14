@@ -1,6 +1,5 @@
 <script>
     import { Line } from 'vue-chartjs';
- 
     export default {
         extends: Line,
         props: ['s','eid'],
@@ -56,26 +55,22 @@
                 var currentDate = this.firstDate;
                 for(var i = 0; i < this.s.length; i++){
                     if(this.eid == this.s[i].exercise_id){
+
                         if(this.s[i].created_at.split(' ')[0] == currentDate.split(' ')[0]){
                             this.currentVolume += this.calculateVolume(this.s[i]);
                         }                      
-                            if(this.s[i+1] != null && this.s[i+1].created_at.split(' ')[0] != currentDate.split(' ')[0]) {
-                                this.data.push(this.currentVolume);
-                                this.labels.push(currentDate.split(' ')[0]);
-                                //console.log("Volume:" + this.currentVolume + " voor dag " + this.firstDate);
-                                this.currentVolume = 0;
-                               
-                               //this.firstDate = this.s[i+1].created_at.split(' ')[0];
-                               currentDate = this.s[i+1].created_at.split(' ')[0];
-                                //console.log('firstdate:' + this.firstDate + ' created_at:' + this.s[i+1].created_at);
-                            } 
-                            console.log(this.s[i].created_at.split(' ')[0]);
-                            console.log(this.lastDate.split(' ')[0]);
-                            if(this.s[i].created_at.split(' ')[0] == this.lastDate.split(' ')[0] && this.s[i+1] == null){
-                                console.log("einde loop");
-                                this.data.push(this.currentVolume);
-                                this.labels.push(currentDate.split(' ')[0]);
-                            }
+                        
+                        if(this.s[i+1] != null && this.s[i+1].created_at.split(' ')[0] != currentDate.split(' ')[0]) {
+                            this.data.push(this.currentVolume);
+                            this.labels.push(currentDate.split(' ')[0]);
+                            this.currentVolume = 0;
+                            currentDate = this.s[i+1].created_at.split(' ')[0];
+                        } 
+             
+                        if(this.s[i].created_at.split(' ')[0] == this.lastDate.split(' ')[0] && this.s[i+1] == null){
+                            this.data.push(this.currentVolume);
+                            this.labels.push(currentDate.split(' ')[0]);
+                        }
                     }
                }
             },
@@ -96,7 +91,6 @@
             calculateVolume($set){
                 return $set.weight * $set.reps;
             }
- 
         },
         beforeMount(){
             this.addToArray()

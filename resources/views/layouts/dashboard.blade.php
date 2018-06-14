@@ -15,13 +15,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+    <script src="/node_modules/jquery-nice-select/js/jquery.nice-select.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link href="/node_modules/jquery-nice-select/css/nice-select.css"/>
 
-        <!-- Custom -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- Custom -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div id="app">

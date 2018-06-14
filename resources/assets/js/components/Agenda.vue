@@ -7,26 +7,44 @@
 <script>
 export default {
   name: 'agenda',
-  props: ['workouts'],
+  props: ['sets','exercises'],
   data () {
     return {
-      demoEvents: []
+      demoEvents: [],
+      title: '',
+      desc: ''
     }
   },
   methods: {
     addToArray(){
-      for(var i = 0; i < this.workouts.length; i++){
-
+      for(var i = 0; i < this.sets.length; i++){
         var moment = require('moment');
-        var dateF = moment(this.workouts[i].created_at).format('YYYY/MM/DD');
-        console.log(dateF);
+        var dateF = moment(this.sets[i].created_at).format('YYYY/MM/DD');
         
-        this.demoEvents.push({
-          date: moment(this.workouts[i].created_at).format('YYYY/MM/DD'),
-          title: this.workouts[i].title,
-          desc: this.workouts[i].description
-        })
+          if(this.sets[i].exercise_id == this.sets[i+1].exercise_id){
+            this.title = this.exercises[this.sets[i+1].exercise_id].name;
+            this.desc = this.sets[i].weight + 'x' + this.sets[i].reps + ' ' + this.sets[i+1].weight + 'x' + this.sets[i+1].reps;
+          } else if (this.sets[i].exercise_id != this.sets[i-1].exercise_id){
+            this.title = this.exercises[this.sets[i].exercise_id].name;
+            this.desc = this.sets[i].weight + 'x' + this.sets[i].reps;
+          } else {
+            this.date = 'double'; 
+            this.title = 'double'; 
+            this.desc = 'double';
+          }
+
+        if (this.date != 'double' || this.title != 'double' || this.desc !='double'){
+          this.demoEvents.push({
+            date: moment(this.sets[i].created_at).format('YYYY/MM/DD'),
+            title: this.title,
+            desc: this.desc
+          })
+        }
     }
+  },
+
+  getName(){
+
   }
 },
 beforeMount(){
