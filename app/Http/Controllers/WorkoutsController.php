@@ -196,7 +196,7 @@ class WorkoutsController extends Controller
         $workout->update($input);
         $workout->save();
 
-        return redirect('workouts.edit');
+        return redirect('workouts');
 
     }
 

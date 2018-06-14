@@ -12,7 +12,8 @@ export default {
     return {
       demoEvents: [],
       title: '',
-      desc: ''
+      desc: '',
+      xTimes: 0
     }
   },
   methods: {
@@ -21,17 +22,21 @@ export default {
         var moment = require('moment');
         var dateF = moment(this.sets[i].created_at).format('YYYY/MM/DD');
         
-          if(this.sets[i].exercise_id == this.sets[i+1].exercise_id){
-            this.title = this.exercises[this.sets[i+1].exercise_id].name;
+           // this.title = this.getName(this.sets[i].exercise_id);
+          //  this.desc = this.sets[i].weight + 'x' + this.sets[i].reps;
+
+           // console.log(this.title + ' en ' + this.desc);
+           if(this.sets[i].exercise_id == this.sets[i+1].exercise_id){
+            this.title = this.getName(this.sets[i].exercise_id);
             this.desc = this.sets[i].weight + 'x' + this.sets[i].reps + ' ' + this.sets[i+1].weight + 'x' + this.sets[i+1].reps;
           } else if (this.sets[i].exercise_id != this.sets[i-1].exercise_id){
-            this.title = this.exercises[this.sets[i].exercise_id].name;
+            this.title = this.getName(this.sets[i].exercise_id);
             this.desc = this.sets[i].weight + 'x' + this.sets[i].reps;
           } else {
             this.date = 'double'; 
             this.title = 'double'; 
             this.desc = 'double';
-          }
+          } 
 
         if (this.date != 'double' || this.title != 'double' || this.desc !='double'){
           this.demoEvents.push({
@@ -42,9 +47,13 @@ export default {
         }
     }
   },
-
-  getName(){
-
+  getName($exercise_id){
+    for(var i = 0; i < this.exercises.length ; i++){
+       if(this.exercises[i].id == $exercise_id){
+        return this.exercises[i].name;
+       
+      }
+    }
   }
 },
 beforeMount(){
