@@ -30,8 +30,10 @@
                                             @endif
                                         @endforeach
                                         <h6>Every set</h6>
-                                        <workout-chart :s="{{$sets}}" :eid="{{$exercise->id}}"></workout-chart>
-                                    </li>
+                                        <div class="app">
+                                            <workout-chart chart-id="{{$exercise->id}}" :s="{{$sets}}" :eid="{{$exercise->id}}"></workout-chart>
+                                        </div>
+                                     </li>
                                 </ul>
                             @endif
                         @endforeach

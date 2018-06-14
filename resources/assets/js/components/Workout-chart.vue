@@ -55,24 +55,24 @@
                 var currentDate = this.firstDate;
                 for(var i = 0; i < this.s.length; i++){
                     if(this.eid == this.s[i].exercise_id){
-
-                        if(this.s[i].created_at.split(' ')[0] == currentDate.split(' ')[0]){
-                            this.currentVolume += this.calculateVolume(this.s[i]);
-                        }                      
-                        
-                        if(this.s[i+1] != null && this.s[i+1].created_at.split(' ')[0] != currentDate.split(' ')[0]) {
-                            this.data.push(this.currentVolume);
-                            this.labels.push(currentDate.split(' ')[0]);
-                            this.currentVolume = 0;
-                            currentDate = this.s[i+1].created_at.split(' ')[0];
-                        } 
-             
-                        if(this.s[i].created_at.split(' ')[0] == this.lastDate.split(' ')[0] && this.s[i+1] == null){
-                            this.data.push(this.currentVolume);
-                            this.labels.push(currentDate.split(' ')[0]);
-                        }
+                       this.currentVolume = this.calculateVolume(this.s[i]);
+                       this.data.push(this.currentVolume); 
+                       this.labels.push(this.s[i].created_at.split(' ')[0]);  
+                       currentDate=this.s[i+1].created_at.split(' ')[0];
+                       if(this.s[i+1] !=null){
+                           //this.labels.push(this.s[i+1].created_at.split(' ')[0]);
+                       } else {
+                           //this.labels.push(this.s[i].created_at.split(' ')[0]);
+                       }
                     }
                }
+               var dupes = {};
+               this.labels.forEach((item,index) => {
+                dupes[item] = dupes[item] || [];
+                dupes[item].push(index);
+            });   
+            for(let name in dupes) console.log(name+'->indexes->'+dupes+'->count->'+dupes.length)
+            
             },
             getStartDate($sets){
                 for(var i=0; i< $sets.length; i++){

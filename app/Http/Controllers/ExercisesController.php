@@ -44,11 +44,11 @@ class ExercisesController extends Controller
             $exercise->muscle_group = $muscle_group;
             $exercise->official = 1;
             $exercise->save();
-            $set = new Set;
+       /*      $set = new Set;
             $set->reps = null;
             $set->weight = null;
             $set->exercise_id = $exercise->id;
-            $set->save();
+            $set->save(); */
         }  
 
       return view('admin.exercises.getExercises');

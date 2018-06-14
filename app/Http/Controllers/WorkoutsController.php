@@ -38,7 +38,6 @@ class WorkoutsController extends Controller
         return view('workouts.change', compact('workout','exercises','sets'));
     }
 
-
     public function myWorkouts($id) {
         $workouts = DB::table('workouts')->where('original','1')->get();
         $userWorkouts = DB::table('workouts')->where('user_id', auth()->id())->where('deleted_at',null)->get();
@@ -69,10 +68,10 @@ class WorkoutsController extends Controller
             $exercise->name = $exercises;
             $exercise->save();
             $workout->exercises()->save($exercise);
-            $set = new Set;
+   /*          $set = new Set;
             $set->exercise_id = $exercise->id;
             $set->save();
-            $exercise->sets()->save($set);
+            $exercise->sets()->save($set); */
         }
 
         return redirect('workouts');
@@ -139,11 +138,11 @@ class WorkoutsController extends Controller
 
     public function addSet($id){
         //id is van exercise
-        $set = new Set;
+      /*   $set = new Set;
         $set->exercise_id = $id;
-        $set->save();
+        $set->save(); */
 
-        return redirect()->back();
+      //  return redirect()->back();
     }
 
     public function edit($id)
@@ -165,13 +164,17 @@ class WorkoutsController extends Controller
 
     public function updateSet(Request $request,$id)
     {
+
+
         foreach($request->exercise_id as $key => $e){
-            $exercise = Exercise::findOrFail($e);
-            $set = new Set;
-            $set->exercise_id = $exercise->id;
-            $set->weight = $request->weight[$key];
-            $set->reps = $request->reps[$key];
-            $set->save();
+            if($request->weight[$key] != 0 || $request->weight[$key] != null){
+                $exercise = Exercise::findOrFail($e);
+                $set = new Set;
+                $set->exercise_id = $exercise->id;
+                $set->weight = $request->weight[$key];
+                $set->reps = $request->reps[$key];
+                $set->save();
+            }
         }
 
         return redirect()->back();
