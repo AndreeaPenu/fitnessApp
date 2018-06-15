@@ -12,11 +12,7 @@
             <h4>{{$workout->description}}</h4>
         </div>
 
-        <div class="col-md-1">
 
-        {!! Form::submit('Save', ['class'=>'btn btn-success']) !!}
-        
-        </div>
     </div>
     </br>
     <!-- show exercises here -->
@@ -24,34 +20,50 @@
         @foreach($exercises as $exercise)
     <div class="card">
         <div class="card-header">
-            <h1>{{ $exercise->name }}</h1> 
+            {{ $exercise->name }}
         </div>
         <div class="card-body">
                 <!-- show sets here -->
                
                      
                         
-                            <div>
+                            <div class="row">
                                 <input type="hidden" name="exercise_id[]" value="{{$exercise->id}}"/>
-                               
-                                <label for="weight">Weight:</label> 
-                                <input type="text" name="weight[]" value=""/> 
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="weight">Weight:</label> 
+                                        <input class="form-control" type="text" name="weight[]" value=""/> 
+                                    </div>
+                                </div>
                                 
-                                <label for="reps">Reps:</label>
-                                <input type="text" name="reps[]" value=""/>
+                               
+                                
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="reps">Reps:</label>
+                                        <input class="form-control" type="text" name="reps[]" value=""/>
+                                    </div>
+                                </div>
+                          
                                 
 
                             </div>
                 
                                
-                           
-                    <input type="button" class="btn btn-primary" onclick="addSet({{$exercise->id}})" id="{{$exercise->id}}" value="Add set"/>            
-        </div>
+                          <div class="to-right">
+                            <input type="button" class="btn btn-primary" onclick="addSet({{$exercise->id}})" id="{{$exercise->id}}" value="Add set"/>            
+      
+                          </div> 
+          </div>
     </div>
        @endforeach
     @endif
       
-  
+    <div class="to-right">
+
+{!! Form::submit('Save', ['class'=>'btn btn-success']) !!}
+
+</div>
      
 </div>  
     

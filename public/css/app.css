@@ -10425,17 +10425,28 @@ a:hover {
 }
 
 .site-header {
-  background-color: #332560;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
 }
 
 a.py-2 {
-  color: #c6c0d8 !important;
+  color: #4A368B;
   text-transform: uppercase;
 }
 
 a.py-2:hover {
-  color: #FFFFFF !important;
+  color: #5BC0BE !important;
   text-decoration: none;
+}
+
+.active:before {
+  content: '';
+  position: absolute;
+  top: 73px;
+  border-bottom: 2px solid #5BC0BE;
+  width: 80px;
+  height: 2px;
 }
 
 span.is-event {
@@ -10460,7 +10471,7 @@ span.is-event .selected-day {
 }
 
 .is-today {
-  background-color: #5BC0BE !important;
+  background-color: #4A368B !important;
 }
 
 .cal-body {
@@ -10468,7 +10479,7 @@ span.is-event .selected-day {
 }
 
 .cal-header {
-  background-color: #5BC0BE !important;
+  background-color: #4A368B !important;
   color: #FFFFFF;
 }
 
@@ -10488,8 +10499,14 @@ span.is-event .selected-day {
 
 .__vev_calendar-wrapper .events-wrapper .date {
   background-color: transparent !important;
-  color: #323232 !important;
+  color: #4A368B !important;
   text-transform: uppercase;
+}
+
+.__vev_calendar-wrapper .container.site-header-links {
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
 }
 
 .__vev_calendar-wrapper .events-wrapper .cal-events {
@@ -10506,6 +10523,11 @@ span.is-event .selected-day {
   border: 0;
 }
 
+.modal-header {
+  border: 0;
+  color: #4A368B;
+}
+
 .card {
   margin-bottom: 10px;
   -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
@@ -10515,6 +10537,9 @@ span.is-event .selected-day {
 
 .card-header {
   background-color: #FFFFFF !important;
+  border: 0;
+  color: #4A368B;
+  font-size: 20px;
 }
 
 .card-header h1 {
@@ -10581,8 +10606,14 @@ span.is-event .selected-day {
   margin-right: 300px;
 }
 
+.to-right {
+  text-align: right;
+  margin: 0 0 1.5rem 0;
+}
+
 .btn {
   text-transform: uppercase;
+  padding: 8px 30px;
   /*   &:after {
     content: '';
     background-image: url(/images/right-arrow.svg);

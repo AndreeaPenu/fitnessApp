@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Dumbel</title>
 
     <!-- Scripts -->
     
@@ -23,7 +23,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
+        
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    
     <!-- Custom -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
@@ -40,7 +43,7 @@
     <script>
 
 function addSet(id){
-    $("#setForm").find('#'+id).before('<input type="hidden" name="exercise_id[]" value="'+ id + '"/>').before('<label for="weight">Weight:</label><input type="text" name="weight[]">').before('<label for="reps">Reps:</label><input type="text" name="reps[]">');
+    $("#setForm").find('#'+id).before('<div class="row"><input type="hidden" name="exercise_id[]" value="'+ id + '"/><div class="col"><div class="form-group"><label for="weight">Weight:</label><input class="form-control" type="text" name="weight[]"></div></div><div class="col"><div class="form-group"><label for="reps">Reps:</label><input class="form-control" type="text" name="reps[]"></div></div></div>');
 }
 
     </script>

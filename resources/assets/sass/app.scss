@@ -44,15 +44,29 @@ a {
 
 // Nav
 .site-header {
-  background-color: #332560;
+  background-color: white;//#332560;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
 }
 
 a.py-2 {
-  color: #c6c0d8!important;
+  color: $primary-color;//#c6c0d8!important;
   text-transform: uppercase;
   &:hover {
-    color: $white!important;
+    color: $secondary-color!important;
     text-decoration: none;
+  }
+}
+
+.active {
+  &:before{
+    content: '';
+    position: absolute;
+    top: 73px;
+    border-bottom: 2px solid $secondary-color;
+    width: 80px;
+    height: 2px;
   }
 }
 
@@ -81,14 +95,14 @@ span.is-event {
 
 
 .is-today {
-  background-color: $secondary-color!important;
+  background-color: $primary-color!important;
 }
 .cal-body {
   background-color: $white;
 }
 
 .cal-header {
-  background-color: $secondary-color!important;
+  background-color: $primary-color!important;
   color: $white;
 }
 
@@ -105,9 +119,13 @@ span.is-event {
     background-color: transparent!important;
     & .date {
       background-color: transparent!important;
-      color: $lighter-black!important;
+      color: $primary-color!important;
       text-transform: uppercase;
     }
+  }
+
+  .container.site-header-links {
+    align-items: center!important;
   }
 
   & .events-wrapper .cal-events {
@@ -125,6 +143,12 @@ span.is-event {
   }
 }
 
+// Modal
+
+.modal-header {
+  border: 0;
+  color: $primary-color;
+}
 // Card
 
 .card {
@@ -137,6 +161,9 @@ span.is-event {
 
 .card-header {
   background-color: $white!important;
+  border: 0;
+  color: $primary-color;
+  font-size: 20px;
   & h1 {
     color: $lighter-black!important;
   }
@@ -205,8 +232,14 @@ span.is-event {
   margin-right: 300px;
 }
 
+.to-right {
+  text-align:right;
+  margin: 0 0 1.5rem 0;
+}
+
 .btn {
   text-transform: uppercase;
+  padding: 8px 30px;
 /*   &:after {
     content: '';
     background-image: url(/images/right-arrow.svg);

@@ -22,6 +22,25 @@
                          <p>Hi, my name is {{ $user->name }}</p>
                 <p>Gender: {{ $user->gender }}</p>
                 <p>Age: {{ $user->age }}</p>
+
+  @if($user->id != Auth::user()->id)
+                  <?php 
+                                            $check = DB::table('friendships')
+                                            ->where('user_requested', '=', $user->id)
+                                            ->where('requester', '=', Auth::user()->id)
+                                            ->first();
+                                            if($check == '') {
+                                                ?>   
+                                            
+                                            
+                                            <a href="{{ url('/') }}/addFriend/{{ $user->id }}" class="btn btn-secondary">Send request</a>
+                                                <?php } else { ?>
+                                                   <p>Request sent</p>
+                                                <?php  }?>
+
+                            @endif
+
+               
                     </div>
                
                 </div>
@@ -29,15 +48,19 @@
                
 
             @if($user->id == Auth::user()->id)
+
                 <p>Height: {{ $user->height }} cm</p>
                 @if($weight)
                 <p>Weight: {{ $weight->weight }} kg</p> 
                 @endif
                <!-- <a href="{{ url('/admin/users/' . $user->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a> -->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                New weight entry
-                </button>
+                <div class="to-right">
+                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        New weight entry
+                    </button>
+                </div>
+               
                 
                   <div id="app" class="mt-4">
                     <line-chart :w="{{ $weights }}"></line-chart>
@@ -53,7 +76,7 @@
             <div class="card-body">
             <table style="width:100%" class="w3-table w3-striped">
                 <tr>
-                    <th>ID</th>
+              
                     <th>Title</th>
                     <th>Description</th>
                 </tr>
@@ -61,7 +84,7 @@
                     @foreach($workouts as $workout)
                      @if($workout->user_id == $user->id)
                     <tr>
-                        <td>{{ $workout->id }}</td>
+                      
                         <td>{{ $workout->title }}</td>
                         <td>{{ $workout->description }}</td>
                        

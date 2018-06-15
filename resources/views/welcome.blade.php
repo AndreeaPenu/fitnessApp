@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Dumbel</title>
+         <title>Dumbel</title>
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -16,6 +16,9 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+        
         <!-- Custom -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         </head>
@@ -23,8 +26,7 @@
 
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="/images/dumbel-white.svg" width="30" height="30" class="d-inline-block align-top" alt="dumbel">
-            Dumbel
+            <img src="/images/Dumbel-Logo-White.svg" width="80" height="50" class="d-inline-block align-top" alt="dumbel">
         </a>
         <ul class="nav justify-content-end">
             <li class="nav-item">

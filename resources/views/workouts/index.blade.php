@@ -7,11 +7,22 @@
             <p>{{ session('deleted_workout') }}</p>
         @endif
 
+ 
+            <div class="to-right">
+       
+                    <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-primary">Create new workout</a>
+                                
+         
+                    <a href="{{ url('workouts/myworkouts/1') }}" class="btn btn-xs btn-secondary">All my workouts</a>
+               
+          
+                    <a href="{{ url('workouts/logs/1') }}" class="btn btn-xs btn-secondary">Logs</a>
+                  
+            </div>
+          
 
-        <h1>Workouts <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-primary pull-right">Create new workout</a>
-                <a href="{{ url('workouts/myworkouts/1') }}" class="btn btn-xs btn-secondary pull-right">All my workouts</a>
-                <a href="{{ url('workouts/logs/1') }}" class="btn btn-xs btn-secondary pull-right">Logs</a>
-</h1>
+            
+
              @if($userWorkouts)
                         @foreach($userWorkouts as $userWorkout)
         <div class="card">

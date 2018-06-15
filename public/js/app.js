@@ -67778,15 +67778,16 @@ var staticRenderFns = [
         "div",
         {
           staticClass:
-            "container d-flex flex-column flex-md-row justify-content-between"
+            "container site-header-links d-flex flex-column flex-md-row justify-content-between",
+          staticStyle: { "align-items": "center" }
         },
         [
           _c("a", { staticClass: "py-2", attrs: { href: "/" } }, [
             _c("img", {
               attrs: {
-                src: "/images/dumbel-white.svg",
-                width: "24",
-                height: "24"
+                src: "/images/Dumbel-Logo-Color.svg",
+                width: "80",
+                height: "50"
               }
             })
           ]),
@@ -67794,7 +67795,7 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "py-2 d-none d-md-inline-block",
+              staticClass: "py-2 d-none d-md-inline-block active",
               attrs: { href: "/workouts" }
             },
             [_vm._v("Workouts")]

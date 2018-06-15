@@ -4,7 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <a href="{{ url('/') }}/users" class="btn btn-secondary">Find Friends</a>
+            <div class="to-right">
+                    <a href="{{ url('/') }}/users" class="btn btn-secondary">Find Friends</a>
+            </div>
+    
 
         <div class="card">
             <div class="card-header">

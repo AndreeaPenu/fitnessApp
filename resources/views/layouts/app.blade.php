@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Dumbel</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,15 +17,17 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
-        <!-- Custom -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    
+    <!-- Custom -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="#">
-                <img src="/images/dumbel-white.svg" width="30" height="30" class="d-inline-block align-top" alt="dumbel">
-                Dumbel
+                <img src="/images/Dumbel-Logo-White.svg" width="80" height="50" class="d-inline-block align-top" alt="dumbel">
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
