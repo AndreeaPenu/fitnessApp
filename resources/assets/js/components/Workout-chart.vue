@@ -58,20 +58,45 @@
                        this.currentVolume = this.calculateVolume(this.s[i]);
                        this.data.push(this.currentVolume); 
                        this.labels.push(this.s[i].created_at.split(' ')[0]);  
-                       currentDate=this.s[i+1].created_at.split(' ')[0];
-                       if(this.s[i+1] !=null){
-                           //this.labels.push(this.s[i+1].created_at.split(' ')[0]);
-                       } else {
+                       currentDate=this.s[i].created_at.split(' ')[0];
+                       if(this.s[i+1] ==null){
                            //this.labels.push(this.s[i].created_at.split(' ')[0]);
+                       } else {
+                           //this.labels.push(this.s[i+1].created_at.split(' ')[0]);
                        }
                     }
                }
-               var dupes = {};
-               this.labels.forEach((item,index) => {
-                dupes[item] = dupes[item] || [];
-                dupes[item].push(index);
-            });   
-            for(let name in dupes) console.log(name+'->indexes->'+dupes+'->count->'+dupes.length)
+
+
+               var map = {};
+
+                for (var i = 0; i < this.labels.length; i++) {
+                    var element = this.labels[i];
+                    if (!map[element]) {
+                        map[element] = [i];
+                    }
+                    else {
+                        map[element].push(i);
+                    }
+                }
+
+                var newData = [];
+                var newLabels = [];
+                var volume = 0;
+                for (var i = 0; i < Object.keys(map).length; i++) {
+                    volume = 0;
+                    for (var j = 0; j < Object.values(map)[i].length; j++) {
+                        volume += this.data[Object.values(map)[i][j]];
+                    }
+                    newData.push(volume);
+                }
+
+
+                function onlyUnique(value, index, self) { 
+                    return self.indexOf(value) === index;
+                }
+                    this.labels = this.labels.filter(onlyUnique);
+                    this.data = newData;
             
             },
             getStartDate($sets){
