@@ -10468,6 +10468,11 @@ a.py-2:hover {
   height: 10px;
 }
 
+.arrow-back {
+  height: 20px;
+  width: 50px;
+}
+
 span.is-event {
   border-color: #5BC0BE !important;
 }

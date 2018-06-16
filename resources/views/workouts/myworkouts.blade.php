@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h2>My workouts <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-info pull-right">Create new workout</a></h2>
+      My workouts   
     </div>
 
     <div class="card-body">
@@ -22,8 +22,8 @@
                             <tr>
                                 <td>{{ $userWorkout->title }}</td>
                                 <td>{{ $userWorkout->description }}</td>
-                                <td> <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a></td>
-                       <td> <a href="{{ url('workouts/' . $userWorkout->id . '/change') }}" class="btn btn-xs btn-primary pull-right">edit</a></td>
+                                <td> <a href="{{ url('workouts/' . $userWorkout->id . '') }}" class="btn btn-xs btn-primary pull-right">start</a>
+                     <a href="{{ url('workouts/' . $userWorkout->id . '/change') }}" class="btn btn-xs btn-secondary pull-right">edit</a></td>
                             </tr>
                     @endforeach
                 @endif

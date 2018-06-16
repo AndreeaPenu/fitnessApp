@@ -56,7 +56,7 @@
             <h3>thank yourself.</h3>
         </div>
 
-    <button class="btn btn-lg btn-primary btn-right">Get started</button>
+    <a href="{{ route('login') }}" class="btn btn-lg btn-primary btn-right">Get started</a>
     </div>
 
     <div class="about_you">

@@ -153,6 +153,11 @@ class WorkoutsController extends Controller
 
     public function updateSet(Request $request,$id)
     {
+        $validatedData = $request->validate([
+            'weight' => 'integer',
+            'reps' => 'integer',
+        ]);
+        
         foreach($request->exercise_id as $key => $e){
             if($request->weight[$key] != 0 || $request->weight[$key] != null){
                 $exercise = Exercise::findOrFail($e);
