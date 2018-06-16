@@ -39,7 +39,7 @@ class HomeController extends Controller
         $exercises = Exercise::all();
         $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
         $sets =DB::table('sets')->where('weight', '<>', '')->get();
-  
+
         return view('agenda', compact('workouts', 'myWorkouts', 'exercises','sets'));
     }
 

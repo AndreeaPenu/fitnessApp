@@ -50,10 +50,9 @@
                             </div>
                 
                                
-                          <div class="to-right">
-                            <input type="button" class="btn btn-primary" onclick="addSet({{$exercise->id}})" id="{{$exercise->id}}" value="Add set"/>            
+                        <input type="button" class="btn btn-primary" onclick="addSet({{$exercise->id}})" id="{{$exercise->id}}" value="Add set"/>            
       
-                          </div> 
+                     
           </div>
     </div>
        @endforeach

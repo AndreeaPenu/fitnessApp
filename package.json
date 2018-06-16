@@ -25,6 +25,7 @@
         "chart.js": "^2.7.2",
         "gulp": "^3.9.1",
         "jquery-nice-select": "^1.1.0",
+        "mavigator": "^1.1.0",
         "moment": "^2.22.2",
         "vue-chartjs": "^3.3.1",
         "vue-event-calendar": "^1.5.2"

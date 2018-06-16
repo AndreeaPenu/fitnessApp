@@ -50,6 +50,28 @@ a {
   box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
 }
 
+.bg-dark{
+  background-color: $white!important;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+}
+
+.navbar-light .nav-link {
+  color: $primary-color!important;
+  &:hover {
+    color: $secondary-color!important;
+  }
+  .active {
+    color: $secondary-color!important;
+  }
+}
+
+.navbar-light .navbar-toggler {
+  color: $primary-color;
+  border: 0;
+}
+
 a.py-2 {
   color: $primary-color;//#c6c0d8!important;
   text-transform: uppercase;
@@ -521,4 +543,14 @@ box-sizing: border-box;
 code {
 background-color: #9AA3AC;
 padding: 0 8px;
+}
+
+input[type="text"].form-control, input[type="email"].form-control, input[type="password"].form-control{
+  border-radius: 0;
+}
+
+.form-control {
+  border: 1px solid $white;
+  border-bottom: 1px solid lightgray;
+  border-radius: 0px;
 }

@@ -3,13 +3,14 @@
 @section('content')
 
 <div class="container">
+{!! Form::open(['method'=>'POST','action'=>'WorkoutsController@store']) !!}
+    {{ csrf_field() }}
     <div class="card">
         <div class="card-header">
             <h1>Create new Workout</h1>
         </div>
         <div class="card-body">
-    {!! Form::open(['method'=>'POST','action'=>'WorkoutsController@store']) !!}
-    {{ csrf_field() }}
+
                 <div class="form-group">
                     {!! Form::label('title', 'Title:') !!}
                     {!! Form::text('title', null, ['class'=>'form-control']) !!}
@@ -32,10 +33,6 @@
                     @endforeach
                 @endif
 
-                <div class="form-group">
-                    {!! Form::submit('Create Workout', ['class'=>'btn btn-primary']) !!}
-                </div>
-            {!! Form::close() !!}
             
             @if(count($errors) > 0)
                 <div class="alert alert-danger">
@@ -46,7 +43,15 @@
                     </ul>
                 </div>
             @endif
-        </div>
+
+            
+     
+        </div>       
     </div>
+
+                <div class="to-right">
+                    {!! Form::submit('Create Workout', ['class'=>'btn btn-primary']) !!}
+                </div>
+            {!! Form::close() !!}
 </div>   
 @endsection

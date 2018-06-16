@@ -35,7 +35,7 @@
                                             
                                             <a href="{{ url('/') }}/addFriend/{{ $user->id }}" class="btn btn-secondary">Send request</a>
                                                 <?php } else { ?>
-                                                   <p>Request sent</p>
+                                                  
                                                 <?php  }?>
 
                             @endif
@@ -69,6 +69,7 @@
             </div>
         </div>
         @if($user->id != Auth::user()->id)
+    
         <div class="card">
             <div class="card-header">
                 My workouts

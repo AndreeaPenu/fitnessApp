@@ -67795,7 +67795,7 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "py-2 d-none d-md-inline-block active",
+              staticClass: "py-2 d-none d-md-inline-block",
               attrs: { href: "/workouts" }
             },
             [_vm._v("Workouts")]
@@ -67822,7 +67822,7 @@ var staticRenderFns = [
           _c(
             "a",
             {
-              staticClass: "py-2 d-none d-md-inline-block",
+              staticClass: "py-2 d-none d-md-inline-block active",
               attrs: { href: "/users" }
             },
             [_vm._v("Profile")]

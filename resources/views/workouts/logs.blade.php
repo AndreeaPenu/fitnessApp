@@ -4,14 +4,14 @@
 
 <div class="container">
 
-    <h1>Workouts I did</h1>
+   
     @foreach($myWorkouts as $myWorkout)
         @if($myWorkout->deleted_at == null)
     
             <div class="card">
                 <div class="card-header">
                     <ul>
-                        <li><h1>{{ $myWorkout->title }} - {{ $myWorkout->description }}</h1></li>
+                        <li>{{ $myWorkout->title }} - {{ $myWorkout->description }}</li>
                     </ul>
                 </div>
     
@@ -21,7 +21,7 @@
                             @if($myWorkout->id == $exercise->pivot->workout_id)
                                 <ul>
                                     <li>
-                                        <h3>{{ $exercise->name }}</h3>
+                                        <h5>{{ $exercise->name }}</h5>
                                         @foreach($sets as $set)
                                             @if($set->exercise_id == $exercise->id && $set->reps != null)
                                                 <ul>
@@ -29,7 +29,7 @@
                                                 </ul>
                                             @endif
                                         @endforeach
-                                        <h6>Every set</h6>
+                                  
                                         <div class="app">
                                             <workout-chart chart-id="{{$exercise->id}}" :s="{{$sets}}" :eid="{{$exercise->id}}"></workout-chart>
                                         </div>
