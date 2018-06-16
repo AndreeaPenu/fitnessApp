@@ -62,9 +62,6 @@ a {
   &:hover {
     color: $secondary-color!important;
   }
-  .active {
-    color: $secondary-color!important;
-  }
 }
 
 .navbar-light .navbar-toggler {
@@ -88,7 +85,7 @@ a.py-2 {
     top: 73px;
     border-bottom: 2px solid $secondary-color;
     width: 80px;
-    height: 2px;
+    height: 10px;
   }
 }
 

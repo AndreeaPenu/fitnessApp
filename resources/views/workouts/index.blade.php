@@ -4,8 +4,23 @@
 
     <div class="container">
             @if(Session::has('deleted_workout'))
-            <p>{{ session('deleted_workout') }}</p>
-        @endif
+                <div class="alert alert-danger" role="alert">
+                    {{ session('deleted_workout') }}
+                </div>
+            @endif
+
+            @if(Session::has('added_workout'))
+            <div class="alert alert-success" role="alert">
+                <p>{{ session('added_workout') }}</p>
+            </div>
+            @endif
+
+
+            @if(Session::has('done_workout'))
+            <div class="alert alert-success" role="alert">
+                <p>{{ session('done_workout') }}</p>
+            </div>
+            @endif
 
  
             <div class="to-right">

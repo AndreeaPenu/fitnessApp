@@ -4,11 +4,21 @@
 
 
 <div class="container">
+
+            @if(Session::has('updated_workout'))
+            <div class="alert alert-success" role="alert">
+                <p>{{ session('updated_workout') }}</p>
+            </div>
+            @endif
+            
     <h1>{{$workout->title}}</h1>
     <h4>{{$workout->description}}</h4>
-    <a href="{{ url('workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-secondary pull-right">Edit</a>
-    <a href="{{ url('workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-primary pull-right">Add Exercises</a>  
 
+    <div class="to-right">
+        <a href="{{ url('workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-secondary pull-right">Edit</a>
+        <a href="{{ url('workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-primary pull-right">Add Exercises</a>  
+    </div>
+ 
     
 
 
@@ -20,49 +30,20 @@
     
   
         <div class="card-header">
-            <h1>{{ $exercise->name }} </h1> 
-            {!! Form::open(['method'=>'DELETE', 'action'=>['ExercisesController@destroy', $exercise->id]]) !!}
-                <div class="form-group">
-                    {!! Form::submit('X Delete', ['class'=>'btn btn-danger']) !!}
-                </div>
-            {!! Form::close() !!}
+         {{ $exercise->name }}
+
+            <div class="to-right">
+                {!! Form::open(['method'=>'DELETE', 'action'=>['ExercisesController@destroy', $exercise->id]]) !!}
+                    <div class="form-group">
+                        {!! Form::submit('X Delete', ['class'=>'btn btn-danger']) !!}
+                    </div>
+                {!! Form::close() !!}
+            </div>
+   
 
             
         </div>
 
-        <div class="card-body">
-                <!-- show sets here -->
-                   
-                        
-                    @foreach($sets as $set)
-                    @if($set->reps == null)
-                        @if($set->exercise_id == $exercise->id)
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group">
-                                            {!! Form::label('weight', 'Weight:') !!}
-                                            {!! Form::text('weight[]',null, ['class'=>'form-control', 'placeholder'=>'']) !!}
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="form-group">
-                                            {!! Form::label('reps', 'Reps:') !!}
-                                            {!! Form::text('reps[]', null, ['class'=>'form-control', 'placeholder'=>'']) !!}
-                                        </div>
-                                    </div>
-                                </div>
-                                {!! Form::hidden('exercise_id[]', $exercise->id) !!}
-                                {!! Form::hidden('set_id[]', $set->id) !!}
-                        @endif
-                        @endif
-                    @endforeach     
-                    <a href="{{ url('workouts/' . $exercise->id . '/addSet') }}" class="btn btn-xs btn-primary pull-right">Add set</a>
-                  
-
-            
-                       
-        </div>
   
     </div>
       @endforeach

@@ -34,7 +34,7 @@
     <header>
 
         <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top ">
-             <a class="navbar-brand py-2" href="#">
+             <a class="navbar-brand py-2" href="/">
             <img src="/images/Dumbel-Logo-Color.svg" width="80" height="50" class="d-inline-block align-top" alt="dumbel">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navToggle" aria-controls="navToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,16 +45,16 @@
        
             <ul class="nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/workouts">Workouts</a>
+                    <a class="nav-link @if (Request::is('workouts*')) active @endif" href="/workouts">Workouts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/agenda">Calendar</a>
+                    <a class="nav-link @if (Request::is('agenda')) active @endif" href="/agenda">Calendar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/showFriends">Friends</a>
+                    <a class="nav-link @if (Request::is('showFriends')) active @endif" href="/showFriends">Friends</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"href="/users">Profile</a>
+                    <a class="nav-link @if (Request::is('users*')) active @endif" href="/users/{{Auth::user()->id}}">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"href="#">Logout</a>
@@ -65,11 +65,11 @@
 </header>
 
     
-
+    <div id="app">
         <main class="py-4">
             @yield('content')
         </main>
- 
+    </div>
     
     <script>
 

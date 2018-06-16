@@ -82,10 +82,11 @@ class UsersController extends Controller
 
         $user->update($input);
 
-        return redirect('users');
+        Session::flash('updated_user', "Nice update you've done there!");
+        return redirect('users/'.$id);
     }
 
-    public function destroy($id)
+/*     public function destroy($id)
     {
         $user = User::findOrFail($id);
         //unlink(public_path() . $user->photo->file);
@@ -93,5 +94,5 @@ class UsersController extends Controller
         Session::flash('deleted_user', 'The user has been deleted');
 
         return redirect('users');
-    }
+    } */
 }

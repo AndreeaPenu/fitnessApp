@@ -3,54 +3,69 @@
 @section('content')
 
 <div class="container">
+<div class="row justify-content-center">
+<div class="col-md-8">
     <div class="card">
         <div class="card-header">
             Edit user
         </div>
 
-        <div class="card-body">
-                   <div class="col-sm-3">
-            <img width="50" src="{{ $user->photo ? $user->photo->file : '/images/placeholder.png' }}" alt="User Picture">
-        </div>
+        <div class="card-body text-center">
+        
 
-        <div class="col-sm-9">
+    
 
             {!! Form::model($user,['method'=>'PATCH','action'=> ['UsersController@update', $user->id],'files'=>true]) !!}
-                <div class="form-group">
-                    {!! Form::label('name', 'Name:') !!}
-                    {!! Form::text('name', null, ['class'=>'form-control']) !!}
-                </div>
+            
 
-                <div class="form-group">
-                    {!! Form::label('email', 'Email:') !!}
-                    {!! Form::email('email', null, ['class'=>'form-control']) !!}
+     
+            <img class="round-pic mb-3" width="80" src="{{ $user->photo ? $user->photo->file : '/images/placeholder.png' }}" alt="User Picture">
+               
+            
+            <div class="form-group row">
+                <div class="col-md-4">
+                     {!! Form::label('photo_id', 'Photo') !!}
                 </div>
-
-                <div class="form-group">
-                    {!! Form::label('role_id', 'Role:') !!}
-                    {!! Form::select('role_id', $roles ,null, ['class'=>'form-control']) !!}
+                <div class="col-md-6">
+                     {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
                 </div>
-
-                <div class="form-group">
-                    {!! Form::label('photo_id', 'Photo:') !!}
-                    {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
+            </div>
+        
+             
+            <div class="form-group row">
+                <div class="col-md-4">
+                     {!! Form::label('name', 'Name') !!}
                 </div>
-
-                <div class="form-group">
-                    {!! Form::label('password', 'Password:') !!}
-                    {!! Form::password('password', ['class'=>'form-control']) !!}
+                <div class="col-md-6">
+                     {!! Form::text('name', null, ['class'=>'form-control']) !!}
                 </div>
+            </div>
 
-                <div class="form-group">
-                    {!! Form::submit('Update User', ['class'=>'btn btn-primary']) !!}
+            <div class="form-group row">
+                <div class="col-md-4">
+                     {!! Form::label('email', 'Email') !!}
+                </div>
+                <div class="col-md-6">
+                     {!! Form::email('email', null, ['class'=>'form-control']) !!}
+                </div>
+            </div>
+              
+            <div class="form-group row">
+                <div class="col-md-4">
+                     {!! Form::label('password', 'Password') !!}
+                </div>
+                <div class="col-md-6">
+                     {!! Form::password('password', null, ['class'=>'form-control']) !!}
+                </div>
+            </div>
+       
+
+                <div class="to-right">
+                     <div class="form-group">
+                    {!! Form::submit('Update profile', ['class'=>'btn btn-primary']) !!}
                 </div>
             {!! Form::close() !!}
 
-            {!! Form::open(['method'=>'DELETE', 'action'=>['UsersController@destroy', $user->id]]) !!}
-                <div class="form-group">
-                    {!! Form::submit('Delete user', ['class'=>'btn btn-danger']) !!}
-                </div>
-            {!! Form::close() !!}
 
             
             @if(count($errors) > 0)
@@ -66,8 +81,8 @@
         </div>
     </div>
     
-
- 
+</div>
+</div>
 </div>
        
 

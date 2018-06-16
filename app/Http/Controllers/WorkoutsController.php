@@ -68,10 +68,6 @@ class WorkoutsController extends Controller
             $exercise->name = $exercises;
             $exercise->save();
             $workout->exercises()->save($exercise);
-   /*          $set = new Set;
-            $set->exercise_id = $exercise->id;
-            $set->save();
-            $exercise->sets()->save($set); */
         }
 
         return redirect('workouts');
@@ -132,17 +128,9 @@ class WorkoutsController extends Controller
             } 
 
         }
+        Session::flash('added_workout', 'Way to go! Your workout has been made.');
 
-        return redirect()->back();
-    }
-
-    public function addSet($id){
-        //id is van exercise
-      /*   $set = new Set;
-        $set->exercise_id = $id;
-        $set->save(); */
-
-      //  return redirect()->back();
+        return redirect('workouts');
     }
 
     public function edit($id)
@@ -158,14 +146,13 @@ class WorkoutsController extends Controller
         $input = $request->all();
         $workout->update($input);
         $workout->save();
+        Session::flash('updated_workout', 'The workout has been improved!');
 
-        return redirect('workouts');
+        return redirect('workouts/'.$id.'/change');
     }
 
     public function updateSet(Request $request,$id)
     {
-
-
         foreach($request->exercise_id as $key => $e){
             if($request->weight[$key] != 0 || $request->weight[$key] != null){
                 $exercise = Exercise::findOrFail($e);
@@ -176,8 +163,9 @@ class WorkoutsController extends Controller
                 $set->save();
             }
         }
+        Session::flash('done_workout', "Well done, you're one step closer to your goal!");
 
-        return redirect()->back();
+        return redirect('workouts');
     } 
 
     public function destroy($id)

@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container">
+        @if(Session::has('updated_user'))
+            <div class="alert alert-success" role="alert">
+                <p>{{ session('updated_user') }}</p>
+            </div>
+            @endif
 
         <div class="card">
             <div class="card-header">
@@ -53,9 +58,10 @@
                 @if($weight)
                 <p>Weight: {{ $weight->weight }} kg</p> 
                 @endif
-               <!-- <a href="{{ url('/admin/users/' . $user->id . '/edit') }}" class="btn btn-xs btn-primary pull-right">Edit</a> -->
-                <!-- Button trigger modal -->
-                <div class="to-right">
+               
+         
+                <div class="to-right"> 
+                    <a href="{{ url('users/' . $user->id . '/edit') }}" class="btn btn-xs btn-secondary pull-right">Edit</a>
                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         New weight entry
                     </button>

@@ -10444,10 +10444,6 @@ a:hover {
   color: #5BC0BE !important;
 }
 
-.navbar-light .nav-link .active {
-  color: #5BC0BE !important;
-}
-
 .navbar-light .navbar-toggler {
   color: #4A368B;
   border: 0;
@@ -10469,7 +10465,7 @@ a.py-2:hover {
   top: 73px;
   border-bottom: 2px solid #5BC0BE;
   width: 80px;
-  height: 2px;
+  height: 10px;
 }
 
 span.is-event {
