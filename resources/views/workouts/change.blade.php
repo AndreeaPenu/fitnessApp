@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<a href="{{ URL::previous() }}"><img class="arrow-back" src="{{ asset('/images/left-arrow.svg') }}" alt="left arrow"></a>
 <div class="container">
 
             @if(Session::has('updated_workout'))

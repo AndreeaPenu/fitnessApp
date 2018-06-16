@@ -10468,11 +10468,6 @@ a.py-2:hover {
   height: 10px;
 }
 
-.arrow-back {
-  height: 20px;
-  width: 50px;
-}
-
 span.is-event {
   border-color: #5BC0BE !important;
 }
@@ -10545,6 +10540,12 @@ span.is-event .selected-day {
 
 .__vev_calendar-wrapper .events-wrapper .cal-events .event-item .title {
   border: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .__vev_calendar-wrapper {
+    margin-top: 0px;
+  }
 }
 
 .modal-header {
@@ -10711,6 +10712,12 @@ span.is-event .selected-day {
   background-color: #FFFFFF;
   border-color: #06D6A0;
   color: #06D6A0;
+}
+
+.arrow-back {
+  height: 20px;
+  width: 50px;
+  margin-left: 50px;
 }
 
 .overlay {

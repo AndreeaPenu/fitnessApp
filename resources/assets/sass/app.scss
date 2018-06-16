@@ -89,10 +89,6 @@ a.py-2 {
   }
 }
 
-.arrow-back {
-  height: 20px;
-  width: 50px;
-}
 // Agenda
 
 span.is-event {
@@ -165,6 +161,14 @@ span.is-event {
     }
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+  .__vev_calendar-wrapper {
+    margin-top: 0px;
+  }
+}
+
 
 // Modal
 
@@ -334,6 +338,12 @@ span.is-event {
 
 }
 
+// Arrow back
+.arrow-back {
+  height: 20px;
+  width: 50px;
+  margin-left: 50px;
+}
 
 // Full screen navs
 .overlay {

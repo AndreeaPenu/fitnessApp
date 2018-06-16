@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-
+<a href="{{ URL::previous() }}"><img class="arrow-back" src="{{ asset('/images/left-arrow.svg') }}" alt="left arrow"></a>
 <div class="container"> 
             {!! Form::model($workout,['class'=>'form','method'=>'POST','action'=> ['WorkoutsController@storeExercises', $workout->id]]) !!}
             {{ Form::hidden('id', $workout->id) }}
