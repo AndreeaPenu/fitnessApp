@@ -74,6 +74,12 @@
             @yield('content')
         </main>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <span>Dumbel &copy;2018</span>
+      </div>
+    </footer>
     
     <script>
 

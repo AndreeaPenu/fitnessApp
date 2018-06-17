@@ -11,11 +11,7 @@
         </div>
         <div class="card-body">
             
-
             {!! Form::model($workout,['method'=>'PATCH','action'=> ['WorkoutsController@update', $workout->id]]) !!}
-                
-
-
                         <div class="form-group row">
                             <div class="col-md-4 col-form-label text-md-right">
                             {!! Form::label('title', 'Title') !!}
@@ -34,8 +30,7 @@
                             </div>
                         </div>
 
-
-<div class="to-right">
+        <div class="to-right">
             <div class="form-group">
                     {!! Form::submit('Update Workout', ['class'=>'btn btn-success']) !!}
                 </div>
@@ -46,10 +41,8 @@
                     {!! Form::submit('Delete Workout', ['class'=>'btn btn-danger']) !!}
                 </div>
             {!! Form::close() !!}
-</div>
+        </div>
         
-
-            
             @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>

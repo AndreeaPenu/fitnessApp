@@ -43,15 +43,12 @@
                     </ul>
                 </div>
             @endif
-
-            
-     
         </div>       
     </div>
 
-                <div class="to-right">
-                    {!! Form::submit('Create Workout', ['class'=>'btn btn-primary']) !!}
-                </div>
-            {!! Form::close() !!}
+    <div class="to-right">
+        {!! Form::submit('Create Workout', ['class'=>'btn btn-primary']) !!}
+    </div>
+ {!! Form::close() !!}
 </div>   
 @endsection

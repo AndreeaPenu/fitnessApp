@@ -51,7 +51,7 @@ a.nav-link.btn-menu {
 
 // Nav
 .site-header {
-  background-color: white;//#332560;
+  background-color: white;
   -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
   -moz-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
   box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
@@ -77,7 +77,7 @@ a.nav-link.btn-menu {
 }
 
 a.py-2 {
-  color: $primary-color;//#c6c0d8!important;
+  color: $primary-color;
   text-transform: uppercase;
   &:hover {
     color: $secondary-color!important;
@@ -128,7 +128,6 @@ iframe {
 }
 
 // Icons
-
 .icon {
   width: 80px;
   height: 80px;
@@ -136,10 +135,8 @@ iframe {
 }
 
 // Agenda
-
 span.is-event {
   border-color: $secondary-color!important;
-  //background-color: $secondary-color!important;
   & .selected-day {
     background-color: $secondary-color!important;
     border-color: $secondary-color!important;
@@ -217,13 +214,12 @@ span.is-event {
 
 
 // Modal
-
 .modal-header {
   border: 0;
   color: $primary-color;
 }
-// Card
 
+// Card
 .card {
   margin-bottom: 10px;
   -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
@@ -259,7 +255,6 @@ span.is-event {
 }
 
 // Workouts
-
 .circle {
   width: 50px;
   height: 50px;
@@ -313,22 +308,6 @@ span.is-event {
 .btn {
   text-transform: uppercase;
   padding: 8px 30px;
-/*   &:after {
-    content: '';
-    background-image: url(/images/right-arrow.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 30px;
-    position: absolute;
-    background-color: #5BC0BE;
-    color: #FFFFFF;
-    width: 60px;
-    top: 653px;
-    right: 249px;
-    height: 50px;
-    position: absolute;
-    display: block;
-  } */
 }
 
 .btn-lg {
@@ -444,11 +423,9 @@ span.is-event {
 }
 
 //left navbar
-
 .left-nav {
   position: absolute;
   background-color: #1C2541;
-  //width: 300px;
   height: 800px;
   width: 150px!important;
 }
@@ -487,12 +464,10 @@ input[type="text"], input[type="email"], input[type="password"]
     outline: 0;
 }
 
-//checkboxes
-
+// checkboxes
 .inputGroup {
   background-color: #fff;
   display: block;
-  //margin: 10px 0;
   position: relative;
 
   label {
@@ -572,19 +547,11 @@ input[type="text"], input[type="email"], input[type="password"]
   }
 }
 
-
-// codepen formatting
 .form {
 padding: 0 16px;
-//max-width: 550px;
-//margin: 50px auto;
 font-size: 18px;
 font-weight: 600;
 line-height: 36px;
-}
-
-body {
-
 }
 
 *,
@@ -610,4 +577,21 @@ input[type="text"].form-control, input[type="email"].form-control, input[type="p
   border: 1px solid $white;
   border-bottom: 1px solid lightgray;
   border-radius: 0px;
+}
+
+// footer
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  color: $primary-color!important;
 }

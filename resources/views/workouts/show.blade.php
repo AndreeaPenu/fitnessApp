@@ -24,7 +24,6 @@
             <h4>{{$workout->description}}</h4>
         </div>
 
-
     </div>
     </br>
     <!-- show exercises here -->
@@ -36,9 +35,6 @@
         </div>
         <div class="card-body">
                 <!-- show sets here -->
-               
-                     
-                        
                             <div class="row">
                                 <input type="hidden" name="exercise_id[]" value="{{$exercise->id}}"/>
                                 <div class="col">
@@ -47,24 +43,15 @@
                                         <input class="form-control" type="text" name="weight[]" value=""/> 
                                     </div>
                                 </div>
-                                
-                               
-                                
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="reps">Reps:</label>
                                         <input class="form-control" type="text" name="reps[]" value=""/>
                                     </div>
-                                </div>
-                          
-                                
+                                </div> 
 
-                            </div>
-                
-                               
+                            </div>          
                         <input type="button" class="btn btn-primary" onclick="addSet({{$exercise->id}})" id="{{$exercise->id}}" value="Add set"/>            
-      
-                     
           </div>
     </div>
        @endforeach

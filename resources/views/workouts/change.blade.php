@@ -18,10 +18,6 @@
         <a href="{{ url('workouts/'. $workout->id . '/edit') }}" class="btn btn-xs btn-secondary pull-right">Edit</a>
         <a href="{{ url('workouts/'. $workout->id . '/addExercise') }}" class="btn btn-xs btn-primary pull-right">Add Exercises</a>  
     </div>
- 
-    
-
-
     </br>
    <!-- show exercises here -->
     @if($exercises)
@@ -39,19 +35,13 @@
                     </div>
                 {!! Form::close() !!}
             </div>
-   
 
-            
         </div>
-
   
     </div>
       @endforeach
     @endif
-      
-  
      
-</div>  
-    
+</div> 
     {!! Form::close() !!}
 @endsection

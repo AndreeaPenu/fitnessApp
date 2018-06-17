@@ -13,24 +13,20 @@
 
                 @if($exercises)
                     @foreach($exercises as $key => $exercise)
-    <div class="card">
-        <!--   <div class="card-header">
-         <h1>Workout: {{ $workout->title }}</h1> 
-        </div>-->
+                        <div class="card">
 
-        <div class="card-body">
-          
-                          <div class="inputGroup">
-                            <input id="exercises{{$key+1}}" name="exercises[]" type="checkbox" value="{{$exercise->name}}"/>
-                            <label for="exercises{{$key+1}}">{{ $exercise->name }}</label>
-                        </div>
+                            <div class="card-body">
+            
+                                <div class="inputGroup">
+                                    <input id="exercises{{$key+1}}" name="exercises[]" type="checkbox" value="{{$exercise->name}}"/>
+                                    <label for="exercises{{$key+1}}">{{ $exercise->name }}</label>
+                                </div>
              
-        </div>
-    </div>       @endforeach
+                            </div>
+                        </div>       
+                    @endforeach
                 @endif
 
-         
-
-            {!! Form::close() !!}
+{!! Form::close() !!}
 </div>
 @endsection

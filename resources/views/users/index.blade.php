@@ -21,29 +21,21 @@
 
                         <div class="col-md-3">
                         <?php 
-                                            $check = DB::table('friendships')
-                                            ->where('user_requested', '=', $u->id)
-                                            ->where('requester', '=', Auth::user()->id)
-                                            ->first();
-                                            if($check == '') {
-                                                ?>   
-                                            
-                                            
-                                            <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-secondary">Send request</a>
-                                                <?php } else { ?>
-                                                    <p>Request already sent</p>
-                                                <?php  }?>
+                            $check = DB::table('friendships')
+                            ->where('user_requested', '=', $u->id)
+                            ->where('requester', '=', Auth::user()->id)
+                            ->first();
+                            if($check == '') {
+                            ?>   
+                                <a href="{{ url('/') }}/addFriend/{{ $u->id }}" class="btn btn-secondary">Send request</a>
+                                <?php } else { ?>
+                                    <p>Request already sent</p>
+                                <?php  }?>
                         </div>
-                 
-                    
-            
-                        
-               
-                               
+          
                      </div>
                      @endif
                     @endforeach
-                  
                   
                 </div>
             </div>

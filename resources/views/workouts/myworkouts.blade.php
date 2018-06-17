@@ -30,11 +30,6 @@
             </table>
     </div>
 </div>
-        
-    
+
 </div>
-
-
-
-    
-    @endsection
+@endsection
