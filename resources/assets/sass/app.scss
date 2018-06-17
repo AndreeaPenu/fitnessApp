@@ -66,6 +66,9 @@ a.nav-link.btn-menu {
 
 .navbar-light .nav-link {
   color: $primary-color!important;
+  position: relative;
+  top: 13px;
+  padding-bottom: 26px;
   &:hover {
     color: $secondary-color!important;
   }
@@ -86,18 +89,19 @@ a.py-2 {
 }
 
 .active {
-  &:before{
-    content: '';
-    position: absolute;
-    top: 73px;
-    border-bottom: 2px solid $secondary-color;
-    width: 80px;
-    height: 10px;
-  }
+  border-bottom: 2px solid $secondary-color;
 }
 
 
 // About us 
+
+#about {
+  background-color: $primary-color;
+  & .footer .container span {
+    color: $white;
+  }
+}
+
 .about_us {
   padding: 150px 0;
   background-color: $primary-color;

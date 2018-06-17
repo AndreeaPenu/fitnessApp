@@ -53,15 +53,10 @@ class ExercisesController extends Controller
     {
         $exercise = new Exercise;
         $exercise->name = $request->name;
-        $exercise->official = $request->official;
+        $exercise->official = 1;
         $exercise->save();
-        $set = new Set;
-        $set->reps = $request->reps;
-        $set->weight = $request->weight;
-        $set->exercise_id = $exercise->id;
-        $set->save();
 
-        return redirect('/workouts');
+        return redirect('/admin/exercises');
     }
 
     public function edit($id)
@@ -85,6 +80,6 @@ class ExercisesController extends Controller
         $exercise = Exercise::findOrFail($id);
         $exercise->delete();
 
-        return redirect()->back();
+        return redirect('/admin/exercises');
     }
 }

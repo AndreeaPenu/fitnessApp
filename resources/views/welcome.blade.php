@@ -40,7 +40,12 @@
         <div class="overlay-content">
             <a href="{{ url('/')}}">Home</a>
             <a href="{{ url('about')}}">About Us</a>
+            @auth
             <a href="{{ url('workouts')}}">Dashboard</a>
+            @endauth
+            @guest
+            <a href="{{ url('login')}}">Dashboard</a>
+            @endguest
             <a href="{{ route('login') }}">Login</a>
             <a href="{{ route('register') }}">Register</a>
         </div>

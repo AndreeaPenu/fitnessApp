@@ -10446,6 +10446,9 @@ a.nav-link.btn-menu:hover {
 
 .navbar-light .nav-link {
   color: #4A368B !important;
+  position: relative;
+  top: 13px;
+  padding-bottom: 26px;
 }
 
 .navbar-light .nav-link:hover {
@@ -10467,13 +10470,16 @@ a.py-2:hover {
   text-decoration: none;
 }
 
-.active:before {
-  content: '';
-  position: absolute;
-  top: 73px;
+.active {
   border-bottom: 2px solid #5BC0BE;
-  width: 80px;
-  height: 10px;
+}
+
+#about {
+  background-color: #4A368B;
+}
+
+#about .footer .container span {
+  color: #FFFFFF;
 }
 
 .about_us {

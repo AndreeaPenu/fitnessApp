@@ -22,7 +22,7 @@
         <!-- Custom -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         </head>
-    <body>
+    <body id="about">
 
     <nav class="navbar navbar-light bg-light about">
         <a class="navbar-brand" href="#">
@@ -70,6 +70,12 @@
         <h1 class="pb-3">A day in the life: with Dumbel</h1>
         <iframe width="800" height="450" src="https://www.youtube.com/embed/EvN9DrNozR0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <span>Dumbel &copy;2018</span>
+      </div>
+    </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>

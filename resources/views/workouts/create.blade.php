@@ -16,21 +16,21 @@
 @endif
     <div class="card">
         <div class="card-header">
-            <h1>Create new Workout</h1>
+            Create new Workout
         </div>
         <div class="card-body">
 
                 <div class="form-group">
-                    {!! Form::label('title', 'Title:') !!}
+                    {!! Form::label('title', 'Title') !!}
                     {!! Form::text('title', null, ['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('description', 'Description:') !!}
+                    {!! Form::label('description', 'Description') !!}
                     {!! Form::text('description', null, ['class'=>'form-control']) !!}
                 </div>
 
-                <h2>Exercises</h2>
+                <h3>Exercises</h3>
 
                 @if($exercises)
                     @foreach($exercises as $key => $exercise)

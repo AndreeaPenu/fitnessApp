@@ -2,9 +2,11 @@
 
 @section('content')
 <div class="container">
+<div class="row justify-content-center">
+        <div class="col-md-8">
     <div class="card">
         <div class="card-header">
-            <h1>Create new Exercise</h1>
+            Create new Exercise
 
         </div>
         <div class="card-body">
@@ -13,24 +15,6 @@
                 {!! Form::label('name', 'Name:') !!}
                 {!! Form::text('name', null, ['class'=>'form-control']) !!}
             </div>
-
-            <div class="form-group">
-                {!! Form::label('official', 'Official:') !!}
-                {!! Form::text('official', null, ['class'=>'form-control']) !!}
-            </div>
-
-            <!-- SETS -->
-
-            <div class="form-group">
-                {!! Form::label('reps', 'Reps:') !!}
-                {!! Form::text('reps', null, ['class'=>'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('weight', 'Weight:') !!}
-                {!! Form::text('weight', null, ['class'=>'form-control']) !!}
-            </div>
-
 
             <div class="form-group">
                 {!! Form::submit('Create Exercise', ['class'=>'btn btn-primary']) !!}
@@ -49,6 +33,8 @@
         </div>
     </div>
        
+</div>
+</div>
 </div>
 
        

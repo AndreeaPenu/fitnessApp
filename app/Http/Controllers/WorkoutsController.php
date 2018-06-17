@@ -133,7 +133,7 @@ class WorkoutsController extends Controller
             } 
 
         }
-        Session::flash('added_workout', 'Way to go! Your workout has been made.');
+        Session::flash('added_workout', 'Friend workout has been added to your workouts. Good luck keeping up ;)');
 
         return redirect('workouts');
     }

@@ -83,9 +83,9 @@
     
     <script>
 
-function addSet(id){
-    $("#setForm").find('#'+id).before('<div class="row"><input type="hidden" name="exercise_id[]" value="'+ id + '"/><div class="col"><div class="form-group"><label for="weight">Weight:</label><input class="form-control" type="text" name="weight[]"></div></div><div class="col"><div class="form-group"><label for="reps">Reps:</label><input class="form-control" type="text" name="reps[]"></div></div></div>');
-}
+        function addSet(id){
+            $("#setForm").find('#'+id).before('<div class="row"><input type="hidden" name="exercise_id[]" value="'+ id + '"/><div class="col"><div class="form-group"><label for="weight">Weight:</label><input class="form-control" type="text" name="weight[]"></div></div><div class="col"><div class="form-group"><label for="reps">Reps:</label><input class="form-control" type="text" name="reps[]"></div></div></div>');
+        }
 
     </script>
 </body>
