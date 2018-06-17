@@ -42,6 +42,13 @@ a {
   text-transform: uppercase;
 }
 
+a.nav-link.btn-menu {
+  color: $white!important;
+  &:hover {
+    color: $primary-color!important;
+  }
+}
+
 // Nav
 .site-header {
   background-color: white;//#332560;
@@ -87,6 +94,45 @@ a.py-2 {
     width: 80px;
     height: 10px;
   }
+}
+
+
+// About us 
+.about_us {
+  padding: 150px 0;
+  background-color: $primary-color;
+ 
+  & h1 {
+    color: $white!important;
+  }
+}
+
+.why_dumbel {
+  text-align: center;
+  padding: 300px 0;
+  background-color: $secondary-color;
+  & h2 {
+    color: $white!important;
+  }
+}
+
+.about {
+  background-color: $secondary-color!important;
+}
+
+iframe {
+  border: 0;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.05);
+}
+
+// Icons
+
+.icon {
+  width: 80px;
+  height: 80px;
+  vertical-align: center;
 }
 
 // Agenda

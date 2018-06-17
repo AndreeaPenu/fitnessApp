@@ -27,6 +27,7 @@
         "jquery-nice-select": "^1.1.0",
         "mavigator": "^1.1.0",
         "moment": "^2.22.2",
+        "open-iconic": "^1.1.1",
         "vue-chartjs": "^3.3.1",
         "vue-event-calendar": "^1.5.2"
     }

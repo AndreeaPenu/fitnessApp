@@ -10424,6 +10424,14 @@ a:hover {
   text-transform: uppercase;
 }
 
+a.nav-link.btn-menu {
+  color: #FFFFFF !important;
+}
+
+a.nav-link.btn-menu:hover {
+  color: #4A368B !important;
+}
+
 .site-header {
   background-color: white;
   -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
@@ -10466,6 +10474,41 @@ a.py-2:hover {
   border-bottom: 2px solid #5BC0BE;
   width: 80px;
   height: 10px;
+}
+
+.about_us {
+  padding: 150px 0;
+  background-color: #4A368B;
+}
+
+.about_us h1 {
+  color: #FFFFFF !important;
+}
+
+.why_dumbel {
+  text-align: center;
+  padding: 300px 0;
+  background-color: #5BC0BE;
+}
+
+.why_dumbel h2 {
+  color: #FFFFFF !important;
+}
+
+.about {
+  background-color: #5BC0BE !important;
+}
+
+iframe {
+  border: 0;
+  -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  vertical-align: center;
 }
 
 span.is-event {

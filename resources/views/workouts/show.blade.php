@@ -5,7 +5,7 @@
 {!! Form::open(['method'=>'POST', 'id'=>'setForm', 'action'=>['WorkoutsController@updateSet', $workout->id]]) !!}
                     {{ csrf_field() }}
 
-                    <a href="{{ URL::previous() }}"><img class="arrow-back" src="{{ asset('/images/left-arrow.svg') }}" alt="left arrow"></a>
+<a href="{{ URL::previous() }}"><img class="arrow-back" src="{{ asset('/images/left-arrow.svg') }}" alt="left arrow"></a>
 <div class="container">
 
 @if ($errors->any())

@@ -24,7 +24,7 @@
         </head>
     <body>
 
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light about">
         <a class="navbar-brand" href="#">
             <img src="/images/Dumbel-Logo-White.svg" width="80" height="50" class="d-inline-block align-top" alt="dumbel">
         </a>
@@ -45,20 +45,33 @@
             <a href="{{ route('register') }}">Register</a>
         </div>
     </div>
-
-    <div class="hero">
+<div class="why_dumbel">
         <div class="container">
-            <h3>Three months</h3> <br>
-            <h3>from now</h3> <br>
-            <h3>you will</h3> <br>
-            <h3>thank yourself.</h3>
-       
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="icon" src="{{ asset('images/calendar.svg') }}" alt="calendar"> 
+                    <h2>Stay on track with the planner</h2>
+                    
+                </div>
+                <div class="col-md-4">
+                    <img class="icon" src="{{ asset('images/progression.svg') }}" alt="progression">  
+                    <h2>Track your progress</h2>
+                </div>
 
-            <div class="to-right">
-                    <a href="{{ route('login') }}" class="btn btn-lg btn-primary">Get started</a>
+                <div class="col-md-4">
+                    <img class="icon" src="{{ asset('images/friendship.svg') }}" alt="friendship">  
+                    <h2>Share your workouts with friends</h2>
+                </div>
             </div>
         </div>
+    
     </div>
+    <div class="about_us text-center">
+        <h1 class="pb-3">A day in the life: with Dumbel</h1>
+        <iframe width="800" height="450" src="https://www.youtube.com/embed/EvN9DrNozR0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    
     
 
 
