@@ -56,6 +56,10 @@
                 <li class="nav-item">
                     <a class="nav-link @if (Request::is('users*')) active @endif" href="/users/{{Auth::user()->id}}">Profile</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link @if (Request::is('admin*')) active @endif" href="/admin">Admin</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link"href="#">Logout</a>
                 </li>

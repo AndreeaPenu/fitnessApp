@@ -25,7 +25,7 @@
  
             <div class="to-right">
        
-                    <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-primary"><span class="oi oi-plus"></span> workout</a>
+                    <a href="{{ url('workouts/create') }}" class="btn btn-xs btn-primary"><span class="oi oi-plus"></span>New workout</a>
                                 
          
                     <a href="{{ url('workouts/myworkouts/1') }}" class="btn btn-xs btn-secondary">All my workouts</a>
