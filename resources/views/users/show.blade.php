@@ -68,8 +68,9 @@
 
          <?php 
             $check = DB::table('friendships')
-            ->where('user_requested', '!=', $user->id)
-            ->where('requester', '!=', Auth::user()->id)
+            ->where('user_requested', '=', $user->id || Auth::user()->id)
+            ->where('requester', '=', Auth::user()->id || $user->id)
+            ->where('status', '=',1)
             ->first();
             if($check == '') {
           ?>   
