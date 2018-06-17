@@ -75,6 +75,14 @@
             </div>
         </div>
         @if($user->id != Auth::user()->id)
+
+         <?php 
+                                            $check = DB::table('friendships')
+                                            ->where('user_requested', '!=', $user->id)
+                                            ->where('requester', '!=', Auth::user()->id)
+                                            ->first();
+                                            if($check == '') {
+                                                ?>   
     
         <div class="card">
             <div class="card-header">
@@ -103,6 +111,10 @@
                 </table>
             </div>
         </div>
+
+         <?php } else { ?>
+                                                  
+                                                  <?php  }?>
         @endif
 
         <!-- Modal -->

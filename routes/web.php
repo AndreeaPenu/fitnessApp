@@ -30,7 +30,6 @@ Route::get('admin', function(){
 });
 
 Route::group(['middleware' => 'admin'], function(){
-  
     Route::resource('admin/exercises','ExercisesController');
     Route::resource('admin','AdminUsersController');
     Route::resource('admin/users','AdminUsersController');
@@ -38,6 +37,7 @@ Route::group(['middleware' => 'admin'], function(){
 
 Route::resource('users','UsersController');
 
+// API
 Route::get('admin/exercises/getExercises/{id}','ExercisesController@getExercises');
 
 //workouts
