@@ -10682,22 +10682,6 @@ span.is-event .selected-day {
 .btn {
   text-transform: uppercase;
   padding: 8px 30px;
-  /*   &:after {
-    content: '';
-    background-image: url(/images/right-arrow.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 30px;
-    position: absolute;
-    background-color: #5BC0BE;
-    color: #FFFFFF;
-    width: 60px;
-    top: 653px;
-    right: 249px;
-    height: 50px;
-    position: absolute;
-    display: block;
-  } */
 }
 
 .btn-lg,
@@ -10992,9 +10976,6 @@ input[type="password"].form-control {
   border-bottom: 1px solid lightgray;
   border-radius: 0px;
 }
-
-/* Sticky footer styles
--------------------------------------------------- */
 
 html {
   position: relative;

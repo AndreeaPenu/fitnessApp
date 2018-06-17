@@ -56,6 +56,11 @@ class WorkoutsController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'exercises' => 'required',
+        ]);
         $workout = new Workout;
         $workout->user_id = Auth::user()->id;
         $workout->title = $request->title;
@@ -142,6 +147,10 @@ class WorkoutsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);
         $workout = Workout::findOrFail($id);
         $input = $request->all();
         $workout->update($input);
@@ -153,11 +162,6 @@ class WorkoutsController extends Controller
 
     public function updateSet(Request $request,$id)
     {
-        $validatedData = $request->validate([
-            'weight' => 'integer',
-            'reps' => 'integer',
-        ]);
-        
         foreach($request->exercise_id as $key => $e){
             if($request->weight[$key] != 0 || $request->weight[$key] != null){
                 $exercise = Exercise::findOrFail($e);

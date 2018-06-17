@@ -50,7 +50,7 @@ class AdminUsersController extends Controller
 
        User::create($input);
        
-       return redirect('/admin/users');
+       return redirect('/admin');
     }
 
     public function show($id)
@@ -85,7 +85,7 @@ class AdminUsersController extends Controller
         }
 
         $user->update($input);
-        return redirect('/admin/users');
+        return redirect('/admin');
     }
 
     public function destroy($id)
@@ -97,6 +97,6 @@ class AdminUsersController extends Controller
 
         Session::flash('deleted_user', 'The user has been deleted');
 
-        return redirect('/admin/users');
+        return redirect('/admin');
     }
 }

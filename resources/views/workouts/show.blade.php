@@ -40,13 +40,13 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="weight">Weight:</label> 
-                                        <input class="form-control" type="text" name="weight[]" value=""/> 
+                                        <input class="form-control" type="number" name="weight[]" value=""/> 
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="reps">Reps:</label>
-                                        <input class="form-control" type="text" name="reps[]" value=""/>
+                                        <input class="form-control" type="number" name="reps[]" value=""/>
                                     </div>
                                 </div> 
 

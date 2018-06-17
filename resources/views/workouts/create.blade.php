@@ -5,6 +5,15 @@
 <div class="container">
 {!! Form::open(['method'=>'POST','action'=>'WorkoutsController@store']) !!}
     {{ csrf_field() }}
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="card">
         <div class="card-header">
             <h1>Create new Workout</h1>
@@ -32,17 +41,6 @@
                         {!! Form::hidden('muscle_group[]', $exercise->muscle_group) !!}
                     @endforeach
                 @endif
-
-            
-            @if(count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
         </div>       
     </div>
 
