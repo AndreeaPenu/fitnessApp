@@ -50,11 +50,6 @@ class WorkoutsController extends Controller
         $exercises = Exercise::all();
         $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
         $sets =DB::table('sets')->where('weight', '<>', '')->get();
-/* 
-        $sets2 =Set::all()->groupBy(function($date) {
-            return \Carbon\Carbon::parse($date->created_at)->format('d-M-y');
-        });
-        var_dump($sets2); */
       
         return view('workouts.logs', compact('workouts','myWorkouts', 'exercises','sets'));
     }

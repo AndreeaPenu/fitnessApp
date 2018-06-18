@@ -31,7 +31,7 @@
             <div class="to-right">
                 {!! Form::open(['method'=>'DELETE', 'action'=>['ExercisesController@destroy', $exercise->id]]) !!}
                     <div class="form-group">
-                        {!! Form::submit('X Delete', ['class'=>'btn btn-danger']) !!}
+                        {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
                     </div>
                 {!! Form::close() !!}
             </div>
