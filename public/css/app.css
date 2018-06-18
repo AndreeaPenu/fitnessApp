@@ -10511,10 +10511,67 @@ iframe {
   box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.05);
 }
 
+@media only screen and (max-width: 600px) {
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-container iframe,
+  .video-container object,
+  .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .icon {
   width: 80px;
   height: 80px;
   vertical-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .why_dumbel {
+    padding: 150px 0;
+  }
+
+  .why_dumbel h2 {
+    font-size: 1rem;
+  }
+
+  .why_dumbel .icon {
+    margin-top: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero h3 {
+    font-size: 32px !important;
+  }
+
+  .btn {
+    padding: 0.375rem 0.75rem !important;
+  }
+
+  table tr th:first-child,
+  table tr td:first-child,
+  table tr th:nth-child(2),
+  table tr td:nth-child(2),
+  table tr th:nth-child(4),
+  table tr td:nth-child(4),
+  table tr th:nth-child(6),
+  table tr td:nth-child(6),
+  table tr th:nth-child(7),
+  table tr td:nth-child(7) {
+    display: none;
+  }
 }
 
 span.is-event {
@@ -10540,6 +10597,10 @@ span.is-event .selected-day {
 
 .is-today {
   background-color: #4A368B !important;
+  border-radius: 0 !important;
+  left: 47% !important;
+  width: 17px !important;
+  height: 2px !important;
 }
 
 .cal-body {

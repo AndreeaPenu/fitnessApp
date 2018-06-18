@@ -53,9 +53,10 @@
         },
         methods: {
              addToArray(){
+                var moment = require('moment'); 
                 for(var i = 0; i < this.w.length; i++){
                    this.weights.push(this.w[i].weight);
-                   this.lbls.push(this.w[i].created_at);
+                   this.lbls.push(moment(this.w[i].created_at).format('DD/MM/YYYY'));
                }
             }
         },

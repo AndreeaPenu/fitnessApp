@@ -68,7 +68,7 @@
     </div>
     <div class="about_us text-center">
         <h1 class="pb-3">A day in the life: with Dumbel</h1>
-        <iframe width="800" height="450" src="https://www.youtube.com/embed/EvN9DrNozR0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="video-container"><iframe width="800" height="450" src="https://www.youtube.com/embed/EvN9DrNozR0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
     </div>
 
     <footer class="footer">

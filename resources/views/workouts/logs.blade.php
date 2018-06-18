@@ -22,14 +22,6 @@
                                 <ul>
                                     <li>
                                         <h5>{{ $exercise->name }}</h5>
-                                        @foreach($sets as $set)
-                                            @if($set->exercise_id == $exercise->id && $set->reps != null)
-                                                <ul>
-                                                    <li>Weight: {{$set->weight}} x Reps: {{ $set->reps }} on {{ \Carbon\Carbon::parse($set->created_at)->format('d/m/Y') }}</li>
-                                                </ul>
-                                            @endif
-                                        @endforeach
-                                  
                                         <div class="app">
                                             <workout-chart chart-id="{{$exercise->id}}" :s="{{$sets}}" :eid="{{$exercise->id}}"></workout-chart>
                                         </div>

@@ -52,7 +52,7 @@
                         <div class="form-group row mb-0 text-right">
                             <div class="col-md-8 offset-md-4">
                             <a href="{{ route('register') }}">I want to make a new account!</a>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary ml-3">
                                     {{ __('Login') }}
                                 </button>
 

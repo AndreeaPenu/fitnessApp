@@ -68345,9 +68345,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addToArray: function addToArray() {
+            var moment = __webpack_require__(0);
             for (var i = 0; i < this.w.length; i++) {
                 this.weights.push(this.w[i].weight);
-                this.lbls.push(this.w[i].created_at);
+                this.lbls.push(moment(this.w[i].created_at).format('DD/MM/YYYY'));
             }
         }
     },
