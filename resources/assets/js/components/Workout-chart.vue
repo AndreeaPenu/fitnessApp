@@ -51,13 +51,14 @@
             }, this.options)
         },
         methods: {
-             addToArray(){    
+             addToArray(){  
+                var moment = require('moment');  
                 var currentDate = this.firstDate;
                 for(var i = 0; i < this.s.length; i++){
                     if(this.eid == this.s[i].exercise_id){
                        this.currentVolume = this.calculateVolume(this.s[i]);
                        this.data.push(this.currentVolume); 
-                       this.labels.push(this.s[i].created_at.split(' ')[0]);  
+                       this.labels.push(moment(this.s[i].created_at).format('DD/MM/YYYY'));  
                        currentDate=this.s[i].created_at.split(' ')[0];
                     }
                }

@@ -25,7 +25,7 @@
                                         @foreach($sets as $set)
                                             @if($set->exercise_id == $exercise->id && $set->reps != null)
                                                 <ul>
-                                                    <li>{{ $set->reps }} x {{ $set->weight }}kg . {{ $set->created_at }}</li>
+                                                    <li>Weight: {{$set->weight}} x Reps: {{ $set->reps }} on {{ \Carbon\Carbon::parse($set->created_at)->format('d/m/Y') }}</li>
                                                 </ul>
                                             @endif
                                         @endforeach

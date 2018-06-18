@@ -67928,7 +67928,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         for (var j = 0; j < this.workouts[i].exercises.length; j++) {
           this.title = this.workouts[i].exercises[j].name;
           for (var k = 0; k < this.workouts[i].exercises[j].sets.length; k++) {
-            this.desc = " weight:" + this.workouts[i].exercises[j].sets[k].weight + " Reps:" + this.workouts[i].exercises[j].sets[k].reps;
+            this.desc = "Weight: " + this.workouts[i].exercises[j].sets[k].weight + "kg x Reps: " + this.workouts[i].exercises[j].sets[k].reps;
             this.demoEvents.push({
               date: moment(this.workouts[i].exercises[j].sets[k].created_at).format('YYYY/MM/DD'),
               title: this.title,
@@ -80993,12 +80993,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addToArray: function addToArray() {
+            var moment = __webpack_require__(0);
             var currentDate = this.firstDate;
             for (var i = 0; i < this.s.length; i++) {
                 if (this.eid == this.s[i].exercise_id) {
                     this.currentVolume = this.calculateVolume(this.s[i]);
                     this.data.push(this.currentVolume);
-                    this.labels.push(this.s[i].created_at.split(' ')[0]);
+                    this.labels.push(moment(this.s[i].created_at).format('DD/MM/YYYY'));
                     currentDate = this.s[i].created_at.split(' ')[0];
                 }
             }

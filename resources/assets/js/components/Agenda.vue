@@ -22,7 +22,7 @@ export default {
             for(var j=0; j < this.workouts[i].exercises.length;j++){
              this.title =this.workouts[i].exercises[j].name;
               for(var k=0; k<this.workouts[i].exercises[j].sets.length;k++){
-                this.desc = " weight:" + this.workouts[i].exercises[j].sets[k].weight + " Reps:" + this.workouts[i].exercises[j].sets[k].reps;
+                this.desc = "Weight: " + this.workouts[i].exercises[j].sets[k].weight + "kg x Reps: " + this.workouts[i].exercises[j].sets[k].reps;
                 this.demoEvents.push({
                   date: moment(this.workouts[i].exercises[j].sets[k].created_at).format('YYYY/MM/DD'),
                   title: this.title,
