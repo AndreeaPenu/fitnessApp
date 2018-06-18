@@ -35,12 +35,9 @@ class HomeController extends Controller
     }
 
     public function agenda() {
-        $workouts = Workout::with('exercises')->get();
-        $exercises = Exercise::all();
-        $myWorkouts = DB::table('workouts')->where('user_id', auth()->id())->get();
-        $sets =DB::table('sets')->where('weight', '<>', '')->get();
+        $myWorkouts = Workout::with('exercises','exercises.sets')->where('user_id', auth()->id())->get();
 
-        return view('agenda', compact('workouts', 'myWorkouts', 'exercises','sets'));
+        return view('agenda', compact('myWorkouts'));
     }
 
     public function showFriends(){

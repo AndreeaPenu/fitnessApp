@@ -67912,7 +67912,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'agenda',
-  props: ['sets', 'exercises'],
+  props: ['workouts'],
   data: function data() {
     return {
       demoEvents: [],
@@ -67923,35 +67923,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     addToArray: function addToArray() {
-      for (var i = 0; i < this.sets.length; i++) {
-        var moment = __webpack_require__(0);
-        var dateF = moment(this.sets[i].created_at).format('YYYY/MM/DD');
-
-        if (this.sets[i].exercise_id == this.sets[i + 1].exercise_id) {
-          this.title = this.getName(this.sets[i].exercise_id);
-          this.desc = this.sets[i].weight + 'x' + this.sets[i].reps + ' ' + this.sets[i + 1].weight + 'x' + this.sets[i + 1].reps;
-        } else if (this.sets[i].exercise_id != this.sets[i - 1].exercise_id) {
-          this.title = this.getName(this.sets[i].exercise_id);
-          this.desc = this.sets[i].weight + 'x' + this.sets[i].reps;
-        } else {
-          this.date = 'double';
-          this.title = 'double';
-          this.desc = 'double';
-        }
-
-        if (this.date != 'double' || this.title != 'double' || this.desc != 'double') {
-          this.demoEvents.push({
-            date: moment(this.sets[i].created_at).format('YYYY/MM/DD'),
-            title: this.title,
-            desc: this.desc
-          });
-        }
-      }
-    },
-    getName: function getName($exercise_id) {
-      for (var i = 0; i < this.exercises.length; i++) {
-        if (this.exercises[i].id == $exercise_id) {
-          return this.exercises[i].name;
+      var moment = __webpack_require__(0);
+      for (var i = 0; i < this.workouts.length; i++) {
+        for (var j = 0; j < this.workouts[i].exercises.length; j++) {
+          this.title = this.workouts[i].exercises[j].name;
+          for (var k = 0; k < this.workouts[i].exercises[j].sets.length; k++) {
+            this.desc = " weight:" + this.workouts[i].exercises[j].sets[k].weight + " Reps:" + this.workouts[i].exercises[j].sets[k].reps;
+            this.demoEvents.push({
+              date: moment(this.workouts[i].exercises[j].sets[k].created_at).format('YYYY/MM/DD'),
+              title: this.title,
+              desc: this.desc
+            });
+          }
         }
       }
     }
@@ -81017,11 +81000,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.data.push(this.currentVolume);
                     this.labels.push(this.s[i].created_at.split(' ')[0]);
                     currentDate = this.s[i].created_at.split(' ')[0];
-                    if (this.s[i + 1] == null) {
-                        //this.labels.push(this.s[i].created_at.split(' ')[0]);
-                    } else {
-                            //this.labels.push(this.s[i+1].created_at.split(' ')[0]);
-                        }
                 }
             }
 

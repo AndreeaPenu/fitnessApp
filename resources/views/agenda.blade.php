@@ -4,8 +4,7 @@
 
 <div class="container">
      <div id="app">
-        <agenda :sets="{{$sets}}" :exercises="{{$exercises}}"></agenda>
+        <agenda :workouts="{{$myWorkouts}}"></agenda>
     </div>
 </div>
-
 @endsection

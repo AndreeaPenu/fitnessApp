@@ -59,14 +59,8 @@
                        this.data.push(this.currentVolume); 
                        this.labels.push(this.s[i].created_at.split(' ')[0]);  
                        currentDate=this.s[i].created_at.split(' ')[0];
-                       if(this.s[i+1] ==null){
-                           //this.labels.push(this.s[i].created_at.split(' ')[0]);
-                       } else {
-                           //this.labels.push(this.s[i+1].created_at.split(' ')[0]);
-                       }
                     }
                }
-
 
                var map = {};
 
