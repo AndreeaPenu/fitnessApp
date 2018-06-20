@@ -29,7 +29,7 @@
          {{ $exercise->name }}
 
             <div class="to-right">
-                {!! Form::open(['method'=>'DELETE', 'action'=>['ExercisesController@destroy', $exercise->id]]) !!}
+                {!! Form::open(['method'=>'DELETE', 'action'=>['WorkoutsController@destroyExercise', $exercise->id]]) !!}
                     <div class="form-group">
                         {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
                     </div>

@@ -185,4 +185,12 @@ class WorkoutsController extends Controller
 
         return redirect('workouts');
     }
+
+    public function destroyExercise($id)
+    {
+        $exercise = Exercise::findOrFail($id);
+        $exercise->delete();
+
+        return redirect()->back();
+    }
 }

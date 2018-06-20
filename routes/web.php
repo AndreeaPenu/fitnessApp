@@ -56,6 +56,7 @@ Route::post('workouts/create', 'WorkoutsController@create');
 Route::post('workouts/create/{id}', 'WorkoutsController@getExercises');
 Route::post('workouts/{id}/updateSet','WorkoutsController@updateSet');
 Route::post('workouts/{id}/storeExercise','WorkoutsController@storeExercises');
+Route::delete('workouts/{id}/destroyExercise','WorkoutsController@destroyExercise');
 
 //home
 Route::get('home', 'HomeController@index')->name('home');
